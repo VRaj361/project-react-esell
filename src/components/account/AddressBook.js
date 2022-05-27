@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 export const AddressBook = () => {
     return (
         
@@ -34,7 +34,7 @@ export const AddressBook = () => {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a className="address-book-edit btn--e-transparent-platinum-b-2" href="dash-address-edit.html">Edit</a></td>
+                                        <Link className="address-book-edit btn--e-transparent-platinum-b-2" to={'/myaccount/editaddress'}>Edit</Link></td>
                                     <td>John Doe</td>
                                     <td>4247 Ashford Drive Virginia VA-20006 USA</td>
                                     <td>Virginia VA-20006 USA</td>
@@ -46,7 +46,7 @@ export const AddressBook = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a className="address-book-edit btn--e-transparent-platinum-b-2" href="dash-address-edit.html">Edit</a></td>
+                                        <Link className="address-book-edit btn--e-transparent-platinum-b-2" to={'/myaccount/editaddress'}>Edit</Link></td>
                                     <td>Doe John</td>
                                     <td>1484 Abner Road</td>
                                     <td>Eau Claire WI - Wisconsin</td>
@@ -58,8 +58,8 @@ export const AddressBook = () => {
                     </div>
                 </div>
                 <div>
-                    <a className="dash__custom-link btn--e-brand-b-2" href="dash-address-add.html"><i className="fas fa-plus u-s-m-r-8" />
-                        <span>Add New Address</span></a></div>
+                    <Link className="dash__custom-link btn--e-brand-b-2" to={'/myaccount/addaddress'}><i className="fas fa-plus u-s-m-r-8" />
+                        <span>Add New Address</span></Link></div>
             </div>
             
             </>

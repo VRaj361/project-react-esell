@@ -4,10 +4,10 @@ import { Prejs } from './Prejs'
 
 export const Navbar = () => {
 
-   
+
     return (
         <div>
-            
+
             {/*====== Header Wrapper ======*/}
             <div className="header-wrapper " >
                 <header className="header--style-1">
@@ -17,8 +17,8 @@ export const Navbar = () => {
                             {/*====== Primary Nav ======*/}
                             <div className="primary-nav">
                                 {/*====== Main Logo ======*/}
-                                <a className="main-logo" href="index.html">
-                                    <img src="images/logo/logo-1.png" alt="" /></a>
+                                <Link className="main-logo" to={'/'}>
+                                    <img src="images/logo/logo-1.png" alt="" /></Link>
                                 {/*====== End - Main Logo ======*/}
                                 {/*====== Search Form ======*/}
                                 <form className="main-form">
@@ -40,21 +40,21 @@ export const Navbar = () => {
                                                 <span className="js-menu-toggle" />
                                                 <ul style={{ width: '120px' }}>
                                                     <li>
-                                                        <a href="dashboard.html"><i className="fas fa-user-circle u-s-m-r-6" />
-                                                            <span>Account</span></a></li>
+                                                        <Link to={'/myaccount'}><i className="fas fa-user-circle u-s-m-r-6" />
+                                                            <span>Account</span></Link></li>
                                                     <li>
-                                                        <a href="signup.html"><i className="fas fa-user-plus u-s-m-r-6" />
-                                                            <span>Signup</span></a></li>
+                                                        <Link to={'/signup'}><i className="fas fa-user-plus u-s-m-r-6" />
+                                                            <span>Signup</span></Link></li>
                                                     <li>
-                                                        <a href="signin.html"><i className="fas fa-lock u-s-m-r-6" />
-                                                            <span>Signin</span></a></li>
+                                                        <Link to={'/login'}><i className="fas fa-lock u-s-m-r-6" />
+                                                            <span>Signin</span></Link></li>
                                                     <li>
-                                                        <a href="signup.html"><i className="fas fa-lock-open u-s-m-r-6" />
-                                                            <span>Signout</span></a></li>
+                                                        <Link to={'/logout'}><i className="fas fa-lock-open u-s-m-r-6" />
+                                                            <span>Signout</span></Link></li>
                                                 </ul>
                                                 {/*====== End - Dropdown ======*/}
                                             </li>
-                                            
+
                                             <li data-tooltip="tooltip" data-placement="left" title="Contact">
                                                 <a href="tel:+0900901904"><i className="fas fa-phone-volume" /></a></li>
                                             <li data-tooltip="tooltip" data-placement="left" title="Mail">
@@ -622,75 +622,17 @@ export const Navbar = () => {
                                         {/*====== List ======*/}
                                         <ul className="ah-list ah-list--design2 ah-list--link-color-secondary">
                                             <li>
-                                                <a href="shop-side-version-2.html">NEW ARRIVALS</a></li>
+                                                <Link to={'/newarrival'}>NEW ARRIVALS</Link></li>
                                             <li className="has-dropdown">
                                                 <a>PAGES<i className="fas fa-angle-down u-s-m-l-6" /></a>
                                                 {/*====== Dropdown ======*/}
                                                 <span className="js-menu-toggle" />
                                                 <ul style={{ width: '170px' }}>
                                                     <li className="has-dropdown has-dropdown--ul-left-100">
-                                                        <Link to={"/"}>Home</Link>                                                        
+                                                        <Link to={"/"}>Home</Link>
                                                     </li>
-                                                    <li className="has-dropdown has-dropdown--ul-left-100">
-                                                        <a>Account<i className="fas fa-angle-down i-state-right u-s-m-l-6" /></a>
-                                                        {/*====== Dropdown ======*/}
-                                                        <span className="js-menu-toggle" />
-                                                        <ul style={{ width: '200px' }}>
-                                                            <li>
-                                                                <a href="signin.html">Signin / Already Registered</a></li>
-                                                            <li>
-                                                                <a href="signup.html">Signup / Register</a></li>
-                                                            <li>
-                                                                <a href="lost-password.html">Lost Password</a></li>
-                                                        </ul>
-                                                        {/*====== End - Dropdown ======*/}
-                                                    </li>
-                                                    <li className="has-dropdown has-dropdown--ul-left-100">
-                                                        <a href="dashboard.html">Dashboard<i className="fas fa-angle-down i-state-right u-s-m-l-6" /></a>
-                                                        {/*====== Dropdown ======*/}
-                                                        <span className="js-menu-toggle" />
-                                                        <ul style={{ width: '200px' }}>
-                                                            <li className="has-dropdown has-dropdown--ul-left-100">
-                                                                <a href="dashboard.html">Manage My Account<i className="fas fa-angle-down i-state-right u-s-m-l-6" /></a>
-                                                                {/*====== Dropdown ======*/}
-                                                                <span className="js-menu-toggle" />
-                                                                <ul style={{ width: '180px' }}>
-                                                                    <li>
-                                                                        <a href="dash-edit-profile.html">Edit Profile</a></li>
-                                                                    <li>
-                                                                        <a href="dash-address-book.html">Edit Address Book</a></li>
-                                                                    <li>
-                                                                        <a href="dash-manage-order.html">Manage Order</a></li>
-                                                                </ul>
-                                                                {/*====== End - Dropdown ======*/}
-                                                            </li>
-                                                            <li>
-                                                                <a href="dash-my-profile.html">My Profile</a></li>
-                                                            <li className="has-dropdown has-dropdown--ul-left-100">
-                                                                <a href="dash-address-book.html">Address Book<i className="fas fa-angle-down i-state-right u-s-m-l-6" /></a>
-                                                                {/*====== Dropdown ======*/}
-                                                                <span className="js-menu-toggle" />
-                                                                <ul style={{ width: '180px' }}>
-                                                                    <li>
-                                                                        <a href="dash-address-make-default.html">Address Make Default</a></li>
-                                                                    <li>
-                                                                        <a href="dash-address-add.html">Add New Address</a></li>
-                                                                    <li>
-                                                                        <a href="dash-address-edit.html">Edit Address Book</a></li>
-                                                                </ul>
-                                                                {/*====== End - Dropdown ======*/}
-                                                            </li>
-                                                            <li>
-                                                                <a href="dash-track-order.html">Track Order</a></li>
-                                                            <li>
-                                                                <a href="dash-my-order.html">My Orders</a></li>
-                                                            <li>
-                                                                <a href="dash-payment-option.html">My Payment Options</a></li>
-                                                            <li>
-                                                                <a href="dash-cancellation.html">My Returns &amp; Cancellations</a></li>
-                                                        </ul>
-                                                        {/*====== End - Dropdown ======*/}
-                                                    </li>
+
+
                                                     <li className="has-dropdown has-dropdown--ul-left-100">
                                                         <a>Empty<i className="fas fa-angle-down i-state-right u-s-m-l-6" /></a>
                                                         {/*====== Dropdown ======*/}
@@ -707,12 +649,18 @@ export const Navbar = () => {
                                                     </li>
                                                     <li className="has-dropdown has-dropdown--ul-left-100">
                                                         <Link to={"/productdetails"}>Product Details</Link>
-                                                    
+
                                                     </li>
-                                                    
-                                                    
+
+
                                                 </ul>
                                                 {/*====== End - Dropdown ======*/}
+                                            </li>
+                                            <li>
+                                                <Link to={'/myaccount/manageorder'}>MANAGER ORDER</Link>
+                                            </li>
+                                            <li>
+                                                <Link to={'/review'}>REVIEW</Link>
                                             </li>
                                             <li className="">
                                                 <Link to={'/contact'}>CONTACT US</Link>
@@ -848,7 +796,7 @@ export const Navbar = () => {
                 </header>
             </div>
             {/*====== End - Header Wrapper ======*/}
-            <Prejs/>
+            <Prejs />
         </div>
 
 

@@ -3,13 +3,14 @@ import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
-import {Helmet} from 'react-helmet'
+
 export const Home = () => {
+    
     return (
         <div>
             {/* loading page */}
-
-
+            
+            <Prejs/>
             <Precss />
             <Navbar />
             {/* <SliderHome /> */}
@@ -1526,84 +1527,14 @@ export const Home = () => {
                     </div>
                 </div>
                 {/*====== End - Add to Cart Modal ======*/}
-                {/*====== Newsletter Subscribe Modal ======*/}
-                <div className="modal fade new-l" id="newsletter-modal">
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content modal--shadow">
-                            <button className="btn new-l__dismiss fas fa-times" type="button" data-dismiss="modal" />
-                            <div className="modal-body">
-                                <div className="row u-s-m-x-0">
-                                    <div className="col-lg-6 new-l__col-1 u-s-p-x-0">
-                                        <a className="new-l__img-wrap u-d-block" href="shop-side-version-2.html">
-                                            <img className="u-img-fluid u-d-block" src="images/newsletter/newsletter.jpg" alt="" /></a></div>
-                                    <div className="col-lg-6 new-l__col-2">
-                                        <div className="new-l__section u-s-m-t-30">
-                                            <div className="u-s-m-b-8 new-l--center">
-                                                <h3 className="new-l__h3">Newsletter</h3>
-                                            </div>
-                                            <div className="u-s-m-b-30 new-l--center">
-                                                <p className="new-l__p1">Sign up for emails to get the scoop on new arrivals, special sales and more.</p>
-                                            </div>
-                                            <form className="new-l__form">
-                                                <div className="u-s-m-b-15">
-                                                    <input className="news-l__input" type="text" placeholder="E-mail Address" /></div>
-                                                <div className="u-s-m-b-15">
-                                                    <button className="btn btn--e-brand-b-2" type="submit">Sign up!</button></div>
-                                            </form>
-                                            <div className="u-s-m-b-15 new-l--center">
-                                                <p className="new-l__p2">By Signing up, you agree to receive Reshop offers,<br />promotions and other commercial messages. You may unsubscribe at any time.</p>
-                                            </div>
-                                            <div className="u-s-m-b-15 new-l--center">
-                                                <a className="new-l__link" data-dismiss="modal">No Thanks</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
+                
             </div>
 
             {/* footer load*/}
             <Footer />
-            {/* <Prejs /> */}
-            <Helmet>
-                {/* <script>
-                    window.ga = function() {
-                        ga.q.push(arguments)
-                    };
-                    ga.q = [];
-                    ga.l = +new Date;
-                    ga('create', 'UA-XXXXX-Y', 'auto');
-                    ga('send', 'pageview')
-                </script> */}
-                <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-
-                {/* <!--====== Vendor Js ======--> */}
-                <script src="../js/vendor.js"></script>
-
-                {/* <!--====== jQuery Shopnav plugin ======--> */}
-                <script src="../js/jquery.shopnav.js"></script>
-                <script src="../js/app.js"></script>
-                {/* <!--====== App ======--> */}
-
-                {/* <!--====== Noscript ======--> */}
-                {/* <noscript>
-                        <div className="app-setting">
-                        <div className="container">
-                        <div className="row">
-                        <div className="col-12">
-                            <div className="app-setting__wrap">
-                                <h1 className="app-setting__h1">JavaScript is disabled in your browser.</h1>
-
-                                <span className="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                </noscript> */}
-            </Helmet>
+            
+                   
         </div>
     )
 }

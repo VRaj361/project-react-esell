@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar'
 import { SectionLinks } from './components/SectionLinks'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
+import {Link} from 'react-router-dom'
 export const Login = () => {
     return (
         <div>
@@ -67,7 +68,7 @@ export const Login = () => {
                                                     <div className="u-s-m-b-30">
                                                         <button className="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button></div>
                                                     <div className="u-s-m-b-30">
-                                                        <a className="gl-link" href="lost-password.html">Lost Your Password?</a></div>
+                                                        <Link className="gl-link" to={"/forgetpassword"}>Lost Your Password?</Link></div>
                                                 </div>
                                                 <div className="u-s-m-b-30">
                                                     {/*====== Check Box ======*/}

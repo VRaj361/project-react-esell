@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 export const Myprofile = () => {
     return (
         
@@ -40,7 +40,7 @@ export const Myprofile = () => {
                                     <div className="dash__link dash__link--secondary u-s-m-b-30">
                                         <a data-modal="modal" data-modal-id="#dash-newsletter">Subscribe Newsletter</a></div>
                                     <div className="u-s-m-b-16">
-                                        <a className="dash__custom-link btn--e-transparent-brand-b-2" href="dash-edit-profile.html">Edit Profile</a></div>
+                                        <Link className="dash__custom-link btn--e-transparent-brand-b-2" to={'/myaccount/editprofile'}>Edit Profile</Link></div>
                                     <div>
                                         <a className="dash__custom-link btn--e-brand-b-2" href="#">Change Password</a></div>
                                 </div>

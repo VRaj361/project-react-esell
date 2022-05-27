@@ -995,7 +995,7 @@ input::-ms-clear {
   * you can use utility u-img-fluid class.
  */
 .aspect__img {
-  position: absolute;
+  position: fixed;/*absoloute*/
   width: 100%;
   height: 100%; }
 

@@ -17,6 +17,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Review } from './Review';
 import { Cart } from './Cart';
 import { Checkout } from './Checkout';
+import { ManageAccount } from './components/account/ManageAccount';
+import { Myprofile } from './components/account/Myprofile';
+import { AddressBook } from './components/account/AddressBook';
+import { TrackOrder } from './components/account/TrackOrder';
+import { MyOrder } from './components/account/MyOrder';
+import { MyPayment } from './components/account/MyPayment';
+import { Cancellation } from './components/account/Cancellation';
+import { EditProfile } from './components/account/EditProfile';
+import { EditAddress } from './components/account/EditAddress';
+import { ManageOrder } from './components/account/ManageOrder';
 
 function App() {
   return (
@@ -42,16 +52,39 @@ function App() {
         <Routes>
           <Route exact path="/about" element={<About />} />
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/contact" element={<Contact/>}/>
-          <Route exact path="/wishlist" element={<Wishlist/>}/>
-          <Route exact path="/faq" element={<FAQ/>}/>
-          <Route exact path="/review" element={<Review/>}/>
-          <Route exact path="/productdetails" element={<ProductDetail/>}/>
-          <Route exact path="/viewcart" element={<Cart/>}/>
-          <Route exact path="/checkout" element={<Checkout/>}/>
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/wishlist" element={<Wishlist />} />
+          <Route exact path="/faq" element={<FAQ />} />
+          <Route exact path="/review" element={<Review />} />
+          <Route exact path="/productdetails" element={<ProductDetail />} />
+          <Route exact path="/viewcart" element={<Cart />} />
+          <Route exact path="/checkout" element={<Checkout />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/forgetpassword" element={<ForgetPassword />} />
+          <Route exact path="/newarrival" element={<ShopList />} />
+
+
+          {/* account all pages */}
+          <Route exact path='/myaccount' element={<MyAccout />} />
+          <Route exact path='/myaccount/myprofile' element={<MyAccout />} />
+          <Route exact path='/myaccount/addressbook' element={<MyAccout />} />
+          <Route exact path='/myaccount/trackorder' element={<MyAccout />} />
+          <Route exact path='/myaccount/myorder' element={<MyAccout />} />
+          <Route exact path='/myaccount/mypayment' element={<MyAccout />} />
+          <Route exact path='/myaccount/cancellation' element={<MyAccout />} />
+          <Route exact path='/myaccount/editprofile' element={<MyAccout />} />
+          <Route exact path='/myaccount/editaddress' element={<MyAccout />} />
+          <Route exact path='/myaccount/manageorder' element={<MyAccout />} />
+          <Route exact path='/myaccount/addaddress' element={<MyAccout />} />
+         
+
+
+
+
 
           {/* any worng route can redirect on 404 page */}
-          <Route path="*" element={<Error404/>}/>
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </div>
