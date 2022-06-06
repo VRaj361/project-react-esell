@@ -3,13 +3,13 @@ import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
-
+import {PreLoading} from './components/PreLoading'
 export const Home = () => {
     
     return (
         <div>
             {/* loading page */}
-            
+            <PreLoading/>
             <Prejs/>
             <Precss />
             <Navbar />

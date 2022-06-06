@@ -1,20 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { SectionLinks } from './components/SectionLinks'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 export const Login = () => {
+
+    // let regexEmail = new RegExp('[a-z0-9]+@[a-z]{3,}\.(?=.[a-z]{2,3})');
+    // let regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    const [email, setemail] = useState("")
+    const [password, setpassword] = useState("")
+    const [ischeck, setischeck] = useState("")
+    const navigate= useNavigate()
+
+    const formDataLogin = async (e) => {
+        e.preventDefault()
+        setischeck(false)
+        await axios.get("http://localhost:9999/user").then((data) => {
+            data.data.map((e)=>{
+                if(e.email===email&&e.password===password){
+                    console.log("done")
+                    setischeck(true);
+                    sessionStorage.setItem("email",email);
+                    navigate("/")
+                }
+            })
+        })
+    }
+
+
     return (
         <div>
-
-
-            <Precss/>
-
+            <Precss />
             {/* navbar */}
             <Navbar />
-
             {/* first load login page */}
             <div className="app-content">
 
@@ -46,10 +69,10 @@ export const Login = () => {
                                             <h1 className="gl-h1">I'M NEW CUSTOMER</h1>
                                             <span className="gl-text u-s-m-b-30">By creating an account with our store, you will be able to move through the checkout process faster, store shipping addresses, view and track your orders in your account and more.</span>
                                             <div className="u-s-m-b-15">
-                                                <a className="l-f-o__create-link btn--e-transparent-brand-b-2" href="signup.html">CREATE AN ACCOUNT</a></div>
+                                                <Link className="l-f-o__create-link btn--e-transparent-brand-b-2" to={"/signup"}>CREATE AN ACCOUNT</Link></div>
                                             <h1 className="gl-h1">SIGNIN</h1>
                                             <span className="gl-text u-s-m-b-30">If you have an account with us, please log in.</span>
-                                            <form className="l-f-o__form">
+                                            <form className="l-f-o__form" onSubmit={formDataLogin}>
                                                 <div className="gl-s-api">
                                                     <div className="u-s-m-b-15">
                                                         <button className="gl-s-api__btn gl-s-api__btn--fb" type="button"><i className="fab fa-facebook-f" />
@@ -60,10 +83,12 @@ export const Login = () => {
                                                 </div>
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="login-email">E-MAIL *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail" /></div>
+                                                    <input className="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail" onChange={(e) => setemail(e.target.value)} /></div>
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="login-password">PASSWORD *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="login-password" placeholder="Enter Password" /></div>
+                                                    <input className="input-text input-text--primary-style" type="text" id="login-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} />
+                                                </div>
+                                                <label className="gl-label" style={{ color: "red" }}>{ischeck || ischeck===""? "":"Wrong Email or Password"}</label>
                                                 <div className="gl-inline">
                                                     <div className="u-s-m-b-30">
                                                         <button className="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button></div>
@@ -95,7 +120,7 @@ export const Login = () => {
             {/* footer */}
             <Footer />
 
-            <Prejs/>
+            <Prejs />
         </div>
     )
 }

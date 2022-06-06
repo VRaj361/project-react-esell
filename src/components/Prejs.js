@@ -1,5 +1,5 @@
 import React from 'react'
-import {Helmet} from 'react-helmet'
+
 export const Prejs = () => {
     const fun=()=> {
         const scrip=document.createElement("script")
