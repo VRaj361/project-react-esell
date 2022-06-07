@@ -20,7 +20,7 @@ export const Precss = () => {
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" />
 
         {/* <!--====== Vendor Css ======--> */}
-        <link rel="stylesheet" href="/css/vendor.css" />
+        <link rel="stylesheet" href="../css/vendor.css" />
 
         {/* <!--====== Utility-Spacing ======--> */}
         <link rel="stylesheet" href="../css/utility.css" />

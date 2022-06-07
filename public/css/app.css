@@ -987,17 +987,27 @@ input::-ms-clear {
 .aspect--bg-grey-fb {
   background-color: #fbfbfb; }
 
-.aspect--square {
-  padding-bottom: 100%; }
+
 
 /*
   * Add this class inside '.aspect' child image element. If you want to make an image responsive then
   * you can use utility u-img-fluid class.
  */
-.aspect__img {
-  position: absolute;
+.aspect__img  {
+  position: relative;/*absoloute*/
   width: 100%;
-  height: 100%; }
+  height: 100%; 
+}
+
+/* custom class*/
+
+.box-image img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
 
 /* Product Component */
 .product-o {
@@ -2464,7 +2474,7 @@ input::-ms-clear {
 .banner-bg {
   padding: 7em 0;
   position: relative;
-  background: #f5f5f5 url(../images/banners/banner-bg.jpg) repeat fixed center center;
+  background: #f5f5f5 url("https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") repeat fixed center center;
   background-size: cover; }
   .banner-bg__wrap {
     text-align: center; }
@@ -6037,23 +6047,24 @@ input::-ms-clear {
 .hero-slide {
   background: center center/cover no-repeat; }
   .hero-slide--1 {
-    background-image: url(../images/slider/slide-1.jpg); }
+    background-image: url(../images/collection/image1.jpg);
+  }
   .hero-slide--2 {
-    background-image: url(../images/slider/slide-2.jpg); }
+    background-image:  url("https://images.pexels.com/photos/3756768/pexels-photo-3756768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); }
   .hero-slide--3 {
-    background-image: url(../images/slider/slide-3.jpg); }
+    background-image:  url("https://media.istockphoto.com/photos/portrait-of-a-confused-man-picture-id1365030518?k=20&m=1365030518&s=612x612&w=0&h=JhjXWb9f9MhKeJb5xt6_JZVtMxT4Cv2kZW7xyQ1VAbc="); }
   .hero-slide--4 {
-    background-image: url(../images/slider/slide-4.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--5 {
-    background-image: url(../images/slider/slide-5.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--6 {
-    background-image: url(../images/slider/slide-6.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--7 {
-    background-image: url(../images/slider/slide-7.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--8 {
-    background-image: url(../images/slider/slide-8.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--9 {
-    background-image: url(../images/slider/slide-9.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
 
 .owl-carousel .owl-dots {
   position: absolute; }

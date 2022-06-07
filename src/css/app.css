@@ -6037,23 +6037,23 @@ input::-ms-clear {
 .hero-slide {
   background: center center/cover no-repeat; }
   .hero-slide--1 {
-    background-image: url(../images/slider/slide-1.jpg); }
+    background-image: url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--2 {
-    background-image: url(../images/slider/slide-2.jpg); }
+    background-image:  url("https://img.freepik.com/free-photo/young-man-jeans-shirt-blue-background_185193-75185.jpg?w=2000"); }
   .hero-slide--3 {
-    background-image: url(../images/slider/slide-3.jpg); }
+    background-image:  url("https://img.freepik.com/free-photo/portrait-young-cheerful-asian-female-points-away-with-thumb-happy-face-expression-demonstrates-copy-space-advertisement-has-pleasant-appearance-wears-bright-yellow-clothes_273609-27991.jpg?w=2000"); }
   .hero-slide--4 {
-    background-image: url(../images/slider/slide-4.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--5 {
-    background-image: url(../images/slider/slide-5.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--6 {
-    background-image: url(../images/slider/slide-6.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--7 {
-    background-image: url(../images/slider/slide-7.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--8 {
-    background-image: url(../images/slider/slide-8.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
   .hero-slide--9 {
-    background-image: url(../images/slider/slide-9.jpg); }
+    background-image:  url("https://media.wired.com/photos/5f2b2e792f0075bf6e0a1de6/master/w_2240,c_limit/Gear-Sony-WH-1000XM4-1-SOURCE-Sony.jpg"); }
 
 .owl-carousel .owl-dots {
   position: absolute; }

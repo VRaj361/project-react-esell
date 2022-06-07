@@ -1,7 +1,8 @@
 /**
  * This is main script file that contains JS code.
  */
-(function ($) {
+
+ ($)=> {
     // Main Object
     var RESHOP = {};
 
@@ -683,4 +684,4 @@
         RESHOP.shopCategoryToggle();
         RESHOP.shopPerspectiveChange();
         RESHOP.shopSideFilter();
-})(jQuery);
+};

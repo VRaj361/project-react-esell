@@ -3,14 +3,14 @@ import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
-import {PreLoading} from './components/PreLoading'
+import { PreLoading } from './components/PreLoading'
 export const Home = () => {
-    
+
     return (
         <div>
             {/* loading page */}
-            <PreLoading/>
-            <Prejs/>
+            {/* <PreLoading/> */}
+            <Prejs />
             <Precss />
             <Navbar />
             {/* <SliderHome /> */}
@@ -88,23 +88,23 @@ export const Home = () => {
                             <div className="row">
                                 <div className="col-lg-5 col-md-5 u-s-m-b-30">
                                     <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey aspect--square">
-                                            <img className="aspect__img collection__img" src="images/collection/coll-1.jpg" alt="" /></div>
+                                        <div className="aspect aspect--bg-grey  box-image">
+                                            <img className="  collection__img" src="images/collection/blackfridaysell.jpg" alt="" /></div>
                                     </a></div>
                                 <div className="col-lg-7 col-md-7 u-s-m-b-30">
                                     <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey aspect--1286-890">
-                                            <img className="aspect__img collection__img" src="images/collection/coll-2.jpg" alt="" /></div>
+                                        <div className="aspect aspect--bg-grey   box-image">
+                                            <img className="collection__img" src="images/collection/cybermonday.jpg" alt="" /></div>
                                     </a></div>
                                 <div className="col-lg-7 col-md-7 u-s-m-b-30">
                                     <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey aspect--1286-890">
-                                            <img className="aspect__img collection__img" src="images/collection/coll-3.jpg" alt="" /></div>
+                                        <div className="aspect aspect--bg-grey  box-image">
+                                            <img className=" collection__img" src="images/collection/saleposter.jpg" alt="" /></div>
                                     </a></div>
                                 <div className="col-lg-5 col-md-5 u-s-m-b-30">
                                     <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey aspect--square">
-                                            <img className="aspect__img collection__img" src="images/collection/coll-4.jpg" alt="" /></div>
+                                        <div className="aspect aspect--bg-grey   box-image">
+                                            <img className="collection__img" src="images/collection/specialoffer.jpg" alt="" /></div>
                                     </a></div>
                             </div>
                         </div>
@@ -145,13 +145,13 @@ export const Home = () => {
                                         <div className="filter__category-wrapper">
                                             <button className="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">DSLR</button></div>
                                     </div>
-                                    <div className="filter__grid-wrapper u-s-m-t-30">
+                                    <div className="filter__grid-wrapper u-s-m-t-30 " >
                                         <div className="row">
                                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product2.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://media.istockphoto.com/photos/red-headphone-on-white-background-headphones-isolated-on-a-white-picture-id1198424468?k=20&m=1198424468&s=612x612&w=0&h=OStauJp1dD5RGfjt4gwZCG9ePHh_1a8b94iozzeUUlU=" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -177,9 +177,9 @@ export const Home = () => {
                                             </div>
                                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product3.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://www.reliancedigital.in/medias/Realme-BT-Stereo-Buds-WL2-ANC-Earphone-492403683-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxMDUzN3xpbWFnZS9qcGVnfGltYWdlcy9oYjAvaGE2Lzk2MjM2NDc0ODU5ODIuanBnfDJkMjdhMzg3NDc0MDM4OWZjMmYxZjRjYWNhMDY0ZDZmOTZmNDE3MjUwODUwNDBjZDA0ZjcyYTQwYmI2NzZiNmQ" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -205,9 +205,9 @@ export const Home = () => {
                                             </div>
                                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item sportgadget">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product4.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://5.imimg.com/data5/DX/BP/MY-4597056/hover-board-electric-scooter-500x500.jpg" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -233,9 +233,9 @@ export const Home = () => {
                                             </div>
                                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item sportgadget">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product5.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://i.pinimg.com/originals/1b/cd/25/1bcd25f34d55c2a7ab73241234c5055e.jpg" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -261,9 +261,9 @@ export const Home = () => {
                                             </div>
                                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item dslr">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product6.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://m.media-amazon.com/images/I/618rNsyJvyL._SL1200_.jpg" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -287,11 +287,11 @@ export const Home = () => {
                                                         <span className="product-o__discount">$160.00</span></span>
                                                 </div>
                                             </div>
-                                            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item dslr">
+                                            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product7.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://www.mytrendyphone.ie/images/Samsung-Galaxy-S21-5G-128GB-Phantom-Grey-8806090892776-18012021-03-p.jpg" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -308,7 +308,7 @@ export const Home = () => {
                                                     <span className="product-o__category">
                                                         <a href="shop-side-version-2.html">Electronics</a></span>
                                                     <span className="product-o__name">
-                                                        <a href="product-detail.html">Nikon DSLR Camera 4k</a></span>
+                                                        <a href="product-detail.html">Sumsung S21 RAM 6GB New</a></span>
                                                     <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star-half-alt" />
                                                         <span className="product-o__review">(23)</span></div>
                                                     <span className="product-o__price">$125.00
@@ -317,37 +317,9 @@ export const Home = () => {
                                             </div>
                                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product8.jpg" alt="" /></a>
-                                                        <div className="product-o__action-wrap">
-                                                            <ul className="product-o__action-list">
-                                                                <li>
-                                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                                <li>
-                                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                                <li>
-                                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                                <li>
-                                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <span className="product-o__category">
-                                                        <a href="shop-side-version-2.html">Electronics</a></span>
-                                                    <span className="product-o__name">
-                                                        <a href="product-detail.html">Smartphone RAM 4GB New</a></span>
-                                                    <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star-half-alt" />
-                                                        <span className="product-o__review">(23)</span></div>
-                                                    <span className="product-o__price">$125.00
-                                                        <span className="product-o__discount">$160.00</span></span>
-                                                </div>
-                                            </div>
-                                            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
-                                                <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
-                                                        <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product9.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://www.mymobilesprice.com/wp-content/uploads/2021/11/Xiaomi-Poco-X4-NFC-500x500.jpg" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -373,9 +345,9 @@ export const Home = () => {
                                             </div>
                                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
                                                 <div className="product-o product-o--hover-on product-o--radius">
-                                                    <div className="product-o__wrap">
+                                                    <div className="product-o__wrap box-img">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product10.jpg" alt="" /></a>
+                                                            <img className="aspect__img" src="https://specifications-pro.com/wp-content/uploads/2021/11/Xiaomi-Poco-X4-NFC-600x600.jpg" alt="" /></a>
                                                         <div className="product-o__action-wrap">
                                                             <ul className="product-o__action-list">
                                                                 <li>
@@ -435,9 +407,9 @@ export const Home = () => {
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 u-s-m-b-30">
                                     <div className="product-o product-o--radius product-o--hover-off u-h-100">
-                                        <div className="product-o__wrap">
+                                        <div className="product-o__wrap box-img">
                                             <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                <img className="aspect__img" src="images/product/electronic/product11.jpg" alt="" /></a>
+                                                <img className="aspect__img" src="https://media.istockphoto.com/photos/quadcopter-drone-with-4k-video-camera-flying-in-the-air-picture-id911190112?k=20&m=911190112&s=612x612&w=0&h=6mkFfZ_h5OVzYH_b0DVaYMdMZd86Zn8MZH89gWPJN0w=" alt="" /></a>
                                             <div className="product-o__special-count-wrap">
                                                 <div className="countdown countdown--style-special" data-countdown="2020/05/01" />
                                             </div>
@@ -466,9 +438,9 @@ export const Home = () => {
                                 </div>
                                 <div className="col-lg-6 col-md-6 u-s-m-b-30">
                                     <div className="product-o product-o--radius product-o--hover-off u-h-100">
-                                        <div className="product-o__wrap">
+                                        <div className="product-o__wrap box-img">
                                             <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                <img className="aspect__img" src="images/product/electronic/product12.jpg" alt="" /></a>
+                                                <img className="aspect__img" src="https://images.unsplash.com/photo-1524143986875-3b098d78b363?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJvbmV8ZW58MHx8MHx8&w=1000&q=80" alt="" /></a>
                                             <div className="product-o__special-count-wrap">
                                                 <div className="countdown countdown--style-special" data-countdown="2020/05/01" />
                                             </div>
@@ -501,202 +473,7 @@ export const Home = () => {
                     {/*====== End - Section Content ======*/}
                 </div>
                 {/*====== End - Section 3 ======*/}
-                {/*====== Section 4 ======*/}
-                <div className="u-s-p-b-60">
-                    {/*====== Section Intro ======*/}
-                    <div className="section__intro u-s-m-b-46">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <div className="section__text-wrap">
-                                        <h1 className="section__heading u-c-secondary u-s-m-b-12">NEW ARRIVALS</h1>
-                                        <span className="section__span u-c-silver">GET UP FOR NEW ARRIVALS</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/*====== End - Section Intro ======*/}
-                    {/*====== Section Content ======*/}
-                    <div className="section__content">
-                        <div className="container">
-                            <div className="slider-fouc">
-                                <div className="owl-carousel product-slider" data-item={4}>
-                                    <div className="u-s-m-b-30">
-                                        <div className="product-o product-o--hover-on">
-                                            <div className="product-o__wrap">
-                                                <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                    <img className="aspect__img" src="images/product/electronic/product13.jpg" alt="" /></a>
-                                                <div className="product-o__action-wrap">
-                                                    <ul className="product-o__action-list">
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <span className="product-o__category">
-                                                <a href="shop-side-version-2.html">Electronics</a></span>
-                                            <span className="product-o__name">
-                                                <a href="product-detail.html">Nikon DSLR 4K Camera</a></span>
-                                            <div className="product-o__rating gl-rating-style"><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" />
-                                                <span className="product-o__review">(0)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                    <div className="u-s-m-b-30">
-                                        <div className="product-o product-o--hover-on">
-                                            <div className="product-o__wrap">
-                                                <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                    <img className="aspect__img" src="images/product/electronic/product14.jpg" alt="" /></a>
-                                                <div className="product-o__action-wrap">
-                                                    <ul className="product-o__action-list">
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <span className="product-o__category">
-                                                <a href="shop-side-version-2.html">Electronics</a></span>
-                                            <span className="product-o__name">
-                                                <a href="product-detail.html">Nikon DSLR 2K Camera</a></span>
-                                            <div className="product-o__rating gl-rating-style"><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" />
-                                                <span className="product-o__review">(0)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                    <div className="u-s-m-b-30">
-                                        <div className="product-o product-o--hover-on">
-                                            <div className="product-o__wrap">
-                                                <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                    <img className="aspect__img" src="images/product/electronic/product15.jpg" alt="" /></a>
-                                                <div className="product-o__action-wrap">
-                                                    <ul className="product-o__action-list">
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <span className="product-o__category">
-                                                <a href="shop-side-version-2.html">Electronics</a></span>
-                                            <span className="product-o__name">
-                                                <a href="product-detail.html">Sony DSLR 4K Camera</a></span>
-                                            <div className="product-o__rating gl-rating-style"><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" />
-                                                <span className="product-o__review">(0)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                    <div className="u-s-m-b-30">
-                                        <div className="product-o product-o--hover-on">
-                                            <div className="product-o__wrap">
-                                                <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                    <img className="aspect__img" src="images/product/electronic/product16.jpg" alt="" /></a>
-                                                <div className="product-o__action-wrap">
-                                                    <ul className="product-o__action-list">
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <span className="product-o__category">
-                                                <a href="shop-side-version-2.html">Electronics</a></span>
-                                            <span className="product-o__name">
-                                                <a href="product-detail.html">Sony DSLR 2K Camera</a></span>
-                                            <div className="product-o__rating gl-rating-style"><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" />
-                                                <span className="product-o__review">(0)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                    <div className="u-s-m-b-30">
-                                        <div className="product-o product-o--hover-on">
-                                            <div className="product-o__wrap">
-                                                <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                    <img className="aspect__img" src="images/product/electronic/product17.jpg" alt="" /></a>
-                                                <div className="product-o__action-wrap">
-                                                    <ul className="product-o__action-list">
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <span className="product-o__category">
-                                                <a href="shop-side-version-2.html">Electronics</a></span>
-                                            <span className="product-o__name">
-                                                <a href="product-detail.html">Canon DSLR 4K Camera</a></span>
-                                            <div className="product-o__rating gl-rating-style"><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" />
-                                                <span className="product-o__review">(0)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                    <div className="u-s-m-b-30">
-                                        <div className="product-o product-o--hover-on">
-                                            <div className="product-o__wrap">
-                                                <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                    <img className="aspect__img" src="images/product/electronic/product18.jpg" alt="" /></a>
-                                                <div className="product-o__action-wrap">
-                                                    <ul className="product-o__action-list">
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                        <li>
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                        <li>
-                                                            <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <span className="product-o__category">
-                                                <a href="shop-side-version-2.html">Electronics</a></span>
-                                            <span className="product-o__name">
-                                                <a href="product-detail.html">Canon DSLR 2K Camera</a></span>
-                                            <div className="product-o__rating gl-rating-style"><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" /><i className="far fa-star" />
-                                                <span className="product-o__review">(0)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/*====== End - Section Content ======*/}
-                </div>
-                {/*====== End - Section 4 ======*/}
+                
                 {/*====== Section 5 ======*/}
                 <div className="banner-bg">
                     {/*====== Section Content ======*/}
@@ -740,126 +517,7 @@ export const Home = () => {
                         </div>
                     </div>
                     {/*====== End - Section Intro ======*/}
-                    {/*====== Section Content ======*/}
-                    <div className="section__content">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                                    <div className="product-o product-o--hover-on u-h-100">
-                                        <div className="product-o__wrap">
-                                            <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                <img className="aspect__img" src="images/product/electronic/product19.jpg" alt="" /></a>
-                                            <div className="product-o__action-wrap">
-                                                <ul className="product-o__action-list">
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <span className="product-o__category">
-                                            <a href="shop-side-version-2.html">Electronics</a></span>
-                                        <span className="product-o__name">
-                                            <a href="product-detail.html">Tablet 14inch Screen</a></span>
-                                        <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star-half-alt" />
-                                            <span className="product-o__review">(23)</span></div>
-                                        <span className="product-o__price">$125.00
-                                            <span className="product-o__discount">$160.00</span></span>
-                                    </div>
-                                </div>
-                                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                                    <div className="product-o product-o--hover-on u-h-100">
-                                        <div className="product-o__wrap">
-                                            <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                <img className="aspect__img" src="images/product/electronic/product20.jpg" alt="" /></a>
-                                            <div className="product-o__action-wrap">
-                                                <ul className="product-o__action-list">
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <span className="product-o__category">
-                                            <a href="shop-side-version-2.html">Electronics</a></span>
-                                        <span className="product-o__name">
-                                            <a href="product-detail.html">Tablet 18inch Screen</a></span>
-                                        <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star-half-alt" />
-                                            <span className="product-o__review">(23)</span></div>
-                                        <span className="product-o__price">$125.00
-                                            <span className="product-o__discount">$160.00</span></span>
-                                    </div>
-                                </div>
-                                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                                    <div className="product-o product-o--hover-on u-h-100">
-                                        <div className="product-o__wrap">
-                                            <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                <img className="aspect__img" src="images/product/electronic/product21.jpg" alt="" /></a>
-                                            <div className="product-o__action-wrap">
-                                                <ul className="product-o__action-list">
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <span className="product-o__category">
-                                            <a href="shop-side-version-2.html">Electronics</a></span>
-                                        <span className="product-o__name">
-                                            <a href="product-detail.html">Tablet 13inch Screen Ram 16GB</a></span>
-                                        <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star-half-alt" />
-                                            <span className="product-o__review">(23)</span></div>
-                                        <span className="product-o__price">$125.00
-                                            <span className="product-o__discount">$160.00</span></span>
-                                    </div>
-                                </div>
-                                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                                    <div className="product-o product-o--hover-on u-h-100">
-                                        <div className="product-o__wrap">
-                                            <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                <img className="aspect__img" src="images/product/electronic/product22.jpg" alt="" /></a>
-                                            <div className="product-o__action-wrap">
-                                                <ul className="product-o__action-list">
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i className="fas fa-search-plus" /></a></li>
-                                                    <li>
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i className="fas fa-plus-circle" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i className="fas fa-heart" /></a></li>
-                                                    <li>
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i className="fas fa-envelope" /></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <span className="product-o__category">
-                                            <a href="shop-side-version-2.html">Electronics</a></span>
-                                        <span className="product-o__name">
-                                            <a href="product-detail.html">Tablet 12inch Screen Ram 16GB</a></span>
-                                        <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star-half-alt" />
-                                            <span className="product-o__review">(23)</span></div>
-                                        <span className="product-o__price">$125.00
-                                            <span className="product-o__discount">$160.00</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/*====== End - Section Content ======*/}
+                    
                 </div>
                 {/*====== End - Section 6 ======*/}
                 {/*====== Section 7 ======*/}
@@ -871,7 +529,7 @@ export const Home = () => {
                                 <div className="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
                                     <a className="promotion" href="shop-side-version-2.html">
                                         <div className="aspect aspect--bg-grey aspect--square">
-                                            <img className="aspect__img promotion__img" src="images/promo/promo-img-1.jpg" alt="" /></div>
+                                            <img className="aspect__img promotion__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/promo/promo-img-1.5f96cc043d8d56d909cf10e4e5aa15f1.jpg" alt="" /></div>
                                         <div className="promotion__content">
                                             <div className="promotion__text-wrap">
                                                 <div className="promotion__text-1">
@@ -885,7 +543,7 @@ export const Home = () => {
                                 <div className="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
                                     <a className="promotion" href="shop-side-version-2.html">
                                         <div className="aspect aspect--bg-grey aspect--square">
-                                            <img className="aspect__img promotion__img" src="images/promo/promo-img-2.jpg" alt="" /></div>
+                                            <img className="aspect__img promotion__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/promo/promo-img-2.abd2eefacfe8993c75b7b2fa7b1255b9.jpg" alt="" /></div>
                                         <div className="promotion__content">
                                             <div className="promotion__text-wrap">
                                                 <div className="promotion__text-1">
@@ -899,7 +557,7 @@ export const Home = () => {
                                 <div className="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
                                     <a className="promotion" href="shop-side-version-2.html">
                                         <div className="aspect aspect--bg-grey aspect--square">
-                                            <img className="aspect__img promotion__img" src="images/promo/promo-img-3.jpg" alt="" /></div>
+                                            <img className="aspect__img promotion__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/promo/promo-img-3.d0917732e79dbe1ebd3f7faaa530e720.jpg" alt="" /></div>
                                         <div className="promotion__content">
                                             <div className="promotion__text-wrap">
                                                 <div className="promotion__text-1">
@@ -929,7 +587,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product23.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product23.0396d3b9726043121035dc21ca04667a.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <span className="product-l__category">
                                                             <a href="shop-side-version-2.html">Electronics</a></span>
@@ -942,7 +600,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product24.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product24.1d327df19d02228df09271ec8d9773aa.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <span className="product-l__category">
                                                             <a href="shop-side-version-2.html">Electronics</a></span>
@@ -955,7 +613,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product25.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product25.07d27887db29cda33f5b661f031053a2.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <span className="product-l__category">
                                                             <a href="shop-side-version-2.html">Electronics</a></span>
@@ -975,7 +633,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product26.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product26.b73b22477f27a27e373fe484836e94a6.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <span className="product-l__category">
                                                             <a href="shop-side-version-2.html">Electronics</a></span>
@@ -989,7 +647,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product27.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product27.e640391cc048c113bb3c91f9f23aa083.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <span className="product-l__category">
                                                             <a href="shop-side-version-2.html">Electronics</a></span>
@@ -1003,7 +661,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product28.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product28.2069818c404fd70f9b8aea111247f3de.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <span className="product-l__category">
                                                             <a href="shop-side-version-2.html">Electronics</a></span>
@@ -1024,7 +682,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product29.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product29.06d588da4521b71d1decdc8ba3d8227d.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <div className="product-l__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="far fa-star" /><i className="far fa-star" /></div>
                                                         <span className="product-l__category">
@@ -1039,7 +697,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product30.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product30.4a4450fc843892eecd4574ad549b11aa.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <div className="product-l__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="far fa-star" /><i className="far fa-star" /></div>
                                                         <span className="product-l__category">
@@ -1054,7 +712,7 @@ export const Home = () => {
                                                 <div className="product-l">
                                                     <div className="product-l__img-wrap">
                                                         <a className="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
-                                                            <img className="aspect__img" src="images/product/electronic/product31.jpg" alt="" /></a></div>
+                                                            <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/product/electronic/product31.ecf7e50532f4d47ddb5ae65771918533.jpg" alt="" /></a></div>
                                                     <div className="product-l__info-wrap">
                                                         <div className="product-l__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="far fa-star" /><i className="far fa-star" /></div>
                                                         <span className="product-l__category">
@@ -1132,10 +790,10 @@ export const Home = () => {
                             <div className="row">
                                 <div className="col-lg-4 col-md-6 u-s-m-b-30">
                                     <div className="bp-mini bp-mini--img u-h-100">
-                                        <div className="bp-mini__thumbnail">
+                                        <div className="bp-mini__thumbnail box-img">
                                             {/*====== Image Code ======*/}
-                                            <a className="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
-                                                <img className="aspect__img" src="images/blog/post-2.jpg" alt="" /></a>
+                                            <a className="aspect aspect--bg-grey  u-d-block" href="blog-detail.html">
+                                                <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/blog/post-2.33454e236d5f8298c4f5c9c8dc54ffb8.jpg" alt="" /></a>
                                             {/*====== End - Image Code ======*/}
                                         </div>
                                         <div className="bp-mini__content">
@@ -1166,12 +824,12 @@ export const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-4 col-md-6 u-s-m-b-30">
-                                    <div className="bp-mini bp-mini--img u-h-100">
-                                        <div className="bp-mini__thumbnail">
+                                <div className="col-lg-4 col-md-6 u-s-m-b-30  ">
+                                    <div className="bp-mini bp-mini--img u-h-100  ">
+                                        <div className="bp-mini__thumbnail ">
                                             {/*====== Image Code ======*/}
-                                            <a className="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
-                                                <img className="aspect__img" src="images/blog/post-12.jpg" alt="" /></a>
+                                            <a className="aspect aspect--bg-grey u-d-block" href="blog-detail.html">
+                                                <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/blog/post-12.f333e9ee018997e7c8794279d3788a5d.jpg" alt="" /></a>
                                             {/*====== End - Image Code ======*/}
                                         </div>
                                         <div className="bp-mini__content">
@@ -1206,8 +864,8 @@ export const Home = () => {
                                     <div className="bp-mini bp-mini--img u-h-100">
                                         <div className="bp-mini__thumbnail">
                                             {/*====== Image Code ======*/}
-                                            <a className="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
-                                                <img className="aspect__img" src="images/blog/post-5.jpg" alt="" /></a>
+                                            <a className="aspect aspect--bg-grey  u-d-block" href="blog-detail.html">
+                                                <img className="aspect__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/blog/post-5.5991f334a2298c3c070ed888e810176f.jpg" alt="" /></a>
                                             {/*====== End - Image Code ======*/}
                                         </div>
                                         <div className="bp-mini__content">
@@ -1318,40 +976,8 @@ export const Home = () => {
                     {/*====== End - Section Content ======*/}
                 </div>
                 {/*====== End - Section 11 ======*/}
-                {/*====== Section 12 ======*/}
-                <div className="u-s-p-b-60">
-                    {/*====== Section Content ======*/}
-                    <div className="section__content">
-                        <div className="container">
-                            {/*====== Brand Slider ======*/}
-                            <div className="slider-fouc">
-                                <div className="owl-carousel" id="brand-slider" data-item={5}>
-                                    <div className="brand-slide">
-                                        <a href="shop-side-version-2.html">
-                                            <img src="images/brand/b1.png" alt="" /></a></div>
-                                    <div className="brand-slide">
-                                        <a href="shop-side-version-2.html">
-                                            <img src="images/brand/b2.png" alt="" /></a></div>
-                                    <div className="brand-slide">
-                                        <a href="shop-side-version-2.html">
-                                            <img src="images/brand/b3.png" alt="" /></a></div>
-                                    <div className="brand-slide">
-                                        <a href="shop-side-version-2.html">
-                                            <img src="images/brand/b4.png" alt="" /></a></div>
-                                    <div className="brand-slide">
-                                        <a href="shop-side-version-2.html">
-                                            <img src="images/brand/b5.png" alt="" /></a></div>
-                                    <div className="brand-slide">
-                                        <a href="shop-side-version-2.html">
-                                            <img src="images/brand/b6.png" alt="" /></a></div>
-                                </div>
-                            </div>
-                            {/*====== End - Brand Slider ======*/}
-                        </div>
-                    </div>
-                    {/*====== End - Section Content ======*/}
-                </div>
-                {/*====== End - Section 12 ======*/}
+                
+                
             </div>
             {/*====== End - App Content ======*/}
             <div>
@@ -1527,14 +1153,14 @@ export const Home = () => {
                     </div>
                 </div>
                 {/*====== End - Add to Cart Modal ======*/}
-               
-                
+
+
             </div>
 
             {/* footer load*/}
             <Footer />
-            
-                   
+
+
         </div>
     )
 }
