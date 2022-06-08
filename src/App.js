@@ -27,8 +27,12 @@ import { Cancellation } from './components/account/Cancellation';
 import { EditProfile } from './components/account/EditProfile';
 import { EditAddress } from './components/account/EditAddress';
 import { ManageOrder } from './components/account/ManageOrder';
+import { Signout } from './Signout';
+import { ChangePassword } from './ChangePassword';
+import { NewPassword } from './NewPassword';
 
 function App() {
+
   return (
     <div className="App " >
       <BrowserRouter>
@@ -63,6 +67,9 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/forgetpassword" element={<ForgetPassword />} />
           <Route exact path="/newarrival" element={<ShopList />} />
+          <Route exact path="/logout" element={<Signout />} />
+          <Route exact path='/changepassword' element={<ChangePassword />} />
+          <Route exact path='/newpassword' element={<NewPassword />} />
 
 
           {/* account all pages */}

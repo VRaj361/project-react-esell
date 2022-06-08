@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 export const ManageAccount = () => {
+    let obj = JSON.parse(sessionStorage.getItem("data"))
     return (
         <>
 
@@ -14,9 +16,9 @@ export const ManageAccount = () => {
                                     <div className="dash__pad-3">
                                         <h2 className="dash__h2 u-s-m-b-8">PERSONAL PROFILE</h2>
                                         <div className="dash__link dash__link--secondary u-s-m-b-8">
-                                            <a href="dash-edit-profile.html">Edit</a></div>
-                                        <span className="dash__text">John Doe</span>
-                                        <span className="dash__text">johndoe@domain.com</span>
+                                            <Link to={"/myaccount/editprofile"}>Edit</Link></div>
+                                        <span className="dash__text">{obj.firstname+" "+obj.lastname}</span>
+                                        <span className="dash__text">{obj.email}</span>
                                         <div className="dash__link dash__link--secondary u-s-m-t-8">
                                             <a data-modal="modal" data-modal-id="#dash-newsletter">Subscribe Newsletter</a></div>
                                     </div>
@@ -28,7 +30,7 @@ export const ManageAccount = () => {
                                         <h2 className="dash__h2 u-s-m-b-8">ADDRESS BOOK</h2>
                                         <span className="dash__text-2 u-s-m-b-8">Default Shipping Address</span>
                                         <div className="dash__link dash__link--secondary u-s-m-b-8">
-                                            <a href="dash-address-book.html">Edit</a></div>
+                                            <Link to={"/myaccount/editaddress"}>Edit</Link></div>
                                         <span className="dash__text">4247 Ashford Drive Virginia - VA-20006 - USA</span>
                                         <span className="dash__text">(+0) 900901904</span>
                                     </div>

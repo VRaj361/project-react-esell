@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 export const Myprofile = () => {
+    let obj=JSON.parse(sessionStorage.getItem("data"))
+    console.log(obj)
     return (
         
             <>
@@ -12,27 +14,27 @@ export const Myprofile = () => {
                             <div className="row">
                                 <div className="col-lg-4 u-s-m-b-30">
                                     <h2 className="dash__h2 u-s-m-b-8">Full Name</h2>
-                                    <span className="dash__text">John Doe</span>
+                                    <span className="dash__text">{obj.firstname+" "+obj.lastname}</span>
                                 </div>
                                 <div className="col-lg-4 u-s-m-b-30">
                                     <h2 className="dash__h2 u-s-m-b-8">E-mail</h2>
-                                    <span className="dash__text">johndoe@domain.com</span>
+                                    <span className="dash__text">{obj.email}</span>
                                     <div className="dash__link dash__link--secondary">
                                         <a href="#">Change</a></div>
                                 </div>
                                 <div className="col-lg-4 u-s-m-b-30">
                                     <h2 className="dash__h2 u-s-m-b-8">Phone</h2>
-                                    <span className="dash__text">Please enter your mobile</span>
+                                    <span className="dash__text">{obj.phonenum}</span>
                                     <div className="dash__link dash__link--secondary">
                                         <a href="#">Add</a></div>
                                 </div>
                                 <div className="col-lg-4 u-s-m-b-30">
-                                    <h2 className="dash__h2 u-s-m-b-8">Birthday</h2>
-                                    <span className="dash__text">1991-02-02</span>
+                                    <h2 className="dash__h2 u-s-mb-8">Created Date</h2>
+                                    <span className="dash__text">{obj.createdate}</span>
                                 </div>
                                 <div className="col-lg-4 u-s-m-b-30">
                                     <h2 className="dash__h2 u-s-m-b-8">Gender</h2>
-                                    <span className="dash__text">Male</span>
+                                    <span className="dash__text">{obj.gender}</span>
                                 </div>
                             </div>
                             <div className="row">
@@ -42,7 +44,7 @@ export const Myprofile = () => {
                                     <div className="u-s-m-b-16">
                                         <Link className="dash__custom-link btn--e-transparent-brand-b-2" to={'/myaccount/editprofile'}>Edit Profile</Link></div>
                                     <div>
-                                        <a className="dash__custom-link btn--e-brand-b-2" href="#">Change Password</a></div>
+                                        <Link className="dash__custom-link btn--e-brand-b-2" to={"/changepassword"}>Change Password</Link></div>
                                 </div>
                             </div>
                         </div>

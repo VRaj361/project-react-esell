@@ -10,25 +10,18 @@ export const AddAddress = () => {
                     <form className="dash-address-manipulation">
                         <div className="gl-inline">
                             <div className="u-s-m-b-30">
-                                <label className="gl-label" htmlFor="address-fname">FIRST NAME *</label>
-                                <input className="input-text input-text--primary-style" type="text" id="address-fname" placeholder="First Name" /></div>
+                                <label className="gl-label" htmlFor="address-phone">STREET ADDRESS *</label>
+                                <input className="input-text input-text--primary-style" type="text" id="address-phone" placeholder='House name and Street'/></div>
                             <div className="u-s-m-b-30">
-                                <label className="gl-label" htmlFor="address-lname">LAST NAME *</label>
-                                <input className="input-text input-text--primary-style" type="text" id="address-lname" placeholder="Last Name" /></div>
-                        </div>
-                        <div className="gl-inline">
-                            <div className="u-s-m-b-30">
-                                <label className="gl-label" htmlFor="address-phone">PHONE *</label>
-                                <input className="input-text input-text--primary-style" type="text" id="address-phone" /></div>
-                            <div className="u-s-m-b-30">
-                                <label className="gl-label" htmlFor="address-street">STREET ADDRESS *</label>
-                                <input className="input-text input-text--primary-style" type="text" id="address-street" placeholder="House Name and Street" /></div>
+                                <label className="gl-label" htmlFor="address-street">LANDMARK *</label>
+                                <input className="input-text input-text--primary-style" type="text" id="address-street" placeholder="Near Area for the Mark" /></div>
                         </div>
                         <div className="gl-inline">
                             <div className="u-s-m-b-30">
                                 {/*====== Select Box ======*/}
                                 <label className="gl-label" htmlFor="address-country">COUNTRY *</label><select className="select-box select-box--primary-style" id="address-country">
                                     <option selected value>Choose Country</option>
+                                    <option value="us">INDIA (IN)</option>
                                     <option value="uae">United Arab Emirate (UAE)</option>
                                     <option value="uk">United Kingdom (UK)</option>
                                     <option value="us">United States (US)</option>
@@ -39,8 +32,11 @@ export const AddAddress = () => {
                                 {/*====== Select Box ======*/}
                                 <label className="gl-label" htmlFor="address-state">STATE/PROVINCE *</label><select className="select-box select-box--primary-style" id="address-state">
                                     <option selected value>Choose State/Province</option>
-                                    <option value="al">Alabama</option>
-                                    <option value="al">Alaska</option>
+                                    <option value="al">Gujrat</option>
+                                    <option value="al">Maharastra</option>
+                                    <option value="al">Karnataka</option>
+                                    <option value="al">Dubai</option>
+                                    <option value="al">London</option>
                                     <option value="ny">New York</option>
                                 </select>
                                 {/*====== End - Select Box ======*/}

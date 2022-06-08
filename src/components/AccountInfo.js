@@ -12,9 +12,10 @@ import { MyPayment } from './account/MyPayment'
 import { Myprofile } from './account/Myprofile'
 import { TrackOrder } from './account/TrackOrder'
 export const AccountInfo = () => {
-    console.log(window.location.href)
+ 
     const loc=window.location.href
     console.log(loc.includes("/myaccount"))
+    let obj=JSON.parse(sessionStorage.getItem("data"));
     return (
         <div>
             <div className="u-s-p-b-60">
@@ -27,7 +28,7 @@ export const AccountInfo = () => {
                                     {/*====== Dashboard Features ======*/}
                                     <div className="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
                                         <div className="dash__pad-1">
-                                            <span className="dash__text u-s-m-b-16">Hello, John Doe</span>
+                                            <span className="dash__text u-s-m-b-16">Hello, {obj.firstname+" "+obj.lastname}</span>
                                             <ul className="dash__f-list">
                                                 <li>
                                                     <Link to={'/myaccount'} >Manage My Account</Link></li>

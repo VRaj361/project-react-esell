@@ -5,6 +5,7 @@ import { SectionLinks } from './components/SectionLinks'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { Link,useNavigate } from 'react-router-dom'
+import {SetToast} from '../src/components/SetToast'
 import axios from 'axios'
 export const Signup = () => {
 
@@ -31,7 +32,7 @@ export const Signup = () => {
     console.log(objData)
     await axios.post("http://localhost:9999/user", objData).then(() => {
       console.log("success")
-      sessionStorage.setItem("email", email);
+      sessionStorage.setItem("data", JSON.stringify(objData));
       navigate("/")
     })
   }

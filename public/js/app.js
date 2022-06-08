@@ -3,6 +3,9 @@
  */
 (function ($) {
     // Main Object
+    setTimeout(() => {
+        
+    }, 2000);
     var RESHOP = {};
 
     // Predefined variables

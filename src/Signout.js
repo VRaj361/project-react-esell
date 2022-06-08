@@ -4,10 +4,12 @@ import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
-export const Error404 = () => {
+export const Signout = () => {
+
+    sessionStorage.clear();
     return (
         <div>
-            <Precss/>
+            <Precss />
 
             {/* navbar */}
             <Navbar />
@@ -22,8 +24,8 @@ export const Error404 = () => {
                                 <div className="col-lg-12 col-md-12 u-s-m-b-30">
                                     <div className="empty">
                                         <div className="empty__wrap">
-                                            <span className="empty__big-text">404</span>
-                                            <span className="empty__text-1">Looks like you're in wrong place.</span>
+                                            <span className="empty__big-text">Thanks you! Visit again</span>
+                                            <span className="empty__text-1">Successfully Logout</span>
                                             <Link className="empty__redirect-link btn--e-brand" to={"/"}>GO TO HOME</Link></div>
                                     </div>
                                 </div>
@@ -36,8 +38,8 @@ export const Error404 = () => {
             </div>
             {/* load footer */}
 
-            <Footer/>
-            <Prejs/>
+            <Footer />
+            <Prejs />
         </div>
-  )
+    )
 }

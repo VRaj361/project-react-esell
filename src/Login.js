@@ -6,6 +6,7 @@ import { SectionLinks } from './components/SectionLinks'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { Link } from 'react-router-dom'
+import {SetToast} from '../src/components/SetToast'
 import axios from 'axios'
 
 export const Login = () => {
@@ -25,7 +26,7 @@ export const Login = () => {
                 if(e.email===email&&e.password===password){
                     console.log("done")
                     setischeck(true);
-                    sessionStorage.setItem("email",email);
+                    sessionStorage.setItem("data",JSON.stringify(e));
                     navigate("/")
                 }
             })

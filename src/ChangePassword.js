@@ -1,14 +1,28 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { SectionLinks } from './components/SectionLinks'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
-import { Link } from 'react-router-dom'
-export const ForgetPassword = () => {
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+export const ChangePassword = () => {
+    let obj=sessionStorage.getItem("data")
+    const [password, setpassword] = useState("")
+    const navigate=useNavigate()
+    const checkOldPassword=async(e)=>{
+        e.preventDefault();
+        if(JSON.parse(sessionStorage.getItem("data")).password===password){
+            navigate("/newpassword")
+        }else{
+            console.log("password no match")
+        }
+    }
+
+
     return (
         <div>
-            <Precss/>
+            <Precss />
             {/* navbar */}
             <Navbar />
 
@@ -25,12 +39,12 @@ export const ForgetPassword = () => {
                             <div className="col-lg-6 col-md-8 u-s-m-b-30">
                                 <div className="l-f-o">
                                     <div className="l-f-o__pad-box">
-                                        <h1 className="gl-h1">PASSWORD RESET</h1>
-                                        <span className="gl-text u-s-m-b-30">Enter your email or username below and we will send you a link to reset your password.</span>
-                                        <form className="l-f-o__form">
+                                        <h1 className="gl-h1">CHANGE NEW PASSWORD</h1>
+                                        <span className="gl-text u-s-m-b-30">Enter your previous password to check correct or not and after enter new password.</span>
+                                        <form className="l-f-o__form" onSubmit={checkOldPassword}>
                                             <div className="u-s-m-b-30">
-                                                <label className="gl-label" htmlFor="reset-email">E-MAIL *</label>
-                                                <input className="input-text input-text--primary-style" type="text" id="reset-email" placeholder="Enter E-mail" /></div>
+                                                <label className="gl-label" htmlFor="reset-email">OLD PASSWORD *</label>
+                                                <input className="input-text input-text--primary-style" type="password" id="reset-email" placeholder="Enter Password" onChange={(e)=>setpassword(e.target.value)}/></div>
                                             <div className="u-s-m-b-30">
                                                 <button className="btn btn--e-transparent-brand-b-2" type="submit">SUBMIT</button></div>
                                             <div className="u-s-m-b-30">
@@ -44,8 +58,8 @@ export const ForgetPassword = () => {
                 </div>
 
             </div>
-            <Footer/>
-            <Prejs/>
+            <Footer />
+            <Prejs />
 
         </div>
     )

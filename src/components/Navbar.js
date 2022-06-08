@@ -4,7 +4,7 @@ import { Prejs } from './Prejs'
 
 export const Navbar = () => {
     //email is use to check that this option availible for login customer 
-    const email=sessionStorage.getItem("email")
+    const data=sessionStorage.getItem("data")
     
 
     return (
@@ -37,30 +37,36 @@ export const Navbar = () => {
                                         {/*====== List ======*/}
                                         <ul className="ah-list ah-list--design1 ah-list--link-color-secondary">
                                             <li className="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
-                                                <a>{email!==null?<span className='mega-text' style={{fontSize:"large"}}>{email[0]}</span>:<i className="far fa-user-circle" />}</a>
+                                                <a>{data!==null?<span className='mega-text' style={{fontSize:"large"}}>{JSON.parse(data).email[0]}</span>:<i className="far fa-user-circle" />}</a>
                                                 {/*====== Dropdown ======*/}
                                                 <span className="js-menu-toggle" />
                                                 <ul style={{ width: '120px' }}>
                                                     <li>
+                                                    {data===null?"":
                                                         <Link to={'/myaccount'}><i className="fas fa-user-circle u-s-m-r-6" />
-                                                            <span>Account</span></Link></li>
+                                                            <span>Account</span></Link>
+                                                    }
+                                                    </li>
                                                     
                                                     <li>
-                                                    {email!==null?"":
+                                                    {data!==null?"":
                                                         <Link to={'/signup'}><i className="fas fa-user-plus u-s-m-r-6" />
                                                             <span>Signup</span></Link>
                                                     }
                                                     </li>
 
                                                     <li>
-                                                    {email!==null?"":
+                                                    {data!==null?"":
                                                         <Link to={'/login'}><i className="fas fa-lock u-s-m-r-6" />
                                                             <span>Signin</span></Link>
                                                     }
                                                     </li>
                                                     <li>
+                                                    {data!==null?
                                                         <Link to={'/logout'}><i className="fas fa-lock-open u-s-m-r-6" />
-                                                            <span>Signout</span></Link></li>
+                                                            <span>Logout</span></Link>:""
+                                                    }
+                                                    </li>
                                                 </ul>
                                                 {/*====== End - Dropdown ======*/}
                                             </li>
