@@ -1,5 +1,5 @@
-import axios from 'axios'
 import React,{useState} from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 export const EditProfile = () => {
@@ -14,7 +14,7 @@ export const EditProfile = () => {
     const navigate=useNavigate()
     const updateData=async(e)=>{
         e.preventDefault()
-        let objData={"userid":obj.userid,"firstname":firstname,"lastname":lastname,"createdate":obj.createdate,"gender":obj.gender,"email":email,"password":obj.password,"phonenum":phonenum};
+        let objData={"userid":obj.userid,"firstname":firstname,"lastname":lastname,"createdate":obj.createdate,"gender":obj.gender,"email":email,"password":obj.password,"phonenum":phonenum,"address":obj.address};
         await axios.put("http://localhost:9999/user",objData).then((res)=>{
             console.log("success")
             console.log(res)
