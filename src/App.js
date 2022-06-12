@@ -13,7 +13,7 @@ import { Contact } from './Contact';
 import { FAQ } from './FAQ';
 import { ProductDetail } from './ProductDetail';
 import { ShopList } from './ShopList';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import { Review } from './Review';
 import { Cart } from './Cart';
 import { Checkout } from './Checkout';
@@ -30,9 +30,10 @@ import { ManageOrder } from './components/account/ManageOrder';
 import { Signout } from './Signout';
 import { ChangePassword } from './ChangePassword';
 import { NewPassword } from './NewPassword';
+import {AddProduct} from './AddProduct';
 
 function App() {
-
+  let user=true
   return (
     <div className="App " >
       <BrowserRouter>
@@ -70,6 +71,8 @@ function App() {
           <Route exact path="/logout" element={<Signout />} />
           <Route exact path='/changepassword' element={<ChangePassword />} />
           <Route exact path='/newpassword' element={<NewPassword />} />
+          <Route exact path='/addproduct' element={<AddProduct />} />
+
 
 
           {/* account all pages */}
@@ -85,13 +88,9 @@ function App() {
           <Route exact path='/myaccount/manageorder' element={<MyAccout />} />
           <Route exact path='/myaccount/addaddress' element={<MyAccout />} />
          
-
-
-
-
-
           {/* any worng route can redirect on 404 page */}
           <Route path="*" element={<Error404 />} />
+          {/* <Route path="*" element={user? <Login/> : <Signup/>}  /> */}
         </Routes>
       </BrowserRouter>
     </div>

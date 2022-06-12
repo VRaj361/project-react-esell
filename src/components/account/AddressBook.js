@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 export const AddressBook = () => {
+    console.log("enter")
     let obj = JSON.parse(sessionStorage.getItem("data"))
     let objAddress = JSON.stringify(obj.address).split(",")
+    console.log("this")
     let objFi = []
     let navigate=useNavigate()
     if (objAddress[0] != '""' ) {

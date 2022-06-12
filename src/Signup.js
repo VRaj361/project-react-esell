@@ -28,7 +28,7 @@ export const Signup = () => {
 
   const formDataSignup = async (e) => {
     e.preventDefault()
-    const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum }
+    const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
     console.log(objData)
     await axios.post("http://localhost:9999/user", objData).then(() => {
       console.log("success")
