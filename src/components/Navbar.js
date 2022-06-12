@@ -142,6 +142,11 @@ export const Navbar = () => {
                                             <li>
                                                 <Link to={'/myaccount/manageorder'}>MANAGER ORDER</Link>
                                             </li>
+                                            {data!==null?
+                                            <li>
+                                                <Link to={'/addproduct'}>ADD PRODUCT</Link>
+                                            </li>:""
+                                            }
                                             <li>
                                                 <Link to={'/review'}>REVIEW</Link>
                                             </li>

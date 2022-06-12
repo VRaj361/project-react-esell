@@ -122,7 +122,7 @@ export const Signup = () => {
                         {/* {email} */}
                         <div className="u-s-m-b-30">
                           <label className="gl-label" htmlFor="reg-password">PASSWORD *</label>
-                          <input className="input-text input-text--primary-style" type="text" id="reg-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} /></div>
+                          <input className="input-text input-text--primary-style" type="password" id="reg-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} /></div>
                         <label className="gl-label" style={{ color: "red" }} >{password === "" ? `Please Enter Password ${ischeck ? ischeck = false : ""}` : regexPassword.test(password) === true ? ischeck = true : `Password should contain Uppercase, Lowercase, Special Symbol and Length should be greater 8 ${ischeck ? ischeck = false : ""}`}</label>
                         {/* {password} */}
                         <div className="u-s-m-b-30">

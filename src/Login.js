@@ -87,7 +87,7 @@ export const Login = () => {
                                                     <input className="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail" onChange={(e) => setemail(e.target.value)} /></div>
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="login-password">PASSWORD *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="login-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} />
+                                                    <input className="input-text input-text--primary-style" type="password" id="login-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} />
                                                 </div>
                                                 <label className="gl-label" style={{ color: "red" }}>{ischeck || ischeck===""? "":"Wrong Email or Password"}</label>
                                                 <div className="gl-inline">

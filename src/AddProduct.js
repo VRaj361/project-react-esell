@@ -19,6 +19,7 @@ export const AddProduct = () => {
 
     const addProduct = async (e) => {
         e.preventDefault()
+        const objData={"productname":name,"productprice":price,"description":description,"location":location,"title":title,"photo":photo}
         // const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
         // console.log(objData)
         // await axios.post("http://localhost:9999/user", objData).then(() => {
