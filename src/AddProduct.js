@@ -22,7 +22,12 @@ export const AddProduct = () => {
         e.preventDefault()
         console.log(ischeck)
         // if (ischeck === true) {
-            const objData = { "productname": name, "price": price, "description": description, "location": location, "title": title, "userid": parseInt(JSON.parse(sessionStorage.getItem("data")).userid) }
+            const objData = { "productname":name,
+                "price":price,
+                "description":description,
+                "location":location,
+                "title":title,
+                "userid":parseInt(JSON.parse(sessionStorage.getItem("data")).userid) }
             //add photo also
             console.log(objData)
         // }
