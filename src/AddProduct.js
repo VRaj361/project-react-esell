@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
@@ -14,19 +15,29 @@ export const AddProduct = () => {
     const [location, setlocation] = useState("")
     const [title, settitle] = useState("")
     const [photo, setphoto] = useState([])
-    let ischeck = false;
+    var ischeck = false;
     //notify message on your register phone number
 
     const addProduct = async (e) => {
         e.preventDefault()
-        const objData={"productname":name,"productprice":price,"description":description,"location":location,"title":title,"photo":photo}
-        // const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
-        // console.log(objData)
-        // await axios.post("http://localhost:9999/user", objData).then(() => {
-        //   console.log("success")
+        console.log(ischeck)
+        // if (ischeck === true) {
+            const objData = { "productname": name, "productprice": price, "description": description, "location": location, "title": title, "photo": photo, "userid": JSON.parse(sessionStorage.getItem("data")).userid }
+            console.log(objData)
+        // }
+
+        await axios.post("http://localhost:9999/product", objData).then((res) => {
+          console.log("success")
+          console.log(res)
         //   sessionStorage.setItem("data", JSON.stringify(objData));
         //   navigate("/")
-        // })
+        })
+    }
+
+
+    const setFile = async (e) => {
+        console.log(e.target.files)
+        console.log(e.target.files.length)
     }
 
     return (
@@ -62,37 +73,47 @@ export const AddProduct = () => {
                                         <div className="l-f-o__pad-box">
                                             <h1 className="gl-h1">Add Product</h1>
                                             <form className="l-f-o__form" onSubmit={addProduct}>
-                                                
+
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-fname">Product Name *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="reg-fname" placeholder="Product Name" onChange={(e) => setname(e.target.value)} /></div>
-                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-fname">{name !== "" ? ischeck = true : `Please Enter Product Name ${ischeck ? ischeck = false : ""}`}</label>
+                                                    <input  className="input-text input-text--primary-style" type="text" id="reg-fname" placeholder="Product Name" onChange={(e) => setname(e.target.value)} /></div>
+
+                                                {name !== "" ? ischeck = true : ischeck = false}
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Product Name ` : ""}</label>
 
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-lname">Product Title *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="reg-lname" placeholder="Product Title" onChange={(e) => settitle(e.target.value)} /></div>
-                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{title !== "" ? ischeck = true : `Please Enter Title ${ischeck ? ischeck = false : ""}`}</label>
+                                                    <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-lname" placeholder="Product Title" onChange={(e) => settitle(e.target.value)} /></div>
+
+                                                {title !== "" ? ischeck = true : ischeck = false}
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Title ` : ""}</label>
 
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-lname">Product Description *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="reg-lname" placeholder="Product Description" onChange={(e) => setdescription(e.target.value)} /></div>
-                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{description !== "" ? ischeck = true : `Please Enter Description ${ischeck ? ischeck = false : ""}`}</label>
-                                                
-                                                
+                                                    <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-lname" placeholder="Product Description" onChange={(e) => setdescription(e.target.value)} /></div>
+                                                {description !== "" ? ischeck = true : ischeck = false}
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Description ` : ""}</label>
+
+
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-email">price *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="reg-email" placeholder="Enter Sell-Value" onChange={(e) => setprice(e.target.value)} /></div>
-                                                    <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{price !== "" ? ischeck = true : `Please Enter Price ${ischeck ? ischeck = false : ""}`}</label>
+                                                    <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-email" placeholder="Enter Sell-Value" onChange={(e) => setprice(e.target.value)} /></div>
+
+                                                {price !== "" ? ischeck = true : ischeck = false}
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Price ` : ""}</label>
                                                 {/* {email} */}
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-password">Location *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="reg-password" placeholder="Enter location" onChange={(e) => setlocation(e.target.value)} /></div>
-                                                    <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{location !== "" ? ischeck = true : `Please Enter location ${ischeck ? ischeck = false : ""}`}</label>
+                                                    <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-password" placeholder="Enter location" onChange={(e) => setlocation(e.target.value)} /></div>
+                                                {location !== "" ? ischeck = true : ischeck = false}
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Location ` : ""}</label>
                                                 {/* {password} */}
-                                                <div className="u-s-m-b-30">
-                                                    <label className="gl-label" htmlFor="reg-phonenumber">Phone Number *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="reg-phonenum" placeholder="Enter Photo Url" onChange={(e) => setphoto(e.target.value)} /></div>
+                                                {/* <div className="u-s-m-b-30">
+                                                    <label className="gl-label" htmlFor="reg-phonenumber">Select file *</label>
+                                                    <input  type="file" id="reg-phonenum" placeholder="Enter Photo Url" onChange={(e) => setFile(e)} multiple /></div>
                                                     <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{photo !== "" ? ischeck = true : `Please enter url Photo ${ischeck ? ischeck = false : ""}`}</label>
+                                                    {description !== "" ? ischeck = true :ischeck=false }
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck===false?`Please Enter Description `:"" }</label> */}
                                                 {/* {phonenum} */}
                                                 <div className="u-s-m-b-15">
                                                     <button disabled={ischeck ? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">Add Product</button></div>
