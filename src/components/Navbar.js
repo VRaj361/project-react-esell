@@ -139,12 +139,7 @@ export const Navbar = () => {
                                                 </ul>
                                                 {/*====== End - Dropdown ======*/}
                                             </li>
-                                            <li>
-                                            {data!==null?
-                                                <Link to={'/myaccount/manageorder'}>MANAGER ORDER</Link>
-                                                :""
-                                            }
-                                            </li>
+                                            
                                             {data!==null?
                                             <li>
                                                 <Link to={'/addproduct'}>ADD PRODUCT</Link>

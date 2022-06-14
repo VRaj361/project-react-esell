@@ -39,6 +39,8 @@ export const AccountInfo = () => {
                                                 <li>
                                                     <Link to={'/myaccount/trackorder'} >Track Order</Link></li>
                                                 <li>
+                                                    <Link to={'/myaccount/manageorder'} >Manage Order</Link></li>
+                                                <li>
                                                     <Link to={'/myaccount/myorder'} >My Orders</Link></li>
                                                 <li>
                                                     <Link to={'/myaccount/mypayment'} >My Payment Options</Link></li>
@@ -97,6 +99,8 @@ export const AccountInfo = () => {
                                 {loc.endsWith("/addaddress")? <AddAddress/> : ""}
                                 {/* <AddAddress /> */}
                                 {loc.endsWith("/editaddress")? <EditAddress/> : ""}
+                                {/* <EditAddress/> */}
+                                {loc.endsWith("/manageorder")? <ManageOrder/> : ""}
                                 {/* <EditAddress/> */}
 
 
