@@ -14,6 +14,7 @@ export const AddProduct = () => {
     const [price, setprice] = useState("")
     const [location, setlocation] = useState("")
     const [title, settitle] = useState("")
+    const [rating, setrating] = useState()//out of five
     const [photo, setphoto] = useState([])
     var ischeck = false;
     //notify message on your register phone number
@@ -27,6 +28,7 @@ export const AddProduct = () => {
                 "description":description,
                 "location":location,
                 "title":title,
+                "rating":rating,
                 "userid":parseInt(JSON.parse(sessionStorage.getItem("data")).userid) }
             //add photo also
             console.log(objData)
@@ -99,6 +101,12 @@ export const AddProduct = () => {
                                                     <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-lname" placeholder="Product Description" onChange={(e) => setdescription(e.target.value)} /></div>
                                                 {description !== "" ? ischeck = true : ischeck = false}
                                                 <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Description ` : ""}</label>
+
+                                                <div className="u-s-m-b-30">
+                                                    <label className="gl-label" htmlFor="reg-lname">Rating (out of 5) *</label>
+                                                    <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="number" id="reg-lname" placeholder="Product Description" onChange={(e) => setrating(e.target.value)} /></div>
+                                                {rating !== undefined && rating<=5&&rating>0 ? ischeck = true : ischeck = false}
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Rating ` : ""}</label>
 
 
                                                 <div className="u-s-m-b-30">
