@@ -26,7 +26,7 @@ export const Login = () => {
                 if(e.email===email&&e.password===password){
                     console.log("done")
                     setischeck(true);
-                    sessionStorage.setItem("data",JSON.stringify(e));
+                    sessionStorage.setItem("data",JSON.stringify({'email':e.email,'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
                     navigate("/")
                 }
             })

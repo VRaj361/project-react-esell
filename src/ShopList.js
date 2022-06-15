@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import Rating from '@mui/material/Rating';
-import { useGetAllProducts } from './Hooks/useQuery/ShowAllProductQuery'
+import { useGetAllProducts } from './Hooks/useQuery/useQueryFiles'
 import axios from 'axios'
 export const ShopList = () => {
     const [products, setproducts] = useState()
@@ -533,7 +533,7 @@ export const ShopList = () => {
                                                             <div className="product-m">
                                                                 <div className="product-m__thumb">
                                                                     <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-                                                                        <img className="aspect__img" src="images/product/men/product6.jpg" alt="" /></a>
+                                                                        <img className="aspect__img" src="https://drive.google.com/uc?export=view&&id=1nJtaA7A1BArTptiITm_NCGpjCvk5L7nk" alt="" /></a>
                                                                     <div className="product-m__quick-look">
                                                                         <a className="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look" /></div>
                                                                     <div className="product-m__add-cart">

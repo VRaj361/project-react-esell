@@ -12,11 +12,21 @@ export const ChangePassword = () => {
     const navigate=useNavigate()
     const checkOldPassword=async(e)=>{
         e.preventDefault();
-        if(JSON.parse(sessionStorage.getItem("data")).password===password){
-            navigate("/newpassword")
-        }else{
-            console.log("password no match")
-        }
+        await axios.get("http://localhost:9999/user").then((data) => {
+            data.data.map((e)=>{
+                if(e.userid===JSON.parse(sessionStorage.getItem("data")).userid && password===e.password){
+                    console.log("done")
+                    
+                    // sessionStorage.setItem("data",JSON.stringify({'email':e.email,'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
+                    navigate("/newpassword")
+                }
+            })
+        })
+        // if(JSON.parse(sessionStorage.getItem("data")).password===password){
+        //     navigate("/newpassword")
+        // }else{
+        //     console.log("password no match")
+        // }
     }
 
 

@@ -32,6 +32,7 @@ import { ChangePassword } from './ChangePassword';
 import { NewPassword } from './NewPassword';
 import {AddProduct} from './AddProduct';
 
+
 function App() {
   let user=true
   return (
@@ -72,6 +73,7 @@ function App() {
           <Route exact path='/changepassword' element={<ChangePassword />} />
           <Route exact path='/newpassword' element={<NewPassword />} />
           <Route exact path='/addproduct' element={<AddProduct />} />
+          
 
 
 

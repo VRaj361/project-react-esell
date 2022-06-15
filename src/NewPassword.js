@@ -11,17 +11,30 @@ export const NewPassword = () => {
     let ischeck = false;
     let regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     const [password, setpassword] = useState("")
-    let obj=JSON.parse(sessionStorage.getItem("data"))
-    const navigate=useNavigate()
-    const changeNewPassword=async(e)=>{
+    let obj={};
+    const navigate = useNavigate()
+    const changeNewPassword = async (e) => {
         e.preventDefault()
-        let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":password,"phonenum":obj.phonenum};
-        await axios.put("http://localhost:9999/user",objData).then((res)=>{
+        await axios.get("http://localhost:9999/user").then((res) => {
+            res.data.map((e) => {
+                if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
+                    console.log("e", e)
+                    obj=e
+                }
+            })
+        })
+        console.log(obj)
+        let objData = { "userid": obj.userid, "firstname": obj.firstname, "lastname": obj.lastname, "createdate": obj.createdate, "gender": obj.gender, "email": obj.email, "password": password, "phonenum": obj.phonenum };
+        console.log("obj ", obj)
+        console.log("objdata ", objData)
+        await axios.put("http://localhost:9999/user", objData).then((res) => {
             console.log("success")
             console.log(res)
-            sessionStorage.setItem("data",JSON.stringify(objData))
             navigate("/myaccount")
+            // sessionStorage.setItem("data",JSON.stringify(objData))
         })
+    
+
     }
     return (
         <div>
@@ -47,8 +60,8 @@ export const NewPassword = () => {
                                         <form className="l-f-o__form" onSubmit={changeNewPassword}>
                                             <div className="u-s-m-b-30">
                                                 <label className="gl-label" htmlFor="reset-email">NEW PASSWORD *</label>
-                                                <input className="input-text input-text--primary-style" type="password" id="reset-email" placeholder="Enter Password" onChange={(e)=>setpassword(e.target.value)}/></div>
-                                                <label className="gl-label" style={{ color: "red" }} >{password === "" ? `Please Enter Password ${ischeck ? ischeck = false : ""}` : regexPassword.test(password) === true ? ischeck = true : `Password should contain Uppercase, Lowercase, Special Symbol and Length should be greater 8 ${ischeck ? ischeck = false : ""}`}</label>
+                                                <input className="input-text input-text--primary-style" type="password" id="reset-email" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} /></div>
+                                            <label className="gl-label" style={{ color: "red" }} >{password === "" ? `Please Enter Password ${ischeck ? ischeck = false : ""}` : regexPassword.test(password) === true ? ischeck = true : `Password should contain Uppercase, Lowercase, Special Symbol and Length should be greater 8 ${ischeck ? ischeck = false : ""}`}</label>
                                             <div className="u-s-m-b-30">
                                                 <button className="btn btn--e-transparent-brand-b-2" type="submit">SUBMIT</button></div>
                                             <div className="u-s-m-b-30">
