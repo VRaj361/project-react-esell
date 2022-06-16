@@ -37,7 +37,7 @@ export const Navbar = () => {
                                         {/*====== List ======*/}
                                         <ul className="ah-list ah-list--design1 ah-list--link-color-secondary">
                                             <li className="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
-                                                <a>{data!==null?<span className='mega-text' style={{fontSize:"large"}}>{JSON.parse(data).email[0]}</span>:<i className="far fa-user-circle" />}</a>
+                                                <a>{data!==null?<span className='mega-text' style={{fontSize:"large"}}>{JSON.parse(data).firstname[0]}</span>:<i className="far fa-user-circle" />}</a>
                                                 {/*====== Dropdown ======*/}
                                                 <span className="js-menu-toggle" />
                                                 <ul style={{ width: '120px' }}>

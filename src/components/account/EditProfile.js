@@ -48,7 +48,7 @@ export const EditProfile = () => {
         await axios.put("http://localhost:9999/user", objData).then((e) => {
             console.log("success")
             console.log(e)
-            sessionStorage.setItem("data",JSON.stringify({'email':e.data.email,'firstname':e.data.firstname,"lastname":e.data.lastname,'userid':e.data.userid}));
+            sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.firstname,"lastname":e.data.lastname,'userid':e.data.userid}));
             navigate("/myaccount")
             
         })
