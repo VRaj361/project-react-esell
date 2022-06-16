@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,34 +9,60 @@ export const AddAddress = () => {
     const [state, setstate] = useState("")
     const [city, setcity] = useState("")
     const [postal, setpostal] = useState("")
-
-    let obj = JSON.parse(sessionStorage.getItem("data"))
+    const [isloading, setisloading] = useState(true)
+    const [iserror, setiserror] = useState(false)
+    const [obj, setobj] = useState()
+    // let obj = JSON.parse(sessionStorage.getItem("data"))
     let navigate=useNavigate()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setiserror(false);
+
+
+            try {
+                const response = await axios('http://localhost:9999/user');
+                response.data.map((e) => {
+                    if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
+                        
+                        setobj(e);
+                    }
+                })
+                if (response !== undefined) {
+                    setisloading(false)
+                }
+            } catch (error) {
+                setiserror(true);
+            }
+
+        };
+        fetchData()
+
+    }, [])
+
+
+
+
     const getAddress=async(e)=>{
         e.preventDefault()
-        const objAddress=streetadd+"  "+landmark+"  "+country+"  "+state+"  "+city+"  "+postal;
-
-        if(obj.address===""){
-            let arr=JSON.stringify(obj.address).split(",");
-            arr.pop()
-            console.log(arr)
+        const objAddress={"streetadd":streetadd,"landmark":landmark,"country":country,"state":state,"city":city,"postal":postal}
+        let arr=[]
+        if(obj.address===null){            
             arr.push(objAddress);
-            obj.address=arr.toString()
-            console.log(obj.address)
         }else{
-            let arr=[]
-            arr=JSON.stringify(obj.address).split(",")
-            console.log(arr)
+            
+            arr=JSON.parse(obj.address)
+            console.log("arr",arr)
             arr.push(objAddress)
             console.log(arr)
-            obj.address=arr.toString()
+            // obj.address=arr.toString()
             //convert array into string
         }
-        let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":obj.password,"phonenum":obj.phonenum,"address":obj.address};
-        await axios.put("http://localhost:9999/user",objData).then((res)=>{
+        let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":obj.password,"phonenum":obj.phonenum,"address":JSON.stringify(arr)};
+        await axios.put("http://localhost:9999/user",objData).then((e)=>{
             console.log("success")
-            console.log(res)
-            sessionStorage.setItem("data",JSON.stringify(objData))
+            console.log(e)
+            sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.firstname,"lastname":e.data.lastname,'userid':e.data.userid}))
             navigate("/myaccount/addressbook")
         })
     }

@@ -1,43 +1,60 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 export const AddressBook = () => {
-    console.log("enter")
-    let obj = JSON.parse(sessionStorage.getItem("data"))
-    let objAddress = JSON.stringify(obj.address).split(",")
-    console.log("this")
-    let objFi = []
+
+    const [isloading, setisloading] = useState(true)
+    const [iserror, setiserror] = useState(false)
+    const [obj, setobj] = useState()
+
+    
+    
+    const [objFi, setobjFi] = useState()
+    useEffect(() => {
+        const fetchData = async () => {
+            setiserror(false);
+
+
+            try {
+                const response = await axios('http://localhost:9999/user');
+                response.data.map((e) => {
+                    if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
+                        setobj(e);
+                        setobjFi(JSON.parse(e.address))
+                    }
+                })
+                if (response !== undefined) {
+                    setisloading(false)
+                }
+            } catch (error) {
+                setiserror(true);
+            }
+
+        };
+        fetchData()
+
+    }, [])
+    console.log(obj)
     let navigate=useNavigate()
-    if (objAddress[0] != '""' ) {
-        for (let i in objAddress) {
-            let arr = objAddress[i].split("  ")
-            arr[0] = arr[0].replace('"\\"', '')
-            arr[0] = arr[0].replace('"', '')
-            arr[5] = arr[5].replace('"', '')
-            arr[5] = arr[5].replace('\\', '')
-            objFi.push(arr)
-            console.log(objFi)
-        }
-    }else{
-        console.log("out")
-    }
-    let index=-1;
-    let check=-1;
-    function deleteAddress(e){
-        for (let i=0;i<objAddress.length;i++){
-            
-            check=objAddress[i].includes(e)
-            if(check){
-                index=i;
+   
+       
+    const deleteAddress=async(e)=>{
+
+        const objArr=JSON.parse(obj.address)
+        for(var i =0;i<objArr.length;i++){
+            if(objArr[i].streetadd===e.streetadd&&objArr[i].landmark===e.landmark&&objArr[i].postal===e.postal){
+                objArr.splice(i,1)  
                 break;
             }
-            
         }
-        objAddress.splice(index,1)
-        console.log(objAddress.toString())
-        let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":obj.password,"phonenum":obj.phonenum,"address":objAddress.toString()};
-        console.log(objData)
-        sessionStorage.setItem("data",JSON.stringify(objData))
-        navigate("/myaccount/addressbook")
+
+
+        let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":obj.password,"phonenum":obj.phonenum,"address":JSON.stringify(objArr)};
+        await axios.put("http://localhost:9999/user",objData).then((e)=>{
+            console.log("success")
+            console.log(e)
+            navigate("/myaccount")
+        })
     }
     return (
 
@@ -58,7 +75,8 @@ export const AddressBook = () => {
                 </div>
                 <div className="dash__box dash__box--shadow dash__box--bg-white dash__box--radius u-s-m-b-30">
                     <div className="dash__table-2-wrap gl-scroll">
-                        <table className="dash__table-2">
+                        {objFi===null?<div>Please Enter Address</div>:
+                        isloading===false&&objFi!==null?<table className="dash__table-2">
                             <thead>
                                 <tr>
                                     <th>Action</th>
@@ -69,23 +87,24 @@ export const AddressBook = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {objFi.length>0? objFi.map((e) => {
+                                 {objFi.map((e) => {
                                     return (
                                         <tr>
                                             <td>
-                                                <button className="address-book-edit btn--e-transparent-platinum-b-2" onClick={()=>deleteAddress(e[0])}>Delete</button>
+                                                <button className="address-book-edit btn--e-transparent-platinum-b-2" onClick={()=>deleteAddress(e)}>Delete</button>
                                             </td>
-                                            <td>{e[0] + " " + e[1] + " ," + e[5]}</td>
-                                            <td>{e[3]}</td>
-                                            <td>{e[4]}</td>
-                                            <td>{e[2]}</td>
+                                            {/* {console.log(e)} */}
+                                            <td>{e.streetadd + " " + e.landmark + " ," + e.postal}</td>
+                                            <td>{e.state}</td>
+                                            <td>{e.city}</td>
+                                            <td>{e.country}</td>
                                         </tr>
 
                                     )
-                                }):""}
+                                })}
 
                             </tbody>
-                        </table>
+                        </table>:<div>Loading</div>}
                     </div>
                 </div>
                 <div>
