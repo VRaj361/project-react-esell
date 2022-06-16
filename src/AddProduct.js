@@ -27,68 +27,36 @@ export const AddProduct = () => {
 
 
 
-
-
-    // const res = useSendFiles()
-    
-    // let isloading=false
-    // var count=0;
-    // const [e, sete] = useState()
-    // console.log("e ",e)
-    // useEffect(() => {
-    //     if(e!==undefined){
-    //         console.log("in")
-    //         while(count<e.target.files.length&&isloading===false){
-    //             isloading=true   
-    //             var file = e.target.files[count] //the file
-    //             console.log(file)
-                
-    //             var reader = new FileReader() //this for convert to Base64 
-    //             reader.readAsDataURL(e.target.files[count]) //start conversion...
-    //             reader.onload = async () => { //.. once finished..
-    //                 var rawLog = reader.result.split(',')[1]; //extract only thee file data part
-    //                 var dataSend = { dataReq: { data: rawLog, name: file.name, type: file.type }, fname: "uploadFilesToGoogleDrive" }; 
-    //                 console.log(res.mutate(JSON.stringify(dataSend),{onSettled:()=>{isloading=false;++count}}))
-    //                 console.log(count," ",isloading)    
-                     
-
-    //             }   
-    //         }
-    //     }
-    
-      
-    // }, [e,count,isloading])
-    
-    // const guardarArchivo=async(val)=> {
-    // //     console.log("console.log ", val)
-    // //     sete(val);
-    // //     // if(isloading===false){    
-    // }      
-
-    // const [filename, setfilename] = useState()
-    const [fileall, setfileall] = useState('')
-
-
-
     const setFile = async (e) => {
-        var arr=[]
-        for(var i=0;i<e.target.files.length;i++){
-            console.log("i",e.target.files[i])
-            arr.push(JSON.stringify (e.target.files[i].name))
-        }
-        console.log(arr)
-        setfileall(arr)
+        var arr = []
+        var i = 0;
+        const think = setInterval(() => {
+            if (i === e.target.files.length) {
+                clearInterval(think)
+            }
+            if (i < e.target.files.length) {
+
+                const formData = new FormData()
+                // console.log(filedata)
+                formData.append('file', e.target.files[i])
+                // formData.append('name','this is name')
+                console.log(formData)
+
+
+                axios.post("http://localhost:9999/upload", formData).then((res) => {
+
+                    console.log(res.data)
+                    arr.push(res.data)
+                    i++;
+
+                })
+            }
+
+        }, 3000);
     }
-
-
-
-
 
     const addProduct = async (e) => {
         e.preventDefault()
-        // console.log(ischeck)
-        
-    
         // if (ischeck === true) {
         const objData = {
             "productname": name,
@@ -97,23 +65,24 @@ export const AddProduct = () => {
             "location": location,
             "title": title,
             "rating": rating,
-            "photo":JSON.stringify(fileall),
+
+
+            // "photo":formData,
+            // "photo":JSON.stringify(arr),
+
+
             "userid": parseInt(JSON.parse(sessionStorage.getItem("data")).userid)
         }
         //add photo also
         console.log(objData)
         // }
 
-        await axios.post("http://localhost:9999/product", objData).then((res) => {
-          console.log("success")
-          console.log(res)
-        //   sessionStorage.setItem("data", JSON.stringify(objData));
-        //   navigate("/")
-        })
-
-
-
-
+        // await axios.post("http://localhost:9999/product", objData).then((res) => {
+        //   console.log("success")
+        //   console.log(res)
+        // //   sessionStorage.setItem("data", JSON.stringify(objData));
+        // //   navigate("/")
+        // })
 
     }
 
@@ -195,7 +164,9 @@ export const AddProduct = () => {
                                                 {/* {password} */}
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-phonenumber">Select file *</label>
-                                                    <input  type="file" accept="application/png" id="reg-phonenum"  onChange={(e) => setFile(e)} multiple />
+                                                    <input type="file" accept="application/png" id="reg-phonenum" onChange={(e) => setFile(e)} multiple />
+                                                    {/* <input type="submit" value="Upload" onClick={() => submitData()} /> */}
+
                                                     {/* <input disabled={ischeck ? false : true} type="text"  id="reg-phonenum"  onChange={(e) => setfilename(e.target.value)}  /> */}
                                                 </div>
                                                 {/* {photo !== "" ? ischeck = true : ischeck = false} */}

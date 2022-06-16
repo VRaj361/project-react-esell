@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 export const ManageAccount = () => {
-    let obj = JSON.parse(sessionStorage.getItem("data"))
+
     return (
         <>
 
@@ -17,10 +17,9 @@ export const ManageAccount = () => {
                                         <h2 className="dash__h2 u-s-m-b-8">PERSONAL PROFILE</h2>
                                         <div className="dash__link dash__link--secondary u-s-m-b-8">
                                             <Link to={"/myaccount/editprofile"}>Edit</Link></div>
-                                        <span className="dash__text">{obj.firstname+" "+obj.lastname}</span>
-                                        <span className="dash__text">{obj.email}</span>
-                                        <div className="dash__link dash__link--secondary u-s-m-t-8">
-                                            <a data-modal="modal" data-modal-id="#dash-newsletter">Subscribe Newsletter</a></div>
+                                        <span className="dash__text">If you Required to change your Password.</span>
+                                        <div className="dash__link dash__link--secondary u-s-m-b-8">
+                                            <Link to={"/changepassword"}>Change Password</Link></div>
                                     </div>
                                 </div>
                             </div>
@@ -28,21 +27,21 @@ export const ManageAccount = () => {
                                 <div className="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
                                     <div className="dash__pad-3">
                                         <h2 className="dash__h2 u-s-m-b-8">ADDRESS BOOK</h2>
-                                        <span className="dash__text-2 u-s-m-b-8">Default Shipping Address</span>
+                                        <span className="dash__text-2 u-s-m-b-8">Show Your All Addresses</span>
                                         <div className="dash__link dash__link--secondary u-s-m-b-8">
-                                            <Link to={"/myaccount/editaddress"}>Edit</Link></div>
-                                        <span className="dash__text">4247 Ashford Drive Virginia - VA-20006 - USA</span>
-                                        <span className="dash__text">(+0) 900901904</span>
+                                            <Link to={"/myaccount/addressbook"}>Show</Link></div>
+                                        <span className="dash__text">You can add Shiping Address at Billing Page.</span>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 u-s-m-b-30">
                                 <div className="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
                                     <div className="dash__pad-3">
-                                        <h2 className="dash__h2 u-s-m-b-8">BILLING ADDRESS</h2>
-                                        <span className="dash__text-2 u-s-m-b-8">Default Billing Address</span>
-                                        <span className="dash__text">4247 Ashford Drive Virginia - VA-20006 - USA</span>
-                                        <span className="dash__text">(+0) 900901904</span>
+                                        <h2 className="dash__h2 u-s-m-b-8">OFFERS AND COUPONS</h2>
+                                        <div className="dash__link dash__link--secondary u-s-m-b-8">
+                                            <Link to={"/myaccount/couponoffer"}>Show</Link></div>
+                                            <span className="dash__text">Coupens can Add on the base of Purchase Item.</span>
                                     </div>
                                 </div>
                             </div>
