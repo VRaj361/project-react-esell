@@ -6,6 +6,7 @@ import { Prejs } from './components/Prejs'
 import { SectionLinks } from './components/SectionLinks'
 
 export const Cart = () => {
+    
     return (
         <div>
             <Precss />
@@ -73,80 +74,7 @@ export const Cart = () => {
                                                 </tr>
                                                 {/*====== End - Row ======*/}
                                                 {/*====== Row ======*/}
-                                                <tr>
-                                                    <td>
-                                                        <div className="table-p__box">
-                                                            <div className="table-p__img-wrap">
-                                                                <img className="u-img-fluid" src="images/product/women/product8.jpg" alt="" /></div>
-                                                            <div className="table-p__info">
-                                                                <span className="table-p__name">
-                                                                    <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-                                                                <span className="table-p__category">
-                                                                    <a href="shop-side-version-2.html">Women Clothing</a></span>
-                                                                <ul className="table-p__variant-list">
-                                                                    <li>
-                                                                        <span>Size: 22</span></li>
-                                                                    <li>
-                                                                        <span>Color: Red</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <span className="table-p__price">$125.00</span></td>
-                                                    <td>
-                                                        <div className="table-p__input-counter-wrap">
-                                                            {/*====== Input Counter ======*/}
-                                                            <div className="input-counter">
-                                                                <span className="input-counter__minus fas fa-minus" />
-                                                                <input className="input-counter__text input-counter--text-primary-style" type="text" defaultValue={1} data-min={1} data-max={1000} />
-                                                                <span className="input-counter__plus fas fa-plus" /></div>
-                                                            {/*====== End - Input Counter ======*/}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="table-p__del-wrap">
-                                                            <a className="far fa-trash-alt table-p__delete-link" href="#" /></div>
-                                                    </td>
-                                                </tr>
-                                                {/*====== End - Row ======*/}
-                                                {/*====== Row ======*/}
-                                                <tr>
-                                                    <td>
-                                                        <div className="table-p__box">
-                                                            <div className="table-p__img-wrap">
-                                                                <img className="u-img-fluid" src="images/product/men/product8.jpg" alt="" /></div>
-                                                            <div className="table-p__info">
-                                                                <span className="table-p__name">
-                                                                    <a href="product-detail.html">New Fashion D Nice Elegant</a></span>
-                                                                <span className="table-p__category">
-                                                                    <a href="shop-side-version-2.html">Men Clothing</a></span>
-                                                                <ul className="table-p__variant-list">
-                                                                    <li>
-                                                                        <span>Size: 22</span></li>
-                                                                    <li>
-                                                                        <span>Color: Red</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <span className="table-p__price">$125.00</span></td>
-                                                    <td>
-                                                        <div className="table-p__input-counter-wrap">
-                                                            {/*====== Input Counter ======*/}
-                                                            <div className="input-counter">
-                                                                <span className="input-counter__minus fas fa-minus" />
-                                                                <input className="input-counter__text input-counter--text-primary-style" type="text" defaultValue={1} data-min={1} data-max={1000} />
-                                                                <span className="input-counter__plus fas fa-plus" /></div>
-                                                            {/*====== End - Input Counter ======*/}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="table-p__del-wrap">
-                                                            <a className="far fa-trash-alt table-p__delete-link" href="#" /></div>
-                                                    </td>
-                                                </tr>
+                                                
                                                 {/*====== End - Row ======*/}
                                             </tbody>
                                         </table>

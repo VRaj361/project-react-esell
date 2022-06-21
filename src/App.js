@@ -64,6 +64,7 @@ function App() {
           <Route exact path="/review" element={<Review />} />
           <Route exact path="/productdetails" element={<ProductDetail />} />
           <Route exact path="/viewcart" element={<Cart />} />
+          <Route exact path="/viewcart/:id" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />

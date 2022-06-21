@@ -164,7 +164,7 @@ export const AddProduct = () => {
                                                 {/* {password} */}
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-phonenumber">Select file *</label>
-                                                    <input type="file" accept="application/png" id="reg-phonenum" onChange={(e) => setFile(e)} multiple />
+                                                    <input disabled={ischeck ? false : true} type="file" accept="application/png" id="reg-phonenum" onChange={(e) => setFile(e)} multiple />
                                                     {/* <input type="submit" value="Upload" onClick={() => submitData()} /> */}
 
                                                     {/* <input disabled={ischeck ? false : true} type="text"  id="reg-phonenum"  onChange={(e) => setfilename(e.target.value)}  /> */}
