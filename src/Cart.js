@@ -1,4 +1,6 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
@@ -6,12 +8,74 @@ import { Prejs } from './components/Prejs'
 import { SectionLinks } from './components/SectionLinks'
 
 export const Cart = () => {
+    const [products, setproducts] = useState()
+
+    const [isloading, setisloading] = useState(true)
+    const [iserror, setiserror] = useState(false)
+    var productid = useParams().id;
+    console.log(productid)
+    useEffect(() => {
+        const fetchData = async () => {
+            setiserror(false);
+
+
+            try {
+                // console.log("userid",JSON.parse(sessionStorage.getItem("data")).userid)
+                const response = await axios('http://localhost:9999/products/' + productid + "/" + JSON.parse(sessionStorage.getItem("data")).userid);
+
+                setproducts(response.data);
+                if (response !== undefined) {
+                    setisloading(false)
+                }
+            } catch (error) {
+                setiserror(true);
+            }
+
+        };
+        fetchData()
+
+    }, [])
+    console.log("products",products)
+    // console.log(products)
+    // console.log(iserror)
+    // console.log(isloading)
+
+    //second request for get all product
+    const [products1, setproducts1] = useState()
+    const [isloading1, setisloading1] = useState(true)
+    const [iserror1, setiserror1] = useState(false)
+    // if(isloading===false &&products!=null){
+    useEffect(() => {
+        const fetchData = async () => {
+            setiserror(false);
+
+            if (isloading === false && products !== undefined) {
+                try {
+
+                    const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
+
+                    setproducts1(response);
+                    if (response !== undefined) {
+                        setisloading1(false)
+                    }
+                } catch (error) {
+                    setiserror1(true);
+                }
+            }
+
+        };
+        fetchData()
+
+
+    }, [])
+    console.log("products1",products1)
     
+
     return (
         <div>
             <Precss />
             <Navbar />
-            <SectionLinks nextLink="View Cart"/>
+            <SectionLinks nextLink="View Cart" />
             <div>
                 <div className="u-s-p-b-60">
                     {/*====== Section Intro ======*/}
@@ -34,7 +98,7 @@ export const Cart = () => {
                                 <div className="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
                                     <div className="table-responsive">
                                         <table className="table-p">
-                                            <tbody>
+                                            {products !== undefined && isloading === false && isloading1 === false && products1 !== undefined ? <tbody>
                                                 {/*====== Row ======*/}
                                                 <tr>
                                                     <td>
@@ -58,14 +122,14 @@ export const Cart = () => {
                                                     <td>
                                                         <span className="table-p__price">$125.00</span></td>
                                                     <td>
-                                                        <div className="table-p__input-counter-wrap">
+                                                        { <div className="table-p__input-counter-wrap">
                                                             {/*====== Input Counter ======*/}
-                                                            <div className="input-counter">
+                                                            {/* <div className="input-counter">
                                                                 <span className="input-counter__minus fas fa-minus" />
-                                                                <input className="input-counter__text input-counter--text-primary-style" type="text" defaultValue={1} data-min={1} data-max={1000} />
-                                                                <span className="input-counter__plus fas fa-plus" /></div>
-                                                            {/*====== End - Input Counter ======*/}
-                                                        </div>
+                                                                <input className="input-counter__text input-counter--text-primary-style" type="text" defaultValue={1} data-min={1} data-max={10} />
+                                                                <span className="input-counter__plus fas fa-plus" /></div> */}
+                                                            
+                                                        </div> }
                                                     </td>
                                                     <td>
                                                         <div className="table-p__del-wrap">
@@ -74,9 +138,9 @@ export const Cart = () => {
                                                 </tr>
                                                 {/*====== End - Row ======*/}
                                                 {/*====== Row ======*/}
-                                                
+
                                                 {/*====== End - Row ======*/}
-                                            </tbody>
+                                            </tbody> : ""}
                                         </table>
                                     </div>
                                 </div>

@@ -541,7 +541,7 @@ export const ShopList = () => {
 
                                                                     
                                                                     <div className="product-m__add-cart">
-                                                                        <Link to={`/viewcart/${e.product.id}`} className="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</Link></div>
+                                                                        <Link to={`/viewcart/${e.productid}`} className="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</Link></div>
                                                                 </div>
                                                                 <div className="product-m__content">
                                                                     <div className="product-m__category">
