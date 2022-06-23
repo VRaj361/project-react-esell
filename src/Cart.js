@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
@@ -35,7 +35,7 @@ export const Cart = () => {
         fetchData()
 
     }, [])
-    console.log("products",products)
+    console.log("products", products)
     // console.log(products)
     // console.log(iserror)
     // console.log(isloading)
@@ -45,11 +45,13 @@ export const Cart = () => {
     const [isloading1, setisloading1] = useState(true)
     const [iserror1, setiserror1] = useState(false)
     // if(isloading===false &&products!=null){
+
     useEffect(() => {
+
         const fetchData = async () => {
             setiserror(false);
 
-            if (isloading === false && products !== undefined) {
+            if (isloading === false) {
                 try {
 
                     const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
@@ -67,9 +69,23 @@ export const Cart = () => {
         fetchData()
 
 
-    }, [])
-    console.log("products1",products1)
-    
+    }, [isloading])
+    console.log("products1", products1)
+
+    //products
+    const navigate=useNavigate();
+    const deleteParticularProduct = async(productid)=>{
+        console.log(productid)
+        await axios.get("http://localhost:9999/productdelete/"+productid+"/"+JSON.parse(sessionStorage.getItem("data")).userid).then(()=>{
+            console.log("done")
+        })
+        setTimeout(() => {
+            navigate('/viewcart')
+        }, 1000);
+    }
+
+
+
 
     return (
         <div>
@@ -100,42 +116,47 @@ export const Cart = () => {
                                         <table className="table-p">
                                             {products !== undefined && isloading === false && isloading1 === false && products1 !== undefined ? <tbody>
                                                 {/*====== Row ======*/}
-                                                <tr>
-                                                    <td>
-                                                        <div className="table-p__box">
-                                                            <div className="table-p__img-wrap">
-                                                                <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div>
-                                                            <div className="table-p__info">
-                                                                <span className="table-p__name">
-                                                                    <a href="product-detail.html">Yellow Wireless Headphone</a></span>
-                                                                <span className="table-p__category">
-                                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-                                                                <ul className="table-p__variant-list">
-                                                                    <li>
-                                                                        <span>Size: 22</span></li>
-                                                                    <li>
-                                                                        <span>Color: Red</span></li>
-                                                                </ul>
+                                                {products1.data.map((e)=>{
+                                                    return(
+                                                    <tr>
+                                                        <td>
+                                                            <div className="table-p__box">
+                                                                <div className="table-p__img-wrap">
+                                                                    <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div>
+                                                                <div className="table-p__info">
+                                                                    <span className="table-p__name">
+                                                                        <a href="product-detail.html">{e.productname}</a></span>
+                                                                    <span className="table-p__category">
+                                                                        <a href="shop-side-version-2.html">{e.title}</a></span>
+                                                                    <ul className="table-p__variant-list">
+                                                                        <li>
+                                                                            <span></span></li>
+                                                                        <li>
+                                                                            <span></span></li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <span className="table-p__price">$125.00</span></td>
-                                                    <td>
-                                                        { <div className="table-p__input-counter-wrap">
-                                                            {/*====== Input Counter ======*/}
-                                                            {/* <div className="input-counter">
+                                                        </td>
+                                                        <td>
+                                                            <span className="table-p__price">Rs. {e.price}</span></td>
+                                                        <td>
+                                                            {<div className="table-p__input-counter-wrap">
+                                                                {/*====== Input Counter ======*/}
+                                                                {/* <div className="input-counter">
                                                                 <span className="input-counter__minus fas fa-minus" />
                                                                 <input className="input-counter__text input-counter--text-primary-style" type="text" defaultValue={1} data-min={1} data-max={10} />
                                                                 <span className="input-counter__plus fas fa-plus" /></div> */}
-                                                            
-                                                        </div> }
-                                                    </td>
-                                                    <td>
-                                                        <div className="table-p__del-wrap">
-                                                            <a className="far fa-trash-alt table-p__delete-link" href="#" /></div>
-                                                    </td>
-                                                </tr>
+
+                                                            </div>}
+                                                        </td>
+                                                        <td>
+                                                            <div className="table-p__del-wrap">
+                                                                <button className="far fa-trash-alt table-p__delete-link"  onClick={()=>deleteParticularProduct(e.productid)}></button></div>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                )})}
+
                                                 {/*====== End - Row ======*/}
                                                 {/*====== Row ======*/}
 
