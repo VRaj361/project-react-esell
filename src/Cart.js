@@ -1,9 +1,10 @@
+import { paste } from '@testing-library/user-event/dist/paste'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
-import { Precss } from './components/Precss'
+import { Precss } from './components/Precss' 
 import { Prejs } from './components/Prejs'
 import { SectionLinks } from './components/SectionLinks'
 
@@ -12,30 +13,36 @@ export const Cart = () => {
 
     const [isloading, setisloading] = useState(true)
     const [iserror, setiserror] = useState(false)
+
+    // const [paramValue, setparamValue] = useState()
     var productid = useParams().id;
-    console.log(productid)
+    // setparamValue(productid)
+    // console.log(productid)
     useEffect(() => {
         const fetchData = async () => {
             setiserror(false);
 
+            if(productid!==undefined){
+                try {
+                    // console.log("userid",JSON.parse(sessionStorage.getItem("data")).userid)
+                    const response = await axios('http://localhost:9999/products/' + productid + "/" + JSON.parse(sessionStorage.getItem("data")).userid);
 
-            try {
-                // console.log("userid",JSON.parse(sessionStorage.getItem("data")).userid)
-                const response = await axios('http://localhost:9999/products/' + productid + "/" + JSON.parse(sessionStorage.getItem("data")).userid);
-
-                setproducts(response.data);
-                if (response !== undefined) {
-                    setisloading(false)
+                    setproducts(response.data);
+                    if (response !== undefined) {
+                        setisloading(false)
+                    }
+                } catch (error) {
+                    setiserror(true);
                 }
-            } catch (error) {
-                setiserror(true);
+            }else{
+                setproducts("")
             }
 
         };
         fetchData()
 
     }, [])
-    console.log("products", products)
+    // console.log("products", products)
     // console.log(products)
     // console.log(iserror)
     // console.log(isloading)
@@ -45,18 +52,31 @@ export const Cart = () => {
     const [isloading1, setisloading1] = useState(true)
     const [iserror1, setiserror1] = useState(false)
     // if(isloading===false &&products!=null){
-
+    // console.log("product ",products)   
     useEffect(() => {
-
+        
         const fetchData = async () => {
-            setiserror(false);
-
-            if (isloading === false) {
+            setiserror1(false);
+            // console.log(productid,"thadh")
+            if (isloading === false&&products!==undefined) {
                 try {
 
                     const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
 
                     setproducts1(response);
+                    if (response !== undefined) {
+                        setisloading1(false)
+                    }
+                } catch (error) {
+                    setiserror1(true);
+                }
+            }else if (productid===undefined){
+                try {
+
+                    const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
+
+                    setproducts1(response);
+                    // console.log("productid 1" ,products1)
                     if (response !== undefined) {
                         setisloading1(false)
                     }
@@ -70,18 +90,18 @@ export const Cart = () => {
 
 
     }, [isloading])
-    console.log("products1", products1)
+    // console.log("products1", products1)
 
     //products
     const navigate=useNavigate();
     const deleteParticularProduct = async(productid)=>{
-        console.log(productid)
+        // console.log(productid)
         await axios.get("http://localhost:9999/productdelete/"+productid+"/"+JSON.parse(sessionStorage.getItem("data")).userid).then(()=>{
-            console.log("done")
+            // console.log("done")
         })
-        setTimeout(() => {
-            navigate('/viewcart')
-        }, 1000);
+        // setTimeout(() => {
+            navigate('/newarrival')
+        // }, 2000);
     }
 
 
@@ -114,7 +134,7 @@ export const Cart = () => {
                                 <div className="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
                                     <div className="table-responsive">
                                         <table className="table-p">
-                                            {products !== undefined && isloading === false && isloading1 === false && products1 !== undefined ? <tbody>
+                                            { isloading1 === false && products1 !== undefined ? <tbody>
                                                 {/*====== Row ======*/}
                                                 {products1.data.map((e)=>{
                                                     return(
