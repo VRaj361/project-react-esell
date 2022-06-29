@@ -79,6 +79,9 @@ export const Cart = () => {
                     // console.log("productid 1" ,products1)
                     if (response !== undefined) {
                         setisloading1(false)
+                        if(response.data===''){
+                            navigate('/emptycart')
+                        }
                     }
                 } catch (error) {
                     setiserror1(true);
@@ -90,7 +93,7 @@ export const Cart = () => {
 
 
     }, [isloading])
-    // console.log("products1", products1)
+    
 
     //products
     const navigate=useNavigate();

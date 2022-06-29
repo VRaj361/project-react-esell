@@ -31,6 +31,7 @@ import { Signout } from './Signout';
 import { ChangePassword } from './ChangePassword';
 import { NewPassword } from './NewPassword';
 import {AddProduct} from './AddProduct';
+import { EmptyCart } from './EmptyCart';
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
           <Route exact path='/changepassword' element={<ChangePassword />} />
           <Route exact path='/newpassword' element={<NewPassword />} />
           <Route exact path='/addproduct' element={<AddProduct />} />
+          <Route exact path='/emptycart' element={<EmptyCart />} />
           
 
 

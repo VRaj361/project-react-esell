@@ -174,6 +174,7 @@ export const Navbar = () => {
                                     <div className="ah-lg-mode">
                                         <span className="ah-close">✕ Close</span>
                                         {/*====== List ======*/}
+                                            {data!==null?
                                         <ul className="ah-list ah-list--design1 ah-list--link-color-secondary">
                                             <li>
                                                 <Link to={"/wishlist"}><i className="far fa-heart" /></Link></li>
@@ -269,6 +270,7 @@ export const Navbar = () => {
                                                 {/*====== End - Dropdown ======*/}
                                             </li>
                                         </ul>
+                                            :""}
                                         {/*====== End - List ======*/}
                                     </div>
                                     {/*====== End - Menu ======*/}
