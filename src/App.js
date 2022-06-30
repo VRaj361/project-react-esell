@@ -63,7 +63,7 @@ function App() {
           <Route exact path="/wishlist" element={<Wishlist />} />
           <Route exact path="/faq" element={<FAQ />} />
           <Route exact path="/review" element={<Review />} />
-          <Route exact path="/productdetails" element={<ProductDetail />} />
+          <Route exact path="/productdetails/:id" element={<ProductDetail />} />
           <Route exact path="/viewcart" element={<Cart />} />
           <Route exact path="/viewcart/:id" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />

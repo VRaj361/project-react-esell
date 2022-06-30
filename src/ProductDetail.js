@@ -1,15 +1,53 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
+import axios from 'axios'
 
 
 export const ProductDetail = () => {
+  
+  const [products, setproducts] = useState()
+
+    const [isloading, setisloading] = useState(true)
+    const [iserror, setiserror] = useState(false)
+
+    // const [paramValue, setparamValue] = useState()
+    var productid = useParams().id;
+    // setparamValue(productid)
+    // console.log(productid)
+    useEffect(() => {
+        const fetchData = async () => {
+            setiserror(false);
+
+            if(productid!==undefined){
+                try {
+                    // console.log("userid",JSON.parse(sessionStorage.getItem("data")).userid)
+                    const response = await axios('http://localhost:9999/product/' + productid );
+
+                    setproducts(response.data);
+                    if (response !== undefined) {
+                      console.log(response.data)
+                        setisloading(false)
+                    }
+                } catch (error) {
+                    setiserror(true);
+                }
+            }else{
+                setproducts("")
+            }
+
+        };
+        fetchData()
+
+    }, [])
   return (
     <div>
         <Precss/>
         <Navbar/>
+        {products!==undefined?
         <div className="app-content">
         {/*====== Section 1 ======*/}
         <div className="u-s-p-t-90">
@@ -70,10 +108,10 @@ export const ProductDetail = () => {
                 {/*====== Product Right Side Details ======*/}
                 <div className="pd-detail">
                   <div>
-                    <span className="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span></div>
+                    <span className="pd-detail__name">{products.productname}</span></div>
                   <div>
                     <div className="pd-detail__inline">
-                      <span className="pd-detail__price">$6.99</span>
+                      <span className="pd-detail__price">Rs. {products.price}</span>
                       <span className="pd-detail__discount">(76% OFF)</span><del className="pd-detail__del">$28.97</del></div>
                   </div>
                   <div className="u-s-m-b-15">
@@ -81,13 +119,9 @@ export const ProductDetail = () => {
                       <span className="pd-detail__review u-s-m-l-4">
                         <a data-click-scroll="#view-review">23 Reviews</a></span></div>
                   </div>
+                  
                   <div className="u-s-m-b-15">
-                    <div className="pd-detail__inline">
-                      <span className="pd-detail__stock">200 in stock</span>
-                      <span className="pd-detail__left">Only 2 left</span></div>
-                  </div>
-                  <div className="u-s-m-b-15">
-                    <span className="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                    <span className="pd-detail__preview-desc">{products.description}</span></div>
                   <div className="u-s-m-b-15">
                     <div className="pd-detail__inline">
                       <span className="pd-detail__click-wrap"><i className="far fa-heart u-s-m-r-6" />
@@ -119,12 +153,12 @@ export const ProductDetail = () => {
                       <div className="pd-detail-inline-2">
                         <div className="u-s-m-b-15">
                           {/*====== Input Counter ======*/}
-                          <div className="input-counter">
+                          {/* <div className="input-counter">
                             <span className="input-counter__minus fas fa-minus" />
                             <input className="input-counter__text input-counter--text-primary-style" type="text" defaultValue={1} data-min={1} data-max={1000} />
                             <span className="input-counter__plus fas fa-plus" /></div>
                           {/*====== End - Input Counter ======*/}
-                        </div>
+                        </div> 
                         <div className="u-s-m-b-15">
                           <button className="btn btn--e-brand-b-2" type="submit">Add to Cart</button></div>
                       </div>
@@ -657,8 +691,8 @@ export const ProductDetail = () => {
         </div>
         {/*====== End - Section 1 ======*/}
       </div>
+      :""}
       {/*====== End - App Content ======*/}
-
       <Footer/>
       <Prejs/>
       

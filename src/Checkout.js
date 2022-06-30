@@ -10,7 +10,7 @@ export const Checkout = () => {
     const [products1, setproducts1] = useState()
     const [isloading1, setisloading1] = useState(true)
     const [iserror1, setiserror1] = useState(false)
-    // const [finalAmount, setfinalAmount] = useState()
+    const [finalAmount, setfinalAmount] = useState()
     // const [deliveryCharge, setdeliveryCharge] = useState(0)
     // const [originalAmount, setoriginalAmount] = useState(0)
     var sum = 0;
@@ -20,12 +20,12 @@ export const Checkout = () => {
             try {
                 const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
                 setproducts1(response);
+                
+
                 if (response !== undefined) {
+                    
                     setisloading1(false)
                     
-                    products1.data.map((e) => {
-                        sum = parseInt(sum) + parseInt(e.price)
-                    })
                     
                     // if (sum > 500) {
                         
@@ -166,15 +166,15 @@ export const Checkout = () => {
                                                             
                                                             <tr>
                                                                 <td>SUBTOTAL</td>
-                                                                <td>Rs. {sum}</td>
+                                                                <td>Rs. {finalAmount}</td>
                                                             </tr>
-                                                            <tr>
+                                                            {/* <tr>
                                                                 <td>Delivery Charge</td>
                                                                 <td> {sum<500?"Rs.50":""}</td>
-                                                            </tr>
+                                                            </tr> */}
                                                             <tr>
                                                                 <td>GRAND TOTAL</td>
-                                                                <td>Rs. {sum>500?sum:sum+50}</td>
+                                                                <td>Rs. {finalAmount}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
