@@ -10,33 +10,19 @@ export const Checkout = () => {
     const [products1, setproducts1] = useState()
     const [isloading1, setisloading1] = useState(true)
     const [iserror1, setiserror1] = useState(false)
-    const [finalAmount, setfinalAmount] = useState()
-    // const [deliveryCharge, setdeliveryCharge] = useState(0)
-    // const [originalAmount, setoriginalAmount] = useState(0)
-    var sum = 0;
+
     useEffect(() => {
         const fetchData = async () => {
             setiserror1(false);
             try {
                 const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
                 setproducts1(response);
-                
+
 
                 if (response !== undefined) {
-                    
+
                     setisloading1(false)
-                    
-                    
-                    // if (sum > 500) {
-                        
-                    //     setfinalAmount(sum)
-                    //     setoriginalAmount(sum)
-                    // } else {
-                        
-                    //     // setdeliveryCharge(50)
-                    //     setfinalAmount(sum+50)
-                    //     setoriginalAmount(sum)
-                    // }
+
                 }
             } catch (error) {
                 setiserror1(true);
@@ -44,18 +30,82 @@ export const Checkout = () => {
         };
         fetchData()
     }, [])
+
+
+
+    const [isloading, setisloading] = useState(true)
+    const [iserror, setiserror] = useState(false)
+    const [obj, setobj] = useState()
+
+
+
+    const [objFi, setobjFi] = useState()
+    useEffect(() => {
+        const fetchData = async () => {
+            setiserror(false);
+
+
+            try {
+                const response = await axios('http://localhost:9999/user');
+                response.data.map((e) => {
+                    if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
+                        // setobj(e);
+                        setobjFi(JSON.parse(e.address))
+                    }
+                })
+                if (response !== undefined) {
+                    setisloading(false)
+                }
+            } catch (error) {
+                setiserror(true);
+            }
+
+        }; 
+        fetchData()
+
+    }, [products1])
+
+    // console.log("objFi ",objFi)
+
+
     const navigate = useNavigate()
     const deleteParticularProduct = async (productid) => {
         await axios.get("http://localhost:9999/productdelete/" + productid + "/" + JSON.parse(sessionStorage.getItem("data")).userid).then(() => {
         })
-     
+
         window.location.reload()
         navigate('/checkout')
-     
+
+    }
+
+    //for form detail in bill
+    const [billname, setbillname] = useState()
+    const [ordernote, setordernote] = useState()
+    const [address, setaddress] = useState()
+
+    const [paymentMethod, setpaymentmethod] = useState()
+
+
+    var is_check=false
+    const saveDetail = ()=>{
+    
+        // console.log(billname)
+        // console.log(ordernote)
+        console.log(address)
+        is_check=true
     }
 
 
 
+    const placeOrder = ()=>{
+        if(is_check===true){
+            //call database to store the values
+            var obj={"billname":billname,"ordernote":ordernote,"address":address,"paymentmethod":paymentMethod}
+            console.log(obj)
+        }else{
+            alert("Please Enter Bill name and select the Address")
+        }
+    }
 
 
     return (
@@ -114,15 +164,40 @@ export const Checkout = () => {
                                                 <div className="gl-inline">
                                                     <div className="u-s-m-b-15">
                                                         <label className="gl-label" htmlFor="billing-lname">ENTER NAME FOR BILL *</label>
-                                                        <input className="input-text input-text--primary-style" type="text" id="billing-lname" data-bill /></div>
+                                                        <input required className="input-text input-text--primary-style" type="text" id="billing-lname" onChange={(e)=>setbillname(e.target.value)} /></div>
                                                 </div>
                                                 {/*====== End - Name ======*/}
 
                                                 {/*====== Order Note ======*/}
                                                 <div className="u-s-m-b-10">
-                                                    <label className="gl-label" htmlFor="order-note">ORDER NOTE</label><textarea className="text-area text-area--primary-style" id="order-note" defaultValue={""} /></div>
+                                                    <label className="gl-label" htmlFor="order-note">ORDER NOTE</label><textarea className="text-area text-area--primary-style" id="order-note" onChange={(e)=>setordernote(e.target.value)}/>
+                                                </div>
+
+                                                {/* ====== Address ========= */}
+                                                {isloading===false&&objFi!==null?
+                                                    <div className="u-s-m-b-10">
+                                                        <label className="gl-label" htmlFor="order-note">Choose Address</label>
+                                                        {objFi.map((e) => {
+                                                            return (
+                                                                <div className="radio-box">
+                                                                    <input type="radio" name="address" value={e.streetadd+' '+e.landmark+' '+' '+e.city+' '+e.state+' '+e.country+' '+e.postal} onChange={(a)=>setaddress(a.target.value)}/>
+                                                                    <div className="radio-box__state radio-box__state--primary">
+                                                                        <label className="radio-box__label" htmlFor="cash-on-delivery" >{e.streetadd + " " + e.landmark + " ," + e.postal}</label>
+                                                                        <label className="radio-box__label" htmlFor="cash-on-delivery" >{e.state}</label>
+                                                                        <label className="radio-box__label" htmlFor="cash-on-delivery" >{e.city}</label>
+                                                                        <label className="radio-box__label" htmlFor="cash-on-delivery">{e.country}</label>
+
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        })}
+
+                                                    </div>
+
+                                               :""}
+
                                                 <div>
-                                                    <button className="btn btn--e-transparent-brand-b-2" type="submit">SAVE</button></div>
+                                                    <button className="btn btn--e-transparent-brand-b-2" onClick={()=>saveDetail()} type="button" >SAVE</button></div>
                                                 {/*====== End Order Note  ======*/}
                                             </div>
                                         </form>
@@ -159,7 +234,7 @@ export const Checkout = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="o-summary__section u-s-m-b-30">
+                                            {/* <div className="o-summary__section u-s-m-b-30">
                                                 <div className="o-summary__box">
                                                     <table className="o-summary__table">
                                                         <tbody>
@@ -168,18 +243,21 @@ export const Checkout = () => {
                                                                 <td>SUBTOTAL</td>
                                                                 <td>Rs. {finalAmount}</td>
                                                             </tr>
-                                                            {/* <tr>
+                                                            <tr>
                                                                 <td>Delivery Charge</td>
                                                                 <td> {sum<500?"Rs.50":""}</td>
-                                                            </tr> */}
+                                                            </tr>
                                                             <tr>
                                                                 <td>GRAND TOTAL</td>
                                                                 <td>Rs. {finalAmount}</td>
                                                             </tr>
+                                                            <tr>
+                                                                <td><button onClick={()=>setOnclickprice()}>dfklashkj</button></td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                            </div>
+                                                </div> 
+                                                    </div>*/}
                                             <div className="o-summary__section u-s-m-b-30">
                                                 <div className="o-summary__box">
                                                     <h1 className="checkout-f__h1">PAYMENT INFORMATION</h1>
@@ -187,28 +265,19 @@ export const Checkout = () => {
                                                         <div className="u-s-m-b-10">
                                                             {/*====== Radio Box ======*/}
                                                             <div className="radio-box">
-                                                                <input type="radio" id="cash-on-delivery" name="payment" />
+                                                                <input type="radio" id="cod" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)} />
                                                                 <div className="radio-box__state radio-box__state--primary">
                                                                     <label className="radio-box__label" htmlFor="cash-on-delivery">Cash on Delivery</label></div>
                                                             </div>
                                                             {/*====== End - Radio Box ======*/}
                                                             <span className="gl-text u-s-m-t-6">Pay Upon Cash on delivery. (This service is only available for some countries)</span>
                                                         </div>
-                                                        <div className="u-s-m-b-10">
-                                                            {/*====== Radio Box ======*/}
-                                                            <div className="radio-box">
-                                                                <input type="radio" id="direct-bank-transfer" name="payment" />
-                                                                <div className="radio-box__state radio-box__state--primary">
-                                                                    <label className="radio-box__label" htmlFor="direct-bank-transfer">Direct Bank Transfer</label></div>
-                                                            </div>
-                                                            {/*====== End - Radio Box ======*/}
-                                                            <span className="gl-text u-s-m-t-6">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</span>
-                                                        </div>
+                                                        
 
                                                         <div className="u-s-m-b-10">
                                                             {/*====== Radio Box ======*/}
                                                             <div className="radio-box">
-                                                                <input type="radio" id="pay-with-card" name="payment" />
+                                                                <input type="radio" id="paywithcard" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)}  />
                                                                 <div className="radio-box__state radio-box__state--primary">
                                                                     <label className="radio-box__label" htmlFor="pay-with-card">Pay With Credit / Debit Card</label></div>
                                                             </div>
@@ -218,25 +287,16 @@ export const Checkout = () => {
                                                         <div className="u-s-m-b-10">
                                                             {/*====== Radio Box ======*/}
                                                             <div className="radio-box">
-                                                                <input type="radio" id="pay-pal" name="payment" />
+                                                                <input type="radio" id="paypal" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)} />
                                                                 <div className="radio-box__state radio-box__state--primary">
                                                                     <label className="radio-box__label" htmlFor="pay-pal">Pay Pal</label></div>
                                                             </div>
                                                             {/*====== End - Radio Box ======*/}
                                                             <span className="gl-text u-s-m-t-6">When you click "Place Order" below we'll take you to Paypal's site to set up your billing information.</span>
                                                         </div>
-                                                        <div className="u-s-m-b-15">
-                                                            {/*====== Check Box ======*/}
-                                                            <div className="check-box">
-                                                                <input type="checkbox" id="term-and-condition" />
-                                                                <div className="check-box__state check-box__state--primary">
-                                                                    <label className="check-box__label" htmlFor="term-and-condition">I consent to the</label></div>
-                                                            </div>
-                                                            {/*====== End - Check Box ======*/}
-                                                            <a className="gl-link">Terms of Service.</a>
-                                                        </div>
+                                                       
                                                         <div>
-                                                            <button className="btn btn--e-brand-b-2" type="submit">PLACE ORDER</button></div>
+                                                            <button className="btn btn--e-brand-b-2" type="button" onClick={()=>placeOrder()}>PLACE ORDER</button></div>
                                                     </form>
                                                 </div>
                                             </div>

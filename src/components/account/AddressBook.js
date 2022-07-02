@@ -51,8 +51,8 @@ export const AddressBook = () => {
 
         let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":obj.password,"phonenum":obj.phonenum,"address":JSON.stringify(objArr)};
         await axios.put("http://localhost:9999/user",objData).then((e)=>{
-            console.log("success")
-            console.log(e)
+            // console.log("success")
+            // console.log(e)
             navigate("/myaccount")
         })
     }
