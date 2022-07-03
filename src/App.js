@@ -32,6 +32,7 @@ import { ChangePassword } from './ChangePassword';
 import { NewPassword } from './NewPassword';
 import {AddProduct} from './AddProduct';
 import { EmptyCart } from './EmptyCart';
+import { OrderConfirm } from './OrderConfirm';
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
           <Route exact path='/newpassword' element={<NewPassword />} />
           <Route exact path='/addproduct' element={<AddProduct />} />
           <Route exact path='/emptycart' element={<EmptyCart />} />
+          <Route exact path='/billconfirm' element={<OrderConfirm />} />
           
 
 
