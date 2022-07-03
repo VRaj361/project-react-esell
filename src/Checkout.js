@@ -97,11 +97,16 @@ export const Checkout = () => {
 
 
 
-    const placeOrder = ()=>{
+    const placeOrder = async()=>{
         if(is_check===true){
-            //call database to store the values
-            var obj={"billname":billname,"ordernote":ordernote,"address":address,"paymentmethod":paymentMethod}
+            var obj={"billname":billname,"ordernote":ordernote,"address":address,"payinfo":paymentMethod,"userid":JSON.parse(sessionStorage.getItem("data")).userid}
             console.log(obj)
+            await axios.post("http://localhost:9999/order",obj).then((res)=>{
+                // console.log(res)
+                if(res!==undefined){
+                    navigate("/billconfirm")
+                }
+            })
         }else{
             alert("Please Enter Bill name and select the Address")
         }
@@ -265,7 +270,7 @@ export const Checkout = () => {
                                                         <div className="u-s-m-b-10">
                                                             {/*====== Radio Box ======*/}
                                                             <div className="radio-box">
-                                                                <input type="radio" id="cod" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)} />
+                                                                <input type="radio" value="cod" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)} />
                                                                 <div className="radio-box__state radio-box__state--primary">
                                                                     <label className="radio-box__label" htmlFor="cash-on-delivery">Cash on Delivery</label></div>
                                                             </div>
@@ -277,7 +282,7 @@ export const Checkout = () => {
                                                         <div className="u-s-m-b-10">
                                                             {/*====== Radio Box ======*/}
                                                             <div className="radio-box">
-                                                                <input type="radio" id="paywithcard" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)}  />
+                                                                <input type="radio" value="paywithcard" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)}  />
                                                                 <div className="radio-box__state radio-box__state--primary">
                                                                     <label className="radio-box__label" htmlFor="pay-with-card">Pay With Credit / Debit Card</label></div>
                                                             </div>
@@ -287,7 +292,7 @@ export const Checkout = () => {
                                                         <div className="u-s-m-b-10">
                                                             {/*====== Radio Box ======*/}
                                                             <div className="radio-box">
-                                                                <input type="radio" id="paypal" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)} />
+                                                                <input type="radio" value="paypal" name="payment" onChange={(e)=>setpaymentmethod(e.target.value)} />
                                                                 <div className="radio-box__state radio-box__state--primary">
                                                                     <label className="radio-box__label" htmlFor="pay-pal">Pay Pal</label></div>
                                                             </div>
