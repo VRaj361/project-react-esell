@@ -4,9 +4,10 @@ import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { SectionLinks } from './components/SectionLinks'
+import { SetToast } from './components/SetToast'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-export const Checkout = () => {
+export const Checkout = (props) => {
     const [products1, setproducts1] = useState()
     const [isloading1, setisloading1] = useState(true)
     const [iserror1, setiserror1] = useState(false)
@@ -86,29 +87,36 @@ export const Checkout = () => {
     const [paymentMethod, setpaymentmethod] = useState()
 
 
-    var is_check=false
+    // let is_check=false
+    const [is_check, setis_check] = useState(false)
     const saveDetail = ()=>{
-    
-        // console.log(billname)
-        // console.log(ordernote)
-        console.log(address)
-        is_check=true
+        // console.log(address)
+        setis_check(true)
+        // console.log(is_check)
     }
 
 
 
     const placeOrder = async()=>{
+        // console.log(is_check)
         if(is_check===true){
-            var obj={"billname":billname,"ordernote":ordernote,"address":address,"payinfo":paymentMethod,"userid":JSON.parse(sessionStorage.getItem("data")).userid}
-            console.log(obj)
+            var obj={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod,"userid":JSON.parse(sessionStorage.getItem("data")).userid}
+            // console.log(obj)
             await axios.post("http://localhost:9999/order",obj).then((res)=>{
-                // console.log(res)
                 if(res!==undefined){
-                    navigate("/billconfirm")
+                    if(res.data===false){
+                        // alert("Please do Order After One order can Dispatch")
+                        props.toastClick("Please do Order After one order can Dispatch")
+                        navigate("/viewcart")
+                    }else{
+                        props.toastClick("Order Placed")
+                        navigate("/billconfirm")
+                    }
+             
                 }
             })
         }else{
-            alert("Please Enter Bill name and select the Address")
+            props.toastClick("Please Enter Bill name and select the Address")
         }
     }
 
@@ -239,30 +247,7 @@ export const Checkout = () => {
                                                 </div>
                                             </div>
 
-                                            {/* <div className="o-summary__section u-s-m-b-30">
-                                                <div className="o-summary__box">
-                                                    <table className="o-summary__table">
-                                                        <tbody>
-                                                            
-                                                            <tr>
-                                                                <td>SUBTOTAL</td>
-                                                                <td>Rs. {finalAmount}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Delivery Charge</td>
-                                                                <td> {sum<500?"Rs.50":""}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>GRAND TOTAL</td>
-                                                                <td>Rs. {finalAmount}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><button onClick={()=>setOnclickprice()}>dfklashkj</button></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div> 
-                                                    </div>*/}
+                                            
                                             <div className="o-summary__section u-s-m-b-30">
                                                 <div className="o-summary__box">
                                                     <h1 className="checkout-f__h1">PAYMENT INFORMATION</h1>

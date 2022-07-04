@@ -36,9 +36,9 @@ export const ShopList = () => {
         fetchData()
 
     }, [])
-    console.log(products)
-    console.log(iserror)
-    console.log(isloading)
+    // console.log(products)
+    // console.log(iserror)
+    // console.log(isloading)
 
 
 

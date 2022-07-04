@@ -103,6 +103,7 @@ export const Cart = () => {
             // console.log("done")
         })
         // setTimeout(() => {
+          
             navigate('/newarrival')
         // }, 2000);
     }
@@ -205,6 +206,9 @@ export const Cart = () => {
                                         <div className="route-box__g1">
                                             <Link className="route-box__link" to={'/newarrival'}><i className="fas fa-long-arrow-alt-left" />
                                                 <span>CONTINUE SHOPPING</span></Link></div>
+                                        <div className="">
+                                            <Link className="route-box__link" to={'/checkout'}><i class="fas fa-shopping-cart"></i>
+                                                <span>Place Order</span></Link></div>
                                         <div className="route-box__g2">
                                             <button style={{border:'none'}} onClick={()=>clearCartData()} className="route-box__link" ><i className="fas fa-trash" />
                                                 <span>CLEAR CART</span></button>

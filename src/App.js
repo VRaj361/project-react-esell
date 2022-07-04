@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useState } from 'react';
 import { Home } from './Home';
 import { Login } from './Login';
 import { Signup } from './Signup';
@@ -33,11 +33,17 @@ import { NewPassword } from './NewPassword';
 import {AddProduct} from './AddProduct';
 import { EmptyCart } from './EmptyCart';
 import { OrderConfirm } from './OrderConfirm';
+import {SetToast} from './components/SetToast'
 
 
 function App() {
   let user=true
-  return (
+  const [setToast, setsetToast] = useState(null)//for toast 
+  const toastClick=(mess)=>{
+    // console.log("in");
+    setsetToast(mess)
+  }
+  return ( 
     <div className="App " >
       <BrowserRouter>
         {/* <Home /> */}
@@ -56,7 +62,7 @@ function App() {
         {/* <Review/> */}
         {/* <Cart/> */}
 
-
+        <SetToast setToast={setToast}></SetToast>
         <Routes>
           <Route exact path="/about" element={<About />} />
           <Route exact path="/" element={<Home />} />
@@ -67,7 +73,7 @@ function App() {
           <Route exact path="/productdetails/:id" element={<ProductDetail />} />
           <Route exact path="/viewcart" element={<Cart />} />
           <Route exact path="/viewcart/:id" element={<Cart />} />
-          <Route exact path="/checkout" element={<Checkout />} />
+          <Route exact path="/checkout" element={<Checkout toastClick={toastClick}/>} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/forgetpassword" element={<ForgetPassword />} />
