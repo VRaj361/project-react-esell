@@ -150,7 +150,9 @@ export const Navbar = () => {
                                             </li>
                                             <li className="">
                                                 <Link to={'/contact'}>CONTACT US</Link>
-
+                                            </li>
+                                            <li className="">
+                                                <Link to={'/auctionhome'}>AUCTION</Link>
                                             </li>
                                             <li className="">
                                                 <Link to={'/about'}>ABOUT US</Link>

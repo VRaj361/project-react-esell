@@ -34,6 +34,7 @@ import {AddProduct} from './AddProduct';
 import { EmptyCart } from './EmptyCart';
 import { OrderConfirm } from './OrderConfirm';
 import {SetToast} from './components/SetToast'
+import { AuctionHome } from './AuctionHome';
 
 
 function App() {
@@ -84,6 +85,7 @@ function App() {
           <Route exact path='/addproduct' element={<AddProduct />} />
           <Route exact path='/emptycart' element={<EmptyCart />} />
           <Route exact path='/billconfirm' element={<OrderConfirm />} />
+          <Route exact path='/auctionhome' element={<AuctionHome />} />
           
 
 
