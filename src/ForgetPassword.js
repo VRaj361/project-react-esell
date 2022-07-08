@@ -1,11 +1,31 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { SectionLinks } from './components/SectionLinks'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
 export const ForgetPassword = () => {
+    const navigate=useNavigate()
+    const [email, setemail] = useState("")
+    const checkEmail=async(e)=>{
+        e.preventDefault();
+        await axios.get("http://localhost:9999/user").then((data) => {
+            data.data.map((e)=>{
+                if(email===e.email){
+                    console.log("done")
+                    axios.post("http://localhost:9999/sendemail",{"email":email}).then((data)=>{
+                        console.log(data)
+                        if(data.data===true){
+                            console.log("email send")
+                        }
+                    })
+                }
+            })
+        })
+    }
     return (
         <div>
             <Precss/>
@@ -27,10 +47,10 @@ export const ForgetPassword = () => {
                                     <div className="l-f-o__pad-box">
                                         <h1 className="gl-h1">PASSWORD RESET</h1>
                                         <span className="gl-text u-s-m-b-30">Enter your email or username below and we will send you a link to reset your password.</span>
-                                        <form className="l-f-o__form">
+                                        <form className="l-f-o__form" onSubmit={checkEmail}>
                                             <div className="u-s-m-b-30">
                                                 <label className="gl-label" htmlFor="reset-email">E-MAIL *</label>
-                                                <input className="input-text input-text--primary-style" type="text" id="reset-email" placeholder="Enter E-mail" /></div>
+                                                <input className="input-text input-text--primary-style" type="text" id="reset-email" placeholder="Enter E-mail" onChange={(e)=>setemail(e.target.value)}/></div>
                                             <div className="u-s-m-b-30">
                                                 <button className="btn btn--e-transparent-brand-b-2" type="submit">SUBMIT</button></div>
                                             <div className="u-s-m-b-30">

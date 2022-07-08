@@ -2,13 +2,16 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
-import { SectionLinks } from './components/SectionLinks'
+
 
 
 export const AuctionHome = () => {
+
+  
   return (
     <div>
     <Helmet>
+
         <link href="../img/favicon.png" rel="icon"/>
         <link href="../img/apple-touch-icon.png" rel="apple-touch-icon"/>
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"/>
@@ -540,7 +543,7 @@ export const AuctionHome = () => {
       </div>
     </section>
     {/*/ News End /*/}
-    <a href="#" className="back-to-top"><i className="fa fa-chevron-up" /></a>
+    {/* <a href="#" className="back-to-top"><i className="fa fa-chevron-up" /></a> */}
     
     {/* JavaScript Libraries */}
     {/* Contact Form JavaScript File */}
