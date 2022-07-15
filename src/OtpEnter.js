@@ -17,17 +17,20 @@ export const OtpEnter = () => {
     const getUserOTP = (e) => {
         e.preventDefault()
         let optWhole = first + second + third + fourth + fifth + sixth;
-        console.log(optWhole)
+        // console.log(optWhole)
         const cookies = new Cookies();
         const arr = cookies.get('otpResetEmail').split(" ")
-        console.log(arr[0]+" "+arr[1])
+        // console.log(arr[0]+" "+arr[1])
         //console.log(cookies.get('otpResetEmail'));
         if(arr[0]===optWhole){
             // console.log("email for password")
             axios.post("http://localhost:9999/sendemailu",{"userid":parseInt(arr[1])}).then((data)=>{
-                console.log(data)
+                // console.log(data)
+                if(data.data===true){
+                    navigate("/login")
+                }
             })
-            navigate("/login")
+            
         }else{
             console.log("otp is wrong")
         }
