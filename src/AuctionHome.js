@@ -33,10 +33,7 @@ export const AuctionHome = () => {
         <script src="../lib/easing/easing.min.js"></script>
         <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
         <script src="../lib/scrollreveal/scrollreveal.min.js"></script>
-        
-        
-
-        
+      
         <script src="../js/auctionjs.js"></script>
     </Helmet>
     <Precss/>

@@ -35,6 +35,7 @@ import { EmptyCart } from './EmptyCart';
 import { OrderConfirm } from './OrderConfirm';
 import {SetToast} from './components/SetToast'
 import { AuctionHome } from './AuctionHome';
+import { OtpEnter } from './OtpEnter';
 
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
           <Route exact path='/emptycart' element={<EmptyCart />} />
           <Route exact path='/billconfirm' element={<OrderConfirm />} />
           <Route exact path='/auctionhome' element={<AuctionHome />} />
+          <Route exact path='/otpresetpass' element={<OtpEnter />} />
           
 
 

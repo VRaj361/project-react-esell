@@ -5,6 +5,7 @@ import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
+
 export const Signout = () => {
 
     sessionStorage.clear();
@@ -12,7 +13,7 @@ export const Signout = () => {
     setTimeout(() => {
         console.log("in")
         navigate("/")
-    }, 5000);
+    }, 2000);
     return (
         <div>
             <Precss />

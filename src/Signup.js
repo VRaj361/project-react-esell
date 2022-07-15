@@ -32,9 +32,7 @@ export const Signup = () => {
     console.log(objData)
     await axios.post("http://localhost:9999/user", objData).then(() => {
       console.log("success")
-      sessionStorage.setItem("data", JSON.stringify({'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
-      // sessionStorage.setItem("data", JSON.stringify({'email':email}));
-      navigate("/")
+      navigate("/login")
     })
   }
 

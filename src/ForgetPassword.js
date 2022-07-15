@@ -5,21 +5,35 @@ import { SectionLinks } from './components/SectionLinks'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { Link, useNavigate } from 'react-router-dom'
+import  Cookies  from 'universal-cookie'
 import axios from 'axios'
 
 export const ForgetPassword = () => {
     const navigate=useNavigate()
     const [email, setemail] = useState("")
+    //const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
     const checkEmail=async(e)=>{
         e.preventDefault();
+        
         await axios.get("http://localhost:9999/user").then((data) => {
             data.data.map((e)=>{
                 if(email===e.email){
                     console.log("done")
                     axios.post("http://localhost:9999/sendemail",{"email":email}).then((data)=>{
                         console.log(data)
-                        if(data.data===true){
-                            console.log("email send")
+                        if(data.data!=="-1"){ 
+                            console.log("in") 
+                            const cookies = new Cookies();
+                            let d = new Date();
+                            d.setTime(d.getTime() + 70*1000);
+                           // const arr=data.data.split(" ")
+                           
+ //                           console.log(arr[0]+" "+arr[1])
+                            cookies.set('otpResetEmail', data.data, { path: '/',expires:d });
+                            console.log(cookies.get('otpResetEmail'));
+                            navigate("/otpresetpass")
+                        }else{
+                            console.log("problem with otp in backend")
                         }
                     })
                 }
@@ -52,7 +66,7 @@ export const ForgetPassword = () => {
                                                 <label className="gl-label" htmlFor="reset-email">E-MAIL *</label>
                                                 <input className="input-text input-text--primary-style" type="text" id="reset-email" placeholder="Enter E-mail" onChange={(e)=>setemail(e.target.value)}/></div>
                                             <div className="u-s-m-b-30">
-                                                <button className="btn btn--e-transparent-brand-b-2" type="submit">SUBMIT</button></div>
+                                                <button className="btn btn--e-transparent-brand-b-2" type="SUBMIT">SUBMIT</button></div>
                                             <div className="u-s-m-b-30">
                                                 <Link className="gl-link" to={"/login"}>Back to Login</Link></div>
                                         </form>
