@@ -111,9 +111,7 @@ export const Navbar = () => {
                                                 {/*====== Dropdown ======*/}
                                                 <span className="js-menu-toggle" />
                                                 <ul style={{ width: '170px' }}>
-                                                    <li className="has-dropdown has-dropdown--ul-left-100">
-                                                        <Link to={"/"}>Home</Link>
-                                                    </li>
+                                                   
 
 
                                                     <li className="has-dropdown has-dropdown--ul-left-100">
@@ -123,17 +121,11 @@ export const Navbar = () => {
                                                         <ul style={{ width: '200px' }}>
                                                             <li>
                                                                 <a href="empty-search.html">Empty Search</a></li>
-                                                            <li>
-                                                                <a href="empty-cart.html">Empty Cart</a></li>
-                                                            <li>
-                                                                <a href="empty-wishlist.html">Empty Wishlist</a></li>
+                                                           
                                                         </ul>
                                                         {/*====== End - Dropdown ======*/}
                                                     </li>
-                                                    <li className="has-dropdown has-dropdown--ul-left-100">
-                                                        <Link to={"/productdetails"}>Product Details</Link>
-
-                                                    </li>
+                                                   
 
 
                                                 </ul>
