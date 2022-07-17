@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import {SetToast} from '../src/components/SetToast'
 import axios from 'axios'
 
-export const Login = () => {
+export const Login = (props) => {
 
     // let regexEmail = new RegExp('[a-z0-9]+@[a-z]{3,}\.(?=.[a-z]{2,3})');
     // let regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -25,8 +25,9 @@ export const Login = () => {
             data.data.map((e)=>{
                 if(e.email===email&&e.password===password){
                     console.log("done")
-                    setischeck(true);sessionStorage.setItem("data",JSON.stringify({'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
-                    
+                    setischeck(true);
+                    sessionStorage.setItem("data",JSON.stringify({'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
+                    props.toastClick("Welcome! "+e.firstname+" "+e.lastname)
                     navigate("/")
                 }
             })
@@ -96,15 +97,7 @@ export const Login = () => {
                                                     <div className="u-s-m-b-30">
                                                         <Link className="gl-link" to={"/forgetpassword"}>Lost Your Password?</Link></div>
                                                 </div>
-                                                <div className="u-s-m-b-30">
-                                                    {/*====== Check Box ======*/}
-                                                    <div className="check-box">
-                                                        <input type="checkbox" id="remember-me" />
-                                                        <div className="check-box__state check-box__state--primary">
-                                                            <label className="check-box__label" htmlFor="remember-me">Remember Me</label></div>
-                                                    </div>
-                                                    {/*====== End - Check Box ======*/}
-                                                </div>
+                                                
                                             </form>
                                         </div>
                                     </div>
