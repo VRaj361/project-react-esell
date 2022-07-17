@@ -1,12 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React,{useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Prejs } from './Prejs'
 
 export const Navbar = () => {
     //email is use to check that this option availible for login customer 
     const data=sessionStorage.getItem("data")
-    
-
+    const [search, setsearch] = useState()
+    const navigate=useNavigate()
+    const searchProduct = (e)=>{
+        e.preventDefault()
+        navigate("/newarrival/"+search);
+    }
     return (
         <div>
 
@@ -23,9 +27,9 @@ export const Navbar = () => {
                                     <img src="images/logo/cartbuddy.png" alt="" width={"200"} /></Link>
                                 {/*====== End - Main Logo ======*/}
                                 {/*====== Search Form ======*/}
-                                <form className="main-form">
+                                <form className="main-form" onSubmit={searchProduct}>
                                     <label htmlFor="main-search" />
-                                    <input className="input-text input-text--border-radius input-text--style-1" type="text" id="main-search" placeholder="Search" />
+                                    <input className="input-text input-text--border-radius input-text--style-1" type="text" id="main-search" placeholder="Search" onChange={(e)=>{setsearch(e.target.value)}} />
                                     <button className="btn btn--icon fas fa-search main-search-button" type="submit" /></form>
                                 {/*====== End - Search Form ======*/}
                                 {/*====== Dropdown Main plugin ======*/}

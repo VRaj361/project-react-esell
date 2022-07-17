@@ -77,9 +77,10 @@ function App() {
           <Route exact path="/viewcart/:id" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout toastClick={toastClick}/>} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/login" element={<Login toastClick={toastClick}/>  } />
           <Route exact path="/forgetpassword" element={<ForgetPassword />} />
           <Route exact path="/newarrival" element={<ShopList />} />
+          <Route exact path="/newarrival/:searchKey" element={<ShopList />} />
           <Route exact path="/logout" element={<Signout />} />
           <Route exact path='/changepassword' element={<ChangePassword />} />
           <Route exact path='/newpassword' element={<NewPassword />} />

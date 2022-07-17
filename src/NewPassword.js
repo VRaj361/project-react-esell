@@ -18,18 +18,19 @@ export const NewPassword = () => {
         await axios.get("http://localhost:9999/user").then((res) => {
             res.data.map((e) => {
                 if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
-                    console.log("e", e)
+                    // console.log("e", e)
                     obj=e
                 }
             })
         })
-        console.log(obj)
+        // console.log(obj)
         let objData = { "userid": obj.userid, "firstname": obj.firstname, "lastname": obj.lastname, "createdate": obj.createdate, "gender": obj.gender, "email": obj.email, "password": password, "phonenum": obj.phonenum };
-        console.log("obj ", obj)
-        console.log("objdata ", objData)
+        // console.log("obj ", obj)
+        // console.log("objdata ", objData)
         await axios.put("http://localhost:9999/user", objData).then((res) => {
-            console.log("success")
-            console.log(res)
+            // console.log("success")
+            // console.log(res)
+            
             navigate("/myaccount")
             // sessionStorage.setItem("data",JSON.stringify(objData))
         })

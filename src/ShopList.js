@@ -6,8 +6,14 @@ import { Prejs } from './components/Prejs'
 import Rating from '@mui/material/Rating';
 import { useGetAllProducts } from './Hooks/useQuery/useQueryFiles'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 export const ShopList = () => {
+
+
+    const searchKey=useParams().searchKey
+    console.log("searchKey"+searchKey)
+
+
     const [products, setproducts] = useState()
     // const res=useGetAllProducts()
     // function loadData(){
@@ -16,6 +22,7 @@ export const ShopList = () => {
     const [isloading, setisloading] = useState(true)
     const [iserror, setiserror] = useState(false)
     const [value, setValue] = useState(2);
+    
     useEffect(() => {
         const fetchData = async () => {
             setiserror(false);
@@ -39,7 +46,15 @@ export const ShopList = () => {
     // console.log(products)
     // console.log(iserror)
     // console.log(isloading)
-
+    // let arr=[]
+    // if(isloading===false&& searchKey !== undefined){
+    //     products.map((e)=>{
+    //         if(e.productname.includes(searchKey) || e.title.includes(searchKey)|| e.description.includes(searchKey)){
+    //             arr.push(e)    
+    //         }
+    //     })
+    //     console.log("show products search "+arr)
+    // }
 
 
     return (
@@ -505,24 +520,6 @@ export const ShopList = () => {
                                                 <div className="tool-style__group u-s-m-b-8">
                                                     <span className="js-shop-grid-target is-active">Grid</span>
                                                     <span className="js-shop-list-target">List</span></div>
-                                                <form>
-                                                    <div className="tool-style__form-wrap">
-                                                        <div className="u-s-m-b-8"><select className="select-box select-box--transparent-b-2">
-                                                            <option>Show: 8</option>
-                                                            <option selected>Show: 12</option>
-                                                            <option>Show: 16</option>
-                                                            <option>Show: 28</option>
-                                                        </select></div>
-                                                        <div className="u-s-m-b-8"><select className="select-box select-box--transparent-b-2">
-                                                            <option selected>Sort By: Newest Items</option>
-                                                            <option>Sort By: Latest Items</option>
-                                                            <option>Sort By: Best Selling</option>
-                                                            <option>Sort By: Best Rating</option>
-                                                            <option>Sort By: Lowest Price</option>
-                                                            <option>Sort By: Highest Price</option>
-                                                        </select></div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
                                         <div className="shop-p__collection">
