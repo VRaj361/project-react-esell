@@ -1,13 +1,15 @@
 import React from 'react'
+import { PulseLoader } from 'react-spinners';
 
-export const PreLoading = () => {
+
+
+function PreLoading() {
 
     return (
         <div>
-            <div className="preloader is-active">
-                <div className="preloader__wrap">
-                    <img className="preloader__img" src="../images/preloader.png" alt="" /></div>
-            </div>
+            <PulseLoader color="#FF4500" />
         </div>
-    )
-}
+    );
+  }
+  
+  export default PreLoading;
