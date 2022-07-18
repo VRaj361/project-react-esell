@@ -4,7 +4,7 @@ export const Footer = () => {
     const [email, setemail] = useState()
     const sendEmailRegister = (e)=>{
         e.preventDefault()
-        
+                
     }
     return (
         <div>
