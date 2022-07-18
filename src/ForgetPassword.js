@@ -7,15 +7,18 @@ import { Prejs } from './components/Prejs'
 import { Link, useNavigate } from 'react-router-dom'
 import  Cookies  from 'universal-cookie'
 import axios from 'axios'
+import { PulseLoader } from 'react-spinners'
 
 export const ForgetPassword = () => {
     const navigate=useNavigate()
     const [email, setemail] = useState("")
+    const [is_check, setis_check] = useState(false)
     //const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
     const checkEmail=async(e)=>{
         e.preventDefault();
         
         await axios.get("http://localhost:9999/user").then((data) => {
+            setis_check(true)
             data.data.map((e)=>{
                 if(email===e.email){
                     console.log("done")
@@ -31,6 +34,7 @@ export const ForgetPassword = () => {
  //                           console.log(arr[0]+" "+arr[1])
                             cookies.set('otpResetEmail', data.data, { path: '/',expires:d });
                             console.log(cookies.get('otpResetEmail'));
+
                             navigate("/otpresetpass")
                         }else{
                             console.log("problem with otp in backend")
@@ -66,7 +70,7 @@ export const ForgetPassword = () => {
                                                 <label className="gl-label" htmlFor="reset-email">E-MAIL *</label>
                                                 <input className="input-text input-text--primary-style" type="text" id="reset-email" placeholder="Enter E-mail" onChange={(e)=>setemail(e.target.value)}/></div>
                                             <div className="u-s-m-b-30">
-                                                <button className="btn btn--e-transparent-brand-b-2" type="SUBMIT">SUBMIT</button></div>
+                                               { is_check===false?<button className="btn btn--e-transparent-brand-b-2" type="SUBMIT">SUBMIT</button>: <PulseLoader color='#FF4500'/>}</div>
                                             <div className="u-s-m-b-30">
                                                 <Link className="gl-link" to={"/login"}>Back to Login</Link></div>
                                         </form>

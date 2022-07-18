@@ -6,6 +6,7 @@ import { Prejs } from './components/Prejs'
 import Cookies from 'universal-cookie'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { PulseLoader } from 'react-spinners'
 export const OtpEnter = () => {
     const [first, setfirst] = useState('')
     const [second, setsecond] = useState('')
@@ -13,26 +14,33 @@ export const OtpEnter = () => {
     const [fourth, setfourth] = useState('')
     const [fifth, setfifth] = useState('')
     const [sixth, setsixth] = useState('')
+    const [is_check, setis_check] = useState(false)
     const navigate = useNavigate()
     const getUserOTP = (e) => {
         e.preventDefault()
         let optWhole = first + second + third + fourth + fifth + sixth;
         // console.log(optWhole)
         const cookies = new Cookies();
-        const arr = cookies.get('otpResetEmail').split(" ")
-        // console.log(arr[0]+" "+arr[1])
-        //console.log(cookies.get('otpResetEmail'));
-        if(arr[0]===optWhole){
-            // console.log("email for password")
-            axios.post("http://localhost:9999/sendemailu",{"userid":parseInt(arr[1])}).then((data)=>{
-                // console.log(data)
-                if(data.data===true){
-                    navigate("/login")
-                }
-            })
-            
+        let arr= [];
+        if(cookies.get("otpResetEmail")===undefined){
+            console.log("login again")
         }else{
-            console.log("otp is wrong")
+            arr = cookies.get('otpResetEmail').split(" ");
+            // console.log(arr[0]+" "+arr[1])
+            //console.log(cookies.get('otpResetEmail'));
+            if(arr[0]===optWhole){
+                // console.log("email for password")
+                setis_check(true)
+                axios.post("http://localhost:9999/sendemailu",{"userid":parseInt(arr[1])}).then((data)=>{
+                    // console.log(data)
+                    if(data.data===true){
+                        navigate("/login")
+                    }
+                })
+                
+            }else{
+                console.log("otp is wrong")
+            }
         }
     }
     return (
@@ -65,7 +73,7 @@ export const OtpEnter = () => {
                             <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setsixth(e.target.value) }} maxLength={1} />
                         </div>
                         <div className="mt-4">
-                            <button className="btn  px-4 validate" type='submit'>Validate</button>
+                            {is_check===false?<button className="btn  px-4 validate" type='submit'>Validate</button>:<PulseLoader color="white"/>}
                         </div>
                     </form>
                 </div>
