@@ -1,5 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
+import { Link } from 'react-router-dom'
 export const Footer = () => {
+    const [email, setemail] = useState()
+    const sendEmailRegister = (e)=>{
+        e.preventDefault()
+        
+    }
     return (
         <div>
             <footer>
@@ -39,15 +45,13 @@ export const Footer = () => {
                                             <div className="outer-footer__list-wrap">
                                                 <ul>
                                                     <li>
-                                                        <a href="cart.html">Cart</a></li>
+                                                        <Link to={'/newarrival'}>Cart</Link></li>
                                                     <li>
-                                                        <a href="dashboard.html">Account</a></li>
+                                                        <Link to={'/signup'}>Signup</Link></li>
                                                     <li>
-                                                        <a href="shop-side-version-2.html">Manufacturer</a></li>
+                                                        <Link to={'/login'}>Login</Link></li>
                                                     <li>
-                                                        <a href="dash-payment-option.html">Finance</a></li>
-                                                    <li>
-                                                        <a href="shop-side-version-2.html">Shop</a></li>
+                                                        <Link to={'/auction'}>Auction</Link></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -58,15 +62,13 @@ export const Footer = () => {
                                                 <span className="outer-footer__content-title">Our Company</span>
                                                 <ul>
                                                     <li>
-                                                        <a href="about.html">About us</a></li>
+                                                        <Link to={'/about'}>About us</Link></li>
                                                     <li>
-                                                        <a href="contact.html">Contact Us</a></li>
+                                                        <Link to={'/contact'}>Contact Us</Link></li>
                                                     <li>
-                                                        <a href="index.html">Sitemap</a></li>
+                                                        <Link to={'/faq'}>Sitemap</Link></li>
                                                     <li>
-                                                        <a href="dash-my-order.html">Delivery</a></li>
-                                                    <li>
-                                                        <a href="shop-side-version-2.html">Store</a></li>
+                                                        <Link to={'/review'}>Store</Link></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -76,22 +78,11 @@ export const Footer = () => {
                             <div className="col-lg-4 col-md-12">
                                 <div className="outer-footer__content">
                                     <span className="outer-footer__content-title">Join our Newsletter</span>
-                                    <form className="newsletter">
-                                        <div className="u-s-m-b-15">
-                                            <div className="radio-box newsletter__radio">
-                                                <input type="radio" id="male" name="gender" />
-                                                <div className="radio-box__state radio-box__state--primary">
-                                                    <label className="radio-box__label" htmlFor="male">Male</label></div>
-                                            </div>
-                                            <div className="radio-box newsletter__radio">
-                                                <input type="radio" id="female" name="gender" />
-                                                <div className="radio-box__state radio-box__state--primary">
-                                                    <label className="radio-box__label" htmlFor="female">Female</label></div>
-                                            </div>
-                                        </div>
+                                    <form className="newsletter" onSubmit={sendEmailRegister}>
+                                        
                                         <div className="newsletter__group">
                                             <label htmlFor="newsletter" />
-                                            <input className="input-text input-text--only-white" type="text" id="newsletter" placeholder="Enter your Email" />
+                                            <input className="input-text input-text--only-white" type="text" id="newsletter" placeholder="Enter your Email" onChange={(e)=>{setemail(e.target.value)}} />
                                             <button className="btn btn--e-brand newsletter__btn" type="submit">SUBSCRIBE</button></div>
                                         <span className="newsletter__text">Subscribe to the mailing list to receive updates on promotions, new arrivals, discount and coupons.</span>
                                     </form>
@@ -106,9 +97,9 @@ export const Footer = () => {
                             <div className="col-lg-12">
                                 <div className="lower-footer__content">
                                     <div className="lower-footer__copyright">
-                                        <span>Copyright © 2018</span>
-                                        <a href="index.html">Reshop</a>
-                                        <span>All Right Reserved</span></div>
+                                        <span>Copyright © 2022</span>
+                                        <Link to={'/'}> CartBuddy</Link>
+                                        <span> All Right Reserved</span></div>
                                     <div className="lower-footer__payment">
                                         <ul>
                                             <li><i className="fab fa-cc-stripe" /></li>
