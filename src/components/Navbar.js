@@ -10,7 +10,9 @@ export const Navbar = () => {
     const searchProduct = (e)=>{
         e.preventDefault()
         navigate("/newarrival/"+search);
+        window.location.reload()
     }
+
     return (
         <div>
 

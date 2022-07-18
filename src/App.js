@@ -36,6 +36,7 @@ import { OrderConfirm } from './OrderConfirm';
 import {SetToast} from './components/SetToast'
 import { AuctionHome } from './AuctionHome';
 import { OtpEnter } from './OtpEnter';
+import PreLoading from './components/PreLoading';
 
 
 function App() {
@@ -89,6 +90,7 @@ function App() {
           <Route exact path='/billconfirm' element={<OrderConfirm />} />
           <Route exact path='/auctionhome' element={<AuctionHome />} />
           <Route exact path='/otpresetpass' element={<OtpEnter />} />
+          <Route exact path='/preload' element={<PreLoading />} />
           
 
 

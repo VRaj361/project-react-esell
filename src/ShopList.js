@@ -7,6 +7,7 @@ import Rating from '@mui/material/Rating';
 import { useGetAllProducts } from './Hooks/useQuery/useQueryFiles'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
+import PreLoading from './components/PreLoading'
 export const ShopList = () => {
 
 
@@ -21,31 +22,52 @@ export const ShopList = () => {
     // }
     const [isloading, setisloading] = useState(true)
     const [iserror, setiserror] = useState(false)
-    const [value, setValue] = useState(2);
+    // const [value, setValue] = useState(2);
     
     useEffect(() => {
-        const fetchData = async () => {
-            setiserror(false);
+        if(searchKey===undefined){
+            const fetchData = async () => {
+                setiserror(false);
+                try {
+                    const response = await axios('http://localhost:9999/products');
 
-
-            try {
-                const response = await axios('http://localhost:9999/products');
-
-                setproducts(response.data);
-                if (response !== undefined) {
-                    setisloading(false)
+                    setproducts(response.data);
+                    if (response !== undefined) {
+                        setisloading(false)
+                    }
+                } catch (error) {
+                    setiserror(true);
                 }
-            } catch (error) {
-                setiserror(true);
-            }
 
-        };
-        fetchData()
+            };
+            fetchData()
+        }else{
+            const fetchData = async () => {
+                setiserror(false);
+                try {
+                    await axios.post('http://localhost:9999/products',{"productname":searchKey}).then((e)=>{
+                        if(e.data!==undefined){
+                            setproducts(e.data);
+                            setisloading(false)
+                        }
+                    })
+                } catch (error) {   
+                    setiserror(true);
+                }
+
+            };
+            fetchData()
+        }
 
     }, [])
-    // console.log(products)
-    // console.log(iserror)
-    // console.log(isloading)
+    
+    useEffect(() => {
+        
+    
+      
+    }, [])
+    
+
     // let arr=[]
     // if(isloading===false&& searchKey !== undefined){
     //     products.map((e)=>{
@@ -64,7 +86,7 @@ export const ShopList = () => {
             {iserror && <div>Something went wrong ...</div>}
 
             {isloading ? (
-                <div>Loading ...</div>//loader
+                 <PreLoading/>
             ) : (
                 <div className="app-content">
                     {/*====== Section 1 ======*/}
