@@ -7,7 +7,9 @@ import { Prejs } from './components/Prejs'
 import { Link,useNavigate } from 'react-router-dom'
 import {SetToast} from '../src/components/SetToast'
 import axios from 'axios'
-export const Signup = () => {
+import { PulseLoader } from 'react-spinners'
+
+export const Signup = (props) => {
 
   let regexEmail = new RegExp('[a-z0-9]+@[a-z]{3,}\.(?=.[a-z]{2,3})');
   let regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -23,21 +25,38 @@ export const Signup = () => {
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
   const [phonenum, setphonenum] = useState("")
-  // const [isCheck, setisCheck] = useState(false)
+  const [isCheck, setisCheck] = useState(false)
+  const [isLoading, setisLoading] = useState(false)
 
+  
+  //before 
+  // const formDataSignup = async (e) => {
+  //   e.preventDefault()
+  //   const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
+  //   console.log(objData)
+  //   await axios.post("http://localhost:9999/user", objData).then(() => {
+  //     console.log("success")
+  //     navigate("/login")
+  //   })
+  // }
 
+  //after
   const formDataSignup = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
-    console.log(objData)
-    await axios.post("http://localhost:9999/user", objData).then(() => {
-      console.log("success")
-      navigate("/login")
+    await axios.post("http://localhost:9999/signupcus",objData).then((e)=>{
+      setisLoading(false);
+      console.log(e.data)
+      if(e.data.data!==null && e.data.status === 200){
+        props.toastClick(`${e.data.msg},1`)
+        navigate("/login")
+      }else if(e.data.status === 400){
+        props.toastClick(`${e.data.msg},3`)
+      }else{
+        props.toastClick(`${e.data.msg},3`)
+      }
     })
   }
-
-
-
 
   return (
     <div>
@@ -145,7 +164,8 @@ export const Signup = () => {
 
                         {/* {phonenum} */}
                         <div className="u-s-m-b-15">
-                          <button disabled={ischeck ? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">CREATE</button></div>
+                          {isLoading ?  <PulseLoader color='#FF4500'/>:<button disabled={ischeck ? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">CREATE</button>}
+                        </div>
                         <Link className="gl-link" to={"/"}>Return to Store</Link>
                       </form>
                     </div>

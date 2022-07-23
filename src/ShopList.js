@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import Rating from '@mui/material/Rating';
-import { useGetAllProducts } from './Hooks/useQuery/useQueryFiles'
+// import { useGetAllProducts } from './Hooks/useQuery/useQueryFiles'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import PreLoading from './components/PreLoading'

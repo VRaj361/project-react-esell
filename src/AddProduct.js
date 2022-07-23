@@ -10,7 +10,7 @@ import useDrivePicker from 'react-google-drive-picker/dist'
 
 // https://github.com/samirvithlani/spring-boot-fileuploading
 
-import { useSendFiles } from './Hooks/useQuery/useQueryFiles'
+// import { useSendFiles } from './Hooks/useQuery/useQueryFiles'
 import { type } from '@testing-library/user-event/dist/type'
 
 export const AddProduct = () => {
