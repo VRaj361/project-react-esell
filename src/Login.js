@@ -10,6 +10,7 @@ import {SetToast} from '../src/components/SetToast'
 import axios from 'axios'
 import { PulseLoader } from 'react-spinners'
 
+
 export const Login = (props) => {
 
     // let regexEmail = new RegExp('[a-z0-9]+@[a-z]{3,}\.(?=.[a-z]{2,3})');
@@ -19,6 +20,7 @@ export const Login = (props) => {
     const [ischecke, setischecke] = useState("")
     const [isLoading, setisLoading] = useState(false)
     const [authtoken, setauthtoken] = useState("")
+
     const navigate= useNavigate()
     let ischeck = false;
     //before
@@ -37,7 +39,14 @@ export const Login = (props) => {
     //         })
     //     })
     // }
-
+    useEffect(() => {
+        if(sessionStorage.getItem("data")!==null){
+            console.log("fhdasklf")
+            navigate("/alreadyloggedin")
+        }
+    })
+    
+    
     //after
     const formDataLogin = async(e) => {
         e.preventDefault();
@@ -57,8 +66,8 @@ export const Login = (props) => {
                 setisLoading(false)
                 if(e.data.data !== null && e.data.status === 200){
                     props.toastClick(`${e.data.msg},1`)
-                    //save data in local storage
-                    navigate("/home")
+                    sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'userid':e.data.data.userid}));
+                    navigate("/")
                 }else if(e.data.status === 404){
                     props.toastClick(`${e.data.msg},3`)
                     setischecke(false)
@@ -71,10 +80,13 @@ export const Login = (props) => {
     
     return (
         <div>
+           
+
             <Precss />
             {/* navbar */}
             <Navbar />
             {/* first load login page */}
+            
             <div className="app-content">
 
                 {/* section 1 */}
@@ -148,9 +160,7 @@ export const Login = (props) => {
                 </div>
                 {/*====== End - Section 2 ======*/}
             </div>
-            {/*====== End - App Content ======*/}
-
-            {/* footer */}
+           
             <Footer />
 
             <Prejs />

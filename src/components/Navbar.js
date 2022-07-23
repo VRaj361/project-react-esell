@@ -26,7 +26,7 @@ export const Navbar = () => {
                             <div className="primary-nav">
                                 {/*====== Main Logo ======*/}
                                 <Link className="main-logo" to={'/'}>
-                                    <img src="images/logo/cartbuddy.png" alt="" width={"200"} /></Link>
+                                    <img src="	https://i.postimg.cc/P5Rfh69h/cartbuddy.png" alt="" width={"200"} /></Link>
                                 {/*====== End - Main Logo ======*/}
                                 {/*====== Search Form ======*/}
                                 <form className="main-form" onSubmit={searchProduct}>

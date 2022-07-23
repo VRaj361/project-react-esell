@@ -37,6 +37,7 @@ import {SetToast} from './components/SetToast'
 import { AuctionHome } from './AuctionHome';
 import { OtpEnter } from './OtpEnter';
 import PreLoading from './components/PreLoading';
+import { AlreadyLogin } from './AlreadyLogin';
 
 
 function App() {
@@ -91,6 +92,7 @@ function App() {
           <Route exact path='/auctionhome' element={<AuctionHome />} />
           <Route exact path='/otpresetpass' element={<OtpEnter />} />
           <Route exact path='/preload' element={<PreLoading />} />
+          <Route exact path='/alreadyloggedin' element={<AlreadyLogin />} />
           
 
 

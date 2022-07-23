@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { SectionLinks } from './components/SectionLinks'
@@ -39,7 +39,12 @@ export const Signup = (props) => {
   //     navigate("/login")
   //   })
   // }
-
+  useEffect(() => {
+    if(sessionStorage.getItem("data")!==null){
+        console.log("fhdasklf")
+        navigate("/alreadyloggedin")
+    }
+  })
   //after
   const formDataSignup = async (e) => {
     e.preventDefault();
