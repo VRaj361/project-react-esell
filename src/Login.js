@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
@@ -8,6 +8,7 @@ import { Prejs } from './components/Prejs'
 import { Link } from 'react-router-dom'
 import {SetToast} from '../src/components/SetToast'
 import axios from 'axios'
+import { PulseLoader } from 'react-spinners'
 
 export const Login = (props) => {
 
@@ -15,26 +16,59 @@ export const Login = (props) => {
     // let regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
-    const [ischeck, setischeck] = useState("")
+    const [ischecke, setischecke] = useState("")
+    const [isLoading, setisLoading] = useState(false)
+    const [authtoken, setauthtoken] = useState("")
     const navigate= useNavigate()
+    let ischeck = false;
+    //before
+    // const formDataLogin = async (e) => {
+    //     e.preventDefault()
+    //     setischeck(false)
+    //     await axios.get("http://localhost:9999/user").then((data) => {
+    //         data.data.map((e)=>{
+    //             if(e.email===email&&e.password===password){
+    //                 console.log("done")
+    //                 setischeck(true);
+    //                 sessionStorage.setItem("data",JSON.stringify({'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
+    //                 props.toastClick("Welcome! "+e.firstname+" "+e.lastname)
+    //                 navigate("/")
+    //             }
+    //         })
+    //     })
+    // }
 
-    const formDataLogin = async (e) => {
-        e.preventDefault()
-        setischeck(false)
-        await axios.get("http://localhost:9999/user").then((data) => {
-            data.data.map((e)=>{
-                if(e.email===email&&e.password===password){
-                    console.log("done")
-                    setischeck(true);
-                    sessionStorage.setItem("data",JSON.stringify({'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
-                    props.toastClick("Welcome! "+e.firstname+" "+e.lastname)
-                    navigate("/")
-                }
-            })
-        })
+    //after
+    const formDataLogin = async(e) => {
+        e.preventDefault();
+        if(email === null || password === null || email === ""|| password ===""){
+            props.toastClick(`Please Enter Email or Password,3`)
+        }else{
+            setisLoading(true);
+            await axios.get("http://localhost:9999/getAnyToken").then((e)=>{
+                setauthtoken(e.data)
+            });
+        }
+
     }
 
+    useEffect(() => {
+        authtoken !== "" &&  axios.post("http://localhost:9999/logincus",{"email":email,"password":password,"authtoken":authtoken}).then((e)=>{
+                setisLoading(false)
+                if(e.data.data !== null && e.data.status === 200){
+                    props.toastClick(`${e.data.msg},1`)
+                    //save data in local storage
+                    navigate("/home")
+                }else if(e.data.status === 404){
+                    props.toastClick(`${e.data.msg},3`)
+                    setischecke(false)
+                }else{
+                    props.toastClick(`${e.data.msg},3`)
+                }
+        });
 
+    }, [authtoken])
+    
     return (
         <div>
             <Precss />
@@ -86,14 +120,19 @@ export const Login = (props) => {
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="login-email">E-MAIL *</label>
                                                     <input className="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail" onChange={(e) => setemail(e.target.value)} /></div>
+                                                    {email !== "" ? ischeck = true : ischeck = false}
+                                                    <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Emai ` : ""}</label>
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="login-password">PASSWORD *</label>
                                                     <input className="input-text input-text--primary-style" type="password" id="login-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} />
+                                                    {password !== "" ? ischeck = true : ischeck = false}
+                                                    <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Password ` : ""}</label>
                                                 </div>
-                                                <label className="gl-label" style={{ color: "red" }}>{ischeck || ischeck===""? "":"Wrong Email or Password"}</label>
+                                                <label className="gl-label" style={{ color: "red" }}>{ischecke || ischecke===""? "":"Wrong Email or Password"}</label>
                                                 <div className="gl-inline">
                                                     <div className="u-s-m-b-30">
-                                                        <button className="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button></div>
+                                                        {isLoading?<PulseLoader color='#FF4500'/>:<button className="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button>}
+                                                    </div>
                                                     <div className="u-s-m-b-30">
                                                         <Link className="gl-link" to={"/forgetpassword"}>Lost Your Password?</Link></div>
                                                 </div>

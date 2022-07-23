@@ -46,7 +46,6 @@ export const Signup = (props) => {
     const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
     await axios.post("http://localhost:9999/signupcus",objData).then((e)=>{
       setisLoading(false);
-      console.log(e.data)
       if(e.data.data!==null && e.data.status === 200){
         props.toastClick(`${e.data.msg},1`)
         navigate("/login")
