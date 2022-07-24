@@ -5,11 +5,6 @@ import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { PreLoading } from './components/PreLoading'
 export const Home = () => {
-    // useEffect(() => {
-    //   Precss()
-    //     Prejs()
-      
-    // }, )
     
     return (
         <div>

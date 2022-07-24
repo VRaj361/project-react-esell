@@ -66,7 +66,7 @@ export const Login = (props) => {
                 setisLoading(false)
                 if(e.data.data !== null && e.data.status === 200){
                     props.toastClick(`${e.data.msg},1`)
-                    sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'userid':e.data.data.userid}));
+                    sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}));
                     navigate("/")
                 }else if(e.data.status === 404){
                     props.toastClick(`${e.data.msg},3`)

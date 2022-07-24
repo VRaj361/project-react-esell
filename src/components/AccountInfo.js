@@ -11,8 +11,7 @@ import { MyOrder } from './account/MyOrder'
 import { MyPayment } from './account/MyPayment'
 import { Myprofile } from './account/Myprofile'
 import { TrackOrder } from './account/TrackOrder'
-export const AccountInfo = () => {
- 
+export const AccountInfo = (props) => {
     const loc=window.location.href
     console.log(loc.includes("/myaccount"))
     let obj=JSON.parse(sessionStorage.getItem("data"));
@@ -94,7 +93,7 @@ export const AccountInfo = () => {
                                 {/* <ManageAccount/> */}
                                 {loc.endsWith("/manageorder")? <ManageOrder/> : ""}
                                 {/* <ManageOrder/> */}
-                                {loc.endsWith("/editprofile")? <EditProfile/> : ""}
+                                {loc.endsWith("/editprofile")? <EditProfile toastClick={props.toastClick}/> : ""}
                                 {/* <EditProfile /> */}
                                 {loc.endsWith("/addaddress")? <AddAddress/> : ""}
                                 {/* <AddAddress /> */}

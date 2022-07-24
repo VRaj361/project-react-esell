@@ -98,14 +98,14 @@ function App() {
 
 
           {/* account all pages */}
-          <Route exact path='/myaccount' element={<MyAccout />} />
-          <Route exact path='/myaccount/myprofile' element={<MyAccout />} />
+          <Route exact path='/myaccount' element={<MyAccout toastClick={toastClick}/>} />
+          <Route exact path='/myaccount/myprofile' element={<MyAccout toastClick={toastClick}/>} />
           <Route exact path='/myaccount/addressbook' element={<MyAccout />} />
           <Route exact path='/myaccount/trackorder' element={<MyAccout />} />
           <Route exact path='/myaccount/myorder' element={<MyAccout />} />
           <Route exact path='/myaccount/mypayment' element={<MyAccout />} />
           <Route exact path='/myaccount/cancellation' element={<MyAccout />} />
-          <Route exact path='/myaccount/editprofile' element={<MyAccout />} />
+          <Route exact path='/myaccount/editprofile' element={<MyAccout toastClick={toastClick}/> } />
           <Route exact path='/myaccount/editaddress' element={<MyAccout />} />
           <Route exact path='/myaccount/manageorder' element={<MyAccout />} />
           <Route exact path='/myaccount/addaddress' element={<MyAccout />} />

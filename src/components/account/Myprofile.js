@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import {Link} from 'react-router-dom'
-export const Myprofile = () => {
-    let obj=JSON.parse(sessionStorage.getItem("data"))
-    console.log(obj)
+import axios from 'axios';
+export const Myprofile = (props) => {
+    let token ="";
+    const [obj, setobj] = useState()
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
+    
+    useEffect(() => {
+        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+            // console.log(e.data)
+            if(e.data.data === null && e.data.status ===404){
+                // props.toastClick(`${e.data.msg},1`)
+                console.log("in")
+            }else{
+                // props.toastClick(`${e.data.msg},1`)
+                setobj(e.data.data);
+            }
+        })
+    },[])
+
     return (
         
             <>
-                <div className="col-lg-9 col-md-12">
+              {obj!==undefined &&  <div className="col-lg-9 col-md-12">
                     <div className="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
                         <div className="dash__pad-2">
                             <h1 className="dash__h1 u-s-m-b-14">My Profile</h1>
@@ -50,7 +68,7 @@ export const Myprofile = () => {
                         </div>
                     </div>
                 </div>
-
+                }
 
             </>
         

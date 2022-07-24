@@ -16,8 +16,7 @@ import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 
 import { AccountInfo } from './components/AccountInfo'
-export const MyAccout = () => {
-   
+export const MyAccout = (props) => {
     return (
         <div>
             
@@ -32,7 +31,7 @@ export const MyAccout = () => {
                     {/* section 1 */}
                     <SectionLinks nextLink="Account" />
 
-                    <AccountInfo/>
+                    <AccountInfo toastClick={props.toastClick}/>
                     {/*====== End - Section 2 ======*/}
                     {/* load the dynamic content */}
 
