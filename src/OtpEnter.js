@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { PulseLoader } from 'react-spinners'
-export const OtpEnter = () => {
+export const OtpEnter = (props) => {
     const [first, setfirst] = useState('')
     const [second, setsecond] = useState('')
     const [third, setthird] = useState('')
@@ -19,28 +19,30 @@ export const OtpEnter = () => {
     const getUserOTP = (e) => {
         e.preventDefault()
         let optWhole = first + second + third + fourth + fifth + sixth;
-        // console.log(optWhole)
         const cookies = new Cookies();
-        let arr= [];
+     
         if(cookies.get("otpResetEmail")===undefined){
-            console.log("login again")
+            props.toastClick(`Otp Expire Try Again,2`)
         }else{
-            arr = cookies.get('otpResetEmail').split(" ");
-            // console.log(arr[0]+" "+arr[1])
-            //console.log(cookies.get('otpResetEmail'));
-            if(arr[0]===optWhole){
-                // console.log("email for password")
-                setis_check(true)
-                axios.post("http://localhost:9999/sendemailu",{"userid":parseInt(arr[1])}).then((data)=>{
-                    // console.log(data)
-                    if(data.data===true){
-                        navigate("/login")
-                    }
-                })
-                
-            }else{
-                console.log("otp is wrong")
-            }
+            let otp_enc = cookies.get('otpResetEmail');
+            // console.log("otp en "+otp_enc)
+            setis_check(true)
+            
+            axios.post("http://localhost:9999/otpemailcheck",{"otp":optWhole+","+otp_enc,"authtoken":JSON.parse(sessionStorage.getItem("data")).authtoken}).then((data)=>{
+                if(data.data===true){
+                    
+                    let d = new Date();
+                    d.setTime(d.getTime() + 700*1000);
+                    let otp=JSON.parse(sessionStorage.getItem("data")).authtoken
+                    console.log("otp-->",otp)
+                    cookies.set('userauth', otp, { path: '/',expires:d });
+                    sessionStorage.clear()
+                    navigate("/newpassword")
+                }else{
+                    props.toastClick("Wrong OTP,3")
+                    navigate("/login")
+                }
+            });
         }
     }
     return (

@@ -41,7 +41,6 @@ export const Login = (props) => {
     // }
     useEffect(() => {
         if(sessionStorage.getItem("data")!==null){
-            console.log("fhdasklf")
             navigate("/alreadyloggedin")
         }
     })
@@ -54,7 +53,9 @@ export const Login = (props) => {
             props.toastClick(`Please Enter Email or Password,3`)
         }else{
             setisLoading(true);
-            await axios.get("http://localhost:9999/getAnyToken").then((e)=>{
+            console.log("in")
+            await axios.get("http://localhost:9999/getanytoken").then((e)=>{
+                console.log(e.data)
                 setauthtoken(e.data)
             });
         }

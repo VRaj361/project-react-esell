@@ -90,7 +90,7 @@ export const Cart = (props) => {
             if(e.data.data===true && e.data.status===200){
                 props.toastClick(`${e.data.msg},1`)
             }else{
-                navigate("/error404")
+                navigate("/error404")   
             }
         })
         navigate('/newarrival')

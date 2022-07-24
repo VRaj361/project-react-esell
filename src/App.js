@@ -90,7 +90,7 @@ function App() {
           <Route exact path='/emptycart' element={<EmptyCart />} />
           <Route exact path='/billconfirm' element={<OrderConfirm />} />
           <Route exact path='/auctionhome' element={<AuctionHome />} />
-          <Route exact path='/otpresetpass' element={<OtpEnter />} />
+          <Route exact path='/otpresetpass' element={<OtpEnter toastClick={toastClick}/>} />
           <Route exact path='/preload' element={<PreLoading />} />
           <Route exact path='/alreadyloggedin' element={<AlreadyLogin />} />
           

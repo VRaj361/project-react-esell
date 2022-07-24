@@ -7,6 +7,7 @@ import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Cookies from 'universal-cookie'
 export const NewPassword = (props) => {
     let ischeck = false;
     let regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -15,6 +16,9 @@ export const NewPassword = (props) => {
     let token ="";
     if(sessionStorage.getItem("data")!==null){
          token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }else{
+        const cookie=new Cookies();
+        token=cookie.get("userauth")
     }
     //after
     const changeNewPassword = async(e)=>{
@@ -22,7 +26,7 @@ export const NewPassword = (props) => {
         await axios.put("http://localhost:9999/updatecus",{"authtoken":token,"password":password}).then((e)=>{
             props.toastClick(`${e.data.msg},1`)
             sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}));
-            navigate("/myaccount")
+            navigate("/logout")
         })
     }
 

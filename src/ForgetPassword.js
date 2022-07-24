@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { SectionLinks } from './components/SectionLinks'
@@ -13,36 +13,34 @@ export const ForgetPassword = () => {
     const navigate=useNavigate()
     const [email, setemail] = useState("")
     const [is_check, setis_check] = useState(false)
-    //const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
+    const [obj, setobj] = useState()
+    useEffect(() => {
+        axios.get("http://localhost:9999/getanytoken").then((e)=>{
+            setobj(e.data)
+        })
+    },[])    
+
     const checkEmail=async(e)=>{
         e.preventDefault();
-        
-        await axios.get("http://localhost:9999/user").then((data) => {
-            setis_check(true)
-            data.data.map((e)=>{
-                if(email===e.email){
-                    console.log("done")
-                    axios.post("http://localhost:9999/sendemail",{"email":email}).then((data)=>{
-                        console.log(data)
-                        if(data.data!=="-1"){ 
-                            console.log("in") 
-                            const cookies = new Cookies();
-                            let d = new Date();
-                            d.setTime(d.getTime() + 70*1000);
-                           // const arr=data.data.split(" ")
-                           
- //                           console.log(arr[0]+" "+arr[1])
-                            cookies.set('otpResetEmail', data.data, { path: '/',expires:d });
-                            console.log(cookies.get('otpResetEmail'));
-
-                            navigate("/otpresetpass")
-                        }else{
-                            console.log("problem with otp in backend")
-                        }
-                    })
+        console.log(obj)
+        setis_check(true)
+        if(obj!==undefined){
+            
+            axios.post("http://localhost:9999/otpemail",{"email":email,"authtoken":obj}).then((data)=>{
+                if(data.data!=="-1"){ 
+                    const cookies = new Cookies();
+                    let d = new Date();
+                    d.setTime(d.getTime() + 70*1000);
+                    cookies.set('otpResetEmail', data.data, { path: '/',expires:d });
+                    // console.log(cookies.get('otpResetEmail'));
+                    sessionStorage.setItem("data",JSON.stringify({"authtoken":obj}));
+                    navigate("/otpresetpass")
+                }else{
+                    console.log("problem with otp in backend")
                 }
             })
-        })
+                    
+        }
     }
     return (
         <div>
