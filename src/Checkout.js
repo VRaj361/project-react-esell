@@ -10,89 +10,64 @@ import { useNavigate } from 'react-router-dom'
 export const Checkout = (props) => {
     const [products1, setproducts1] = useState()
     const [isloading1, setisloading1] = useState(true)
-    const [iserror1, setiserror1] = useState(false)
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setiserror1(false);
-            try {
-                const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
-                setproducts1(response);
-
-
-                if (response !== undefined) {
-
-                    setisloading1(false)
-
-                }
-            } catch (error) {
-                setiserror1(true);
-            }
-        };
-        fetchData()
-    }, [])
-
-
-
     const [isloading, setisloading] = useState(true)
-    const [iserror, setiserror] = useState(false)
     const [obj, setobj] = useState()
-
-
-
     const [objFi, setobjFi] = useState()
+    let token ="";
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
+
+    useEffect(() => {
+   
+        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+            if(e.data.data === null && e.data.status ===404){
+                navigate("/error404")
+            }else{
+                setisloading(false)
+                setobj(e.data.data);
+            }
+        })
+    },[])
+
+
     useEffect(() => {
         const fetchData = async () => {
-            setiserror(false);
-
-
-            try {
-                const response = await axios('http://localhost:9999/user');
-                response.data.map((e) => {
-                    if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
-                        // setobj(e);
-                        setobjFi(JSON.parse(e.address))
+            console.log(isloading+" "+obj)
+            if(isloading===false&&obj!==undefined){
+                console.log("in out")
+                await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
+                    if (e !== undefined) {
+                        setproducts1(e.data.data);
+                        setobjFi(obj.address)
+                        setisloading1(false)
                     }
-                })
-                if (response !== undefined) {
-                    setisloading(false)
-                }
-            } catch (error) {
-                setiserror(true);
+                }) 
             }
-
-        }; 
+        }
         fetchData()
-
-    }, [products1])
-
-    // console.log("objFi ",objFi)
+    }, [token,obj,isloading])
 
 
     const navigate = useNavigate()
-    const deleteParticularProduct = async (productid) => {
-        await axios.get("http://localhost:9999/productdelete/" + productid + "/" + JSON.parse(sessionStorage.getItem("data")).userid).then(() => {
+    const deleteParticularProduct =  async(producid)=>{
+        await axios.delete("http://localhost:9999/deleteproduct",{data:{"userid":obj.userid,"authtoken":token,"productid":producid}}).then((e)=>{
+            if(e.data.data===true && e.data.status===200){
+                window.location.reload()
+                navigate('/newarrival')
+            }
         })
-
-        window.location.reload()
-        navigate('/checkout')
-
+       
     }
-
-    //for form detail in bill
     const [billname, setbillname] = useState()
     const [ordernote, setordernote] = useState()
     const [address, setaddress] = useState()
 
     const [paymentMethod, setpaymentmethod] = useState()
 
-
-    // let is_check=false
     const [is_check, setis_check] = useState(false)
     const saveDetail = ()=>{
-        // console.log(address)
         setis_check(true)
-        // console.log(is_check)
     }
 
 
