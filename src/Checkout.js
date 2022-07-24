@@ -26,12 +26,16 @@ export const Checkout = (props) => {
             }else{
                 setisloading(false)
                 setobj(e.data.data);
+                console.log(obj)
             }
         })
     },[])
 
 
     useEffect(() => {
+        setTimeout(() => {
+            
+        
         const fetchData = async () => {
             console.log(isloading+" "+obj)
             if(isloading===false&&obj!==undefined){
@@ -46,7 +50,8 @@ export const Checkout = (props) => {
             }
         }
         fetchData()
-    }, [token,obj,isloading])
+    }, 2000);
+    }, [isloading,obj])
 
 
     const navigate = useNavigate()
@@ -75,16 +80,18 @@ export const Checkout = (props) => {
     const placeOrder = async()=>{
         // console.log(is_check)
         if(is_check===true){
-            var obj={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod,"userid":JSON.parse(sessionStorage.getItem("data")).userid}
-            // console.log(obj)
-            await axios.post("http://localhost:9999/order",obj).then((res)=>{
+            var obj={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod}
+            await axios.post("http://localhost:9999/orderauth",obj,{headers:{"authtoken":token}}).then((res)=>{
                 if(res!==undefined){
-                    if(res.data===false){
+                    if(res.data.data===null && res.data.status===500){
                         // alert("Please do Order After One order can Dispatch")
-                        props.toastClick("Please do Order After one order can Dispatch")
+                        props.toastClick("Internal server issues,2")
+                        navigate("/viewcart")
+                    }else if(res.data.data===null && res.data.status===401){
+                        props.toastClick("Unauthorized User,3")
                         navigate("/viewcart")
                     }else{
-                        props.toastClick("Order Placed")
+                        props.toastClick("Order Placed,1")
                         navigate("/billconfirm")
                     }
              

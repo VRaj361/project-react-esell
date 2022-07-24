@@ -10,23 +10,21 @@ export const OrderConfirm = () => {
     const [products1, setproducts1] = useState()
     const [isloading1, setisloading1] = useState(true)
     const [iserror1, setiserror1] = useState(false)
-
+    let token ="";
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
     useEffect(() => {
         const fetchData = async () => {
             setiserror1(false);
-            try {
-                const response = await axios('http://localhost:9999/orders/' + JSON.parse(sessionStorage.getItem("data")).userid);
-                setproducts1(response);
-
-
-                if (response !== undefined) {
-                    // console.log(response)
-                    setisloading1(false)
-
-                }
-            } catch (error) {
-                setiserror1(true);
-            }
+            
+                 await axios.get('http://localhost:9999/orders',{headers:{"authtoken":token}}).then((e)=>{
+                    if(e.data.data!==null){
+                        products1(e.data.data)
+                        setisloading1(false)
+                    }
+                 })
+            
         };
         fetchData()
     }, [])
