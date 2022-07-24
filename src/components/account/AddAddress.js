@@ -9,45 +9,29 @@ export const AddAddress = () => {
     const [state, setstate] = useState("")
     const [city, setcity] = useState("")
     const [postal, setpostal] = useState("")
-    const [isloading, setisloading] = useState(true)
-    const [iserror, setiserror] = useState(false)
-    const [obj, setobj] = useState()
-    // let obj = JSON.parse(sessionStorage.getItem("data"))
     let navigate=useNavigate()
+    let token ="";
+    const [obj, setobj] = useState()
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
 
     useEffect(() => {
-        const fetchData = async () => {
-            setiserror(false);
-
-
-            try {
-                const response = await axios('http://localhost:9999/user');
-                response.data.map((e) => {
-                    if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
-                        
-                        setobj(e);
-                    }
-                })
-                if (response !== undefined) {
-                    setisloading(false)
-                }
-            } catch (error) {
-                setiserror(true);
+        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+            if(e.data.data === null && e.data.status ===404){
+                // props.toastClick(`${e.data.msg},1`)
+                navigate("/error404")
+            }else{
+                setobj(e.data.data)
             }
-
-        };
-        fetchData()
-
+        })
     }, [])
-
-
-
 
     const getAddress=async(e)=>{
         e.preventDefault()
         const objAddress={"streetadd":streetadd,"landmark":landmark,"country":country,"state":state,"city":city,"postal":postal}
         let arr=[]
-        if(obj.address===null){            
+        if(obj.address===null || obj.address ===""){            
             arr.push(objAddress);
         }else{
             
@@ -58,11 +42,10 @@ export const AddAddress = () => {
             // obj.address=arr.toString()
             //convert array into string
         }
-        let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":obj.password,"phonenum":obj.phonenum,"address":JSON.stringify(arr)};
-        await axios.put("http://localhost:9999/user",objData).then((e)=>{
-            console.log("success")
+
+        await axios.put("http://localhost:9999/updatecus",{"address":JSON.stringify(arr),"authtoken":token}).then((e)=>{
             console.log(e)
-            sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.firstname,"lastname":e.data.lastname,'userid':e.data.userid}))
+            sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}))
             navigate("/myaccount/addressbook")
         })
     }

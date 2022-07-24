@@ -7,36 +7,50 @@ import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-export const NewPassword = () => {
+export const NewPassword = (props) => {
     let ischeck = false;
     let regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     const [password, setpassword] = useState("")
-    let obj={};
     const navigate = useNavigate()
-    const changeNewPassword = async (e) => {
-        e.preventDefault()
-        await axios.get("http://localhost:9999/user").then((res) => {
-            res.data.map((e) => {
-                if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
-                    // console.log("e", e)
-                    obj=e
-                }
-            })
-        })
-        // console.log(obj)
-        let objData = { "userid": obj.userid, "firstname": obj.firstname, "lastname": obj.lastname, "createdate": obj.createdate, "gender": obj.gender, "email": obj.email, "password": password, "phonenum": obj.phonenum };
-        // console.log("obj ", obj)
-        // console.log("objdata ", objData)
-        await axios.put("http://localhost:9999/user", objData).then((res) => {
-            // console.log("success")
-            // console.log(res)
-            
-            navigate("/myaccount")
-            // sessionStorage.setItem("data",JSON.stringify(objData))
-        })
-    
-
+    let token ="";
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
     }
+    //after
+    const changeNewPassword = async(e)=>{
+        e.preventDefault();
+        await axios.put("http://localhost:9999/updatecus",{"authtoken":token,"password":password}).then((e)=>{
+            props.toastClick(`${e.data.msg},1`)
+            sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}));
+            navigate("/myaccount")
+        })
+    }
+
+
+    //before
+    // let obj={};
+    // const changeNewPassword = async (e) => {
+    //     e.preventDefault()
+    //     await axios.get("http://localhost:9999/user").then((res) => {
+    //         res.data.map((e) => {
+    //             if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
+    //                 // console.log("e", e)
+    //                 obj=e
+    //             }
+    //         })
+    //     })
+    //     // console.log(obj)
+    //     let objData = { "userid": obj.userid, "firstname": obj.firstname, "lastname": obj.lastname, "createdate": obj.createdate, "gender": obj.gender, "email": obj.email, "password": password, "phonenum": obj.phonenum };
+    //     // console.log("obj ", obj)
+    //     // console.log("objdata ", objData)
+    //     await axios.put("http://localhost:9999/user", objData).then((res) => {
+    //         // console.log("success")
+    //         // console.log(res)
+            
+    //         navigate("/myaccount")
+    //         // sessionStorage.setItem("data",JSON.stringify(objData))
+    //     })
+    // }
     return (
         <div>
             <Precss />

@@ -112,31 +112,7 @@ export const Navbar = () => {
                                         <ul className="ah-list ah-list--design2 ah-list--link-color-secondary">
                                             <li>
                                                 <Link to={'/newarrival'}>NEW ARRIVALS</Link></li>
-                                            <li className="has-dropdown">
-                                                <a>PAGES<i className="fas fa-angle-down u-s-m-l-6" /></a>
-                                                {/*====== Dropdown ======*/}
-                                                <span className="js-menu-toggle" />
-                                                <ul style={{ width: '170px' }}>
-                                                   
-
-
-                                                    <li className="has-dropdown has-dropdown--ul-left-100">
-                                                        <a>Empty<i className="fas fa-angle-down i-state-right u-s-m-l-6" /></a>
-                                                        {/*====== Dropdown ======*/}
-                                                        <span className="js-menu-toggle" />
-                                                        <ul style={{ width: '200px' }}>
-                                                            <li>
-                                                                <a href="empty-search.html">Empty Search</a></li>
-                                                           
-                                                        </ul>
-                                                        {/*====== End - Dropdown ======*/}
-                                                    </li>
-                                                   
-
-
-                                                </ul>
-                                                {/*====== End - Dropdown ======*/}
-                                            </li>
+                                            
                                             
                                             {data!==null?
                                             <li>

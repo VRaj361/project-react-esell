@@ -6,7 +6,7 @@ import { Prejs } from './components/Prejs'
 import Rating from '@mui/material/Rating';
 // import { useGetAllProducts } from './Hooks/useQuery/useQueryFiles'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import PreLoading from './components/PreLoading'
 export const ShopList = () => {
 
@@ -23,7 +23,7 @@ export const ShopList = () => {
     const [isloading, setisloading] = useState(true)
     const [iserror, setiserror] = useState(false)
     // const [value, setValue] = useState(2);
-    
+    const navigate = useNavigate()
     useEffect(() => {
         if(searchKey===undefined){
             const fetchData = async () => {
@@ -49,6 +49,8 @@ export const ShopList = () => {
                         if(e.data!==undefined){
                             setproducts(e.data);
                             setisloading(false)
+                        }else{
+                            navigate("/error404")
                         }
                     })
                 } catch (error) {   

@@ -7,26 +7,22 @@ import { Prejs } from './components/Prejs'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 export const ChangePassword = () => {
-    let obj=sessionStorage.getItem("data")
+    let token ="";
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
     const [password, setpassword] = useState("")
+    const [is_check, setis_check] = useState()
     const navigate=useNavigate()
     const checkOldPassword=async(e)=>{
         e.preventDefault();
-        await axios.get("http://localhost:9999/user").then((data) => {
-            data.data.map((e)=>{
-                if(e.userid===JSON.parse(sessionStorage.getItem("data")).userid && password===e.password){
-                    console.log("done")
-                    
-                    // sessionStorage.setItem("data",JSON.stringify({'email':e.email,'firstname':e.firstname,"lastname":e.lastname,'userid':e.userid}));
-                    navigate("/newpassword")
-                }
-            })
+        await axios.post("http://localhost:9999/checkuserdata",{"password":password,"authtoken":token}).then((e) => {
+            if(e.data.data !== null && e.data.status ===200){
+                navigate("/newpassword")
+            }else{
+                setis_check(true)
+            }
         })
-        // if(JSON.parse(sessionStorage.getItem("data")).password===password){
-        //     navigate("/newpassword")
-        // }else{
-        //     console.log("password no match")
-        // }
     }
 
 
@@ -56,6 +52,7 @@ export const ChangePassword = () => {
                                                 <label className="gl-label" htmlFor="reset-email">OLD PASSWORD *</label>
                                                 <input className="input-text input-text--primary-style" type="password" id="reset-email" placeholder="Enter Password" onChange={(e)=>setpassword(e.target.value)}/></div>
                                             <div className="u-s-m-b-30">
+                                            <label className="gl-label" style={{ color: "red" }}>{is_check ? "Wrong Password":""}</label>
                                                 <button className="btn btn--e-transparent-brand-b-2" type="submit">SUBMIT</button></div>
                                             <div className="u-s-m-b-30">
                                                 <Link className="gl-link" to={"/login"}>Back to Login</Link></div>

@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 export const Myprofile = (props) => {
     let token ="";
@@ -7,15 +7,14 @@ export const Myprofile = (props) => {
     if(sessionStorage.getItem("data")!==null){
          token=JSON.parse(sessionStorage.getItem("data")).authtoken
     }
-    
+    const navigate=useNavigate()
     useEffect(() => {
         axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             // console.log(e.data)
             if(e.data.data === null && e.data.status ===404){
                 // props.toastClick(`${e.data.msg},1`)
-                console.log("in")
+                navigate("/error404")
             }else{
-                // props.toastClick(`${e.data.msg},1`)
                 setobj(e.data.data);
             }
         })

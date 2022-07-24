@@ -4,39 +4,32 @@ import axios from 'axios'
 export const AddressBook = () => {
 
     const [isloading, setisloading] = useState(true)
-    const [iserror, setiserror] = useState(false)
+
     const [obj, setobj] = useState()
-
-    
-    
     const [objFi, setobjFi] = useState()
-    useEffect(() => {
-        const fetchData = async () => {
-            setiserror(false);
-
-
-            try {
-                const response = await axios('http://localhost:9999/user');
-                response.data.map((e) => {
-                    if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
-                        setobj(e);
-                        setobjFi(JSON.parse(e.address))
-                    }
-                })
-                if (response !== undefined) {
-                    setisloading(false)
-                }
-            } catch (error) {
-                setiserror(true);
-            }
-
-        };
-        fetchData()
-
-    }, [])
+    
     console.log(obj)
     let navigate=useNavigate()
-   
+    let token ="";
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
+
+    useEffect(() => {
+        setisloading(true)
+       
+        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+            if(e.data.data === null && e.data.status ===404){
+                // props.toastClick(`${e.data.msg},1`)
+                navigate("/error404")
+            }else{
+                setobj(e.data.data)
+                setobjFi(JSON.parse(e.data.data.address))
+                setisloading(false)
+            }
+        })
+        
+    },[])
        
     const deleteAddress=async(e)=>{
 
@@ -48,12 +41,11 @@ export const AddressBook = () => {
             }
         }
 
-
-        let objData={"userid":obj.userid,"firstname":obj.firstname,"lastname":obj.lastname,"createdate":obj.createdate,"gender":obj.gender,"email":obj.email,"password":obj.password,"phonenum":obj.phonenum,"address":JSON.stringify(objArr)};
-        await axios.put("http://localhost:9999/user",objData).then((e)=>{
-            // console.log("success")
-            // console.log(e)
-            navigate("/myaccount")
+        await axios.put("http://localhost:9999/updatecus",{"address":JSON.stringify(objArr),"authtoken":token}).then((e)=>{
+            console.log(e)
+            sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}))
+            window.location.reload()
+            navigate("/myaccount/addressbook")
         })
     }
     return (
@@ -87,7 +79,7 @@ export const AddressBook = () => {
                                     return (
                                         <tr>
                                             <td>
-                                                <button className="address-book-edit btn--e-transparent-platinum-b-2" onClick={()=>deleteAddress(e)}>Delete</button>
+                                                <button className="address-book-edit btn--e-transparent-platinum-b-2"  onClick={()=>deleteAddress(e)}>Delete</button>
                                             </td>
                                             {/* {console.log(e)} */}
                                             <td>{e.streetadd + " " + e.landmark + " ," + e.postal}</td>

@@ -54,6 +54,7 @@ export const EditProfile = (props) => {
             // console.log(e.data)
             if(e.data.data === null && e.data.status ===404){
                 // props.toastClick(`${e.data.msg},1`)
+                navigate("/error404")
             }else{
                 setfirstname(e.data.data.firstname)
                 setlastname(e.data.data.lastname)
@@ -64,11 +65,6 @@ export const EditProfile = (props) => {
             }
         })
     },[])
-
-
-
-
-
 
     const updateData = async (e) => {
         e.preventDefault()
