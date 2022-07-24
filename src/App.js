@@ -75,8 +75,8 @@ function App() {
           <Route exact path="/faq" element={<FAQ />} />
           <Route exact path="/review" element={<Review />} />
           <Route exact path="/productdetails/:id" element={<ProductDetail />} />
-          <Route exact path="/viewcart" element={<Cart />} />
-          <Route exact path="/viewcart/:id" element={<Cart />} />
+          <Route exact path="/viewcart" element={<Cart toastClick={toastClick}/>} />
+          <Route exact path="/viewcart/:id" element={<Cart toastClick={toastClick}/>} />
           <Route exact path="/checkout" element={<Checkout toastClick={toastClick}/>} />
           <Route exact path="/signup" element={<Signup toastClick={toastClick}/>} />
           <Route exact path="/login" element={<Login toastClick={toastClick}/>  } />

@@ -8,120 +8,105 @@ import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import { SectionLinks } from './components/SectionLinks'
 
-export const Cart = () => {
+export const Cart = (props) => {
     const [products, setproducts] = useState()
-
     const [isloading, setisloading] = useState(true)
-    const [iserror, setiserror] = useState(false)
-
-    // const [paramValue, setparamValue] = useState()
+    const [obj, setobj] = useState()
     var productid = useParams().id;
-    // setparamValue(productid)
-    // console.log(productid)
+
+    let token ="";
+    if(sessionStorage.getItem("data")!==null){
+         token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
+    useEffect(() => {
+        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+            if(e.data.data === null && e.data.status ===404){
+                navigate("/error404")
+            }else{
+                setobj(e.data.data);
+            }
+        })
+    },[])
+
     useEffect(() => {
         const fetchData = async () => {
-            setiserror(false);
-
-            if(productid!==undefined){
+            if(productid!==undefined ){
                 try {
-                    // console.log("userid",JSON.parse(sessionStorage.getItem("data")).userid)
-                    const response = await axios('http://localhost:9999/products/' + productid + "/" + JSON.parse(sessionStorage.getItem("data")).userid);
-
-                    setproducts(response.data);
-                    if (response !== undefined) {
-                        setisloading(false)
-                    }
+                    axios.post("http://localhost:9999/addtocartproduct",{'productid':productid,"authtoken":token}).then((e)=>{
+                        if (e !== null) {
+                            setproducts(e.data.data);
+                            setisloading(false)
+                        }
+                    })   
                 } catch (error) {
-                    setiserror(true);
+                    props.toastClick("Something went Wrong,3")
                 }
             }else{
                 setproducts("")
             }
-
         };
         fetchData()
-
     }, [])
-    // console.log("products", products)
-    // console.log(products)
-    // console.log(iserror)
-    // console.log(isloading)
-
-    //second request for get all product
     const [products1, setproducts1] = useState()
     const [isloading1, setisloading1] = useState(true)
-    const [iserror1, setiserror1] = useState(false)
-    // if(isloading===false &&products!=null){
-    // console.log("product ",products)   
     useEffect(() => {
-        
-        const fetchData = async () => {
-            setiserror1(false);
-            // console.log(productid,"thadh")
-            if (isloading === false&&products!==undefined) {
-                try {
-
-                    const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
-
-                    setproducts1(response);
-                    if (response !== undefined) {
-                        setisloading1(false)
+        if(obj!==undefined){
+            const fetchData = async () => {
+                if (isloading === false&&products!==undefined) {
+                    try {
+                        await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":products.userid,"authtoken":token}}).then((e)=>{
+                            if (e !== undefined) {
+                                setproducts1(e.data.data);
+                                setisloading1(false)
+                            }
+                        }) 
+                    } catch (error) {
+                        props.toastClick("Something went Wrong,3")
                     }
-                } catch (error) {
-                    setiserror1(true);
-                }
-            }else if (productid===undefined){
-                try {
+                
+                }else if (productid===undefined && obj !== undefined){
 
-                    const response = await axios('http://localhost:9999/products/' + JSON.parse(sessionStorage.getItem("data")).userid);
-
-                    setproducts1(response);
-                    // console.log("productid 1" ,products1)
-                    if (response !== undefined) {
-                        setisloading1(false)
-                        if(response.data===''){
-                            navigate('/emptycart')
-                        }
+                    try {
+                        await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
+                            if (e !== undefined) {
+                                setproducts1(e.data.data);
+                                setisloading1(false)
+                            }
+                        }) 
+                    } catch (error) {
+                        props.toastClick("Something went Wrong,3")
                     }
-                } catch (error) {
-                    setiserror1(true);
                 }
-            }
 
-        };
-        fetchData()
+            };
+            fetchData()
+        }
 
+    }, [isloading,obj])
 
-    }, [isloading])
-    
-
-    //products
     const navigate=useNavigate();
-    const deleteParticularProduct = async(productid)=>{
-        // console.log(productid)
-        await axios.get("http://localhost:9999/productdelete/"+productid+"/"+JSON.parse(sessionStorage.getItem("data")).userid).then(()=>{
-            // console.log("done")
-        })
-        // setTimeout(() => {
-          
-            navigate('/newarrival')
-        // }, 2000);
-    }
-
-
-    const clearCartData=async()=>{
-        await axios.get("http://localhost:9999/productdeleteall/"+JSON.parse(sessionStorage.getItem("data")).userid).then((res)=>{
-            // console.log(res)
-            if(res.data===true){
-                navigate("/emptycart")
+    const deleteParticularProduct = async(producid)=>{
+        await axios.delete("http://localhost:9999/deleteproduct",{data:{"userid":obj.userid,"authtoken":token,"productid":producid}}).then((e)=>{
+            if(e.data.data===true && e.data.status===200){
+                props.toastClick(`${e.data.msg},1`)
+            }else{
+                navigate("/error404")
             }
         })
-
-
+        navigate('/newarrival')
     }
 
 
-
+    const clearCartData=()=>{
+        axios.delete("http://localhost:9999/deleteAllProducts",{data:{"authtoken":token}}).then((res)=>{
+            if(res.data.data===true){
+                props.toastClick(`${res.data.msg},1`)
+                navigate("/emptycart")
+            }else{
+                navigate("/error404")
+            }
+        })
+    }
 
     return (
         <div>
@@ -152,7 +137,7 @@ export const Cart = () => {
                                         <table className="table-p">
                                             { isloading1 === false && products1 !== undefined ? <tbody>
                                                 {/*====== Row ======*/}
-                                                {products1.data.map((e)=>{
+                                                {products1.map((e)=>{
                                                     return(
                                                     <tr>
                                                         <td>
