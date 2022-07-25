@@ -7,51 +7,58 @@ import { SectionLinks } from './components/SectionLinks'
 import { SetToast } from './components/SetToast'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { cleanup } from '@testing-library/react'
 export const Checkout = (props) => {
+    
     const [products1, setproducts1] = useState()
     const [isloading1, setisloading1] = useState(true)
     const [isloading, setisloading] = useState(true)
-    const [obj, setobj] = useState()
+    const [obj, setobj] = useState(undefined)
     const [objFi, setobjFi] = useState()
     let token ="";
+    
     if(sessionStorage.getItem("data")!==null){
          token=JSON.parse(sessionStorage.getItem("data")).authtoken
     }
-
+    
     useEffect(() => {
-   
         axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             if(e.data.data === null && e.data.status ===404){
                 navigate("/error404")
             }else{
-                setisloading(false)
                 setobj(e.data.data);
-                console.log(obj)
+                console.log(e.data.data)
             }
         })
     },[])
 
 
     useEffect(() => {
-        setTimeout(() => {
-            
-        
         const fetchData = async () => {
-            console.log(isloading+" "+obj)
-            if(isloading===false&&obj!==undefined){
-                console.log("in out")
-                await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
-                    if (e !== undefined) {
-                        setproducts1(e.data.data);
-                        setobjFi(obj.address)
-                        setisloading1(false)
-                    }
-                }) 
+            
+            if(obj!==undefined){
+                try {
+                    await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
+                        
+                        if (e.data.data !== null && e.data.status===200) {
+                            setproducts1(e.data.data);
+                            setobjFi(JSON.parse(obj.address))
+                            setisloading1(false)
+
+                            console.log("products1"+products1)
+                        }
+                    })   
+                } catch (error) {
+                    props.toastClick("Something went Wrong,3")
+                }
+            }else{
+                setproducts1("")
             }
+   
         }
         fetchData()
-    }, 2000);
-    }, [isloading,obj])
+  
+    },[obj])
 
 
     const navigate = useNavigate()
@@ -72,6 +79,7 @@ export const Checkout = (props) => {
 
     const [is_check, setis_check] = useState(false)
     const saveDetail = ()=>{
+        props.toastClick("Clicked,1")
         setis_check(true)
     }
 
@@ -80,8 +88,8 @@ export const Checkout = (props) => {
     const placeOrder = async()=>{
         // console.log(is_check)
         if(is_check===true){
-            var obj={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod}
-            await axios.post("http://localhost:9999/orderauth",obj,{headers:{"authtoken":token}}).then((res)=>{
+            var ob={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod,"userid":obj.userid}
+            await axios.post("http://localhost:9999/orderauth",ob,{headers:{"authtoken":token}}).then((res)=>{
                 if(res!==undefined){
                     if(res.data.data===null && res.data.status===500){
                         // alert("Please do Order After One order can Dispatch")
@@ -169,7 +177,7 @@ export const Checkout = (props) => {
                                                 </div>
 
                                                 {/* ====== Address ========= */}
-                                                {isloading===false&&objFi!==null?
+                                                {isloading1===false&&objFi!==null?
                                                     <div className="u-s-m-b-10">
                                                         <label className="gl-label" htmlFor="order-note">Choose Address</label>
                                                         {objFi.map((e) => {
@@ -203,8 +211,8 @@ export const Checkout = (props) => {
                                         <div className="o-summary">
                                             <div className="o-summary__section u-s-m-b-30">
                                                 <div className="o-summary__item-wrap gl-scroll">
-                                                    {isloading1 === false && products1 !== undefined && products1 !== "" ?
-                                                        products1.data.map((e) => {
+                                                    {isloading1 === false && products1 !== undefined  ?
+                                                        products1.map((e) => {
                                                             return (
                                                                 <div className="o-card">
                                                                     <div className="o-card__flex">

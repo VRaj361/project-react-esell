@@ -68,8 +68,12 @@ export const Cart = (props) => {
 
                     try {
                         await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
+                            if(e.data.data===null){
+                                navigate("/emptycart")
+                            }
                             if (e !== undefined) {
                                 setproducts1(e.data.data);
+                                
                                 setisloading1(false)
                             }
                         }) 
