@@ -26,15 +26,16 @@ export const OtpEnter = (props) => {
         }else{
             let otp_enc = cookies.get('otpResetEmail');
             // console.log("otp en "+otp_enc)
+            
             setis_check(true)
             
             axios.post("http://localhost:9999/otpemailcheck",{"otp":optWhole+","+otp_enc,"authtoken":JSON.parse(sessionStorage.getItem("data")).authtoken}).then((data)=>{
                 if(data.data===true){
-                    
+                    // console.log("data.data email "+data.data) 
                     let d = new Date();
                     d.setTime(d.getTime() + 700*1000);
                     let otp=JSON.parse(sessionStorage.getItem("data")).authtoken
-                    console.log("otp-->",otp)
+                    
                     cookies.set('userauth', otp, { path: '/',expires:d });
                     sessionStorage.clear()
                     navigate("/newpassword")

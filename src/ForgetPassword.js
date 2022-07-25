@@ -22,18 +22,20 @@ export const ForgetPassword = () => {
 
     const checkEmail=async(e)=>{
         e.preventDefault();
-        console.log(obj)
+        
         setis_check(true)
         if(obj!==undefined){
             
             axios.post("http://localhost:9999/otpemail",{"email":email,"authtoken":obj}).then((data)=>{
                 if(data.data!=="-1"){ 
                     const cookies = new Cookies();
+                    
                     let d = new Date();
                     d.setTime(d.getTime() + 70*1000);
-                    cookies.set('otpResetEmail', data.data, { path: '/',expires:d });
+                    let arr=data.data.split(",")
+                    cookies.set('otpResetEmail', arr[1], { path: '/',expires:d });
                     // console.log(cookies.get('otpResetEmail'));
-                    sessionStorage.setItem("data",JSON.stringify({"authtoken":obj}));
+                    sessionStorage.setItem("data",JSON.stringify({"authtoken":arr[0]}));
                     navigate("/otpresetpass")
                 }else{
                     console.log("problem with otp in backend")
