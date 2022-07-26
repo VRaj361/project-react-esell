@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { PulseLoader } from 'react-spinners'
 export const ManageAccount = () => {
+    const [product, setproduct] = useState()
+    const [isloading, setisloading] = useState(true)
+    let token = "";
+    if (sessionStorage.getItem("data") !== null) {
+        token = JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
+    useEffect(() => {
+        const fetchData = async () => {
 
+            try {
+                axios.get("http://localhost:9999/allorders", { headers: { "authtoken": token } }).then((e) => {
+                    if (e !== null) {
+                        setproduct(e.data.data);
+                        setisloading(false)
+                    }
+                })
+            } catch (error) {
+                console.log("problem in manageaccount")
+            }
+        }
+
+        fetchData()
+    }, [])
     return (
         <>
 
@@ -31,7 +55,7 @@ export const ManageAccount = () => {
                                         <div className="dash__link dash__link--secondary u-s-m-b-8">
                                             <Link to={"/myaccount/addressbook"}>Show</Link></div>
                                         <span className="dash__text">You can add Shiping Address at Billing Page.</span>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -41,90 +65,48 @@ export const ManageAccount = () => {
                                         <h2 className="dash__h2 u-s-m-b-8">OFFERS AND COUPONS</h2>
                                         <div className="dash__link dash__link--secondary u-s-m-b-8">
                                             <Link to={"/myaccount/couponoffer"}>Show</Link></div>
-                                            <span className="dash__text">Coupens can Add on the base of Purchase Item.</span>
+                                        <span className="dash__text">Coupens can Add on the base of Purchase Item.</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="dash__box dash__box--shadow dash__box--bg-white dash__box--radius">
+                {product !== undefined && isloading === false ? <div className="dash__box dash__box--shadow dash__box--bg-white dash__box--radius">
                     <h2 className="dash__h2 u-s-p-xy-20">RECENT ORDERS</h2>
                     <div className="dash__table-wrap gl-scroll">
                         <table className="dash__table">
                             <thead>
                                 <tr>
-                                    <th>Order #</th>
-                                    <th>Placed On</th>
-                                    <th>Items</th>
-                                    <th>Total</th>
+                                    <th>Order Id</th>
+                                    <th>Bill Name</th>
+                                    <th>Date of Bill</th>
+                                    <th>Bill Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>3054231326</td>
-                                    <td>26/13/2016</td>
-                                    <td>
-                                        <div className="dash__table-img-wrap">
-                                            <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div>
-                                    </td>
-                                    <td>
-                                        <div className="dash__table-total">
-                                            <span>$126.00</span>
-                                            <div className="dash__link dash__link--brand">
-                                                <a href="dash-manage-order.html">MANAGE</a></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3054231326</td>
-                                    <td>26/13/2016</td>
-                                    <td>
-                                        <div className="dash__table-img-wrap">
-                                            <img className="u-img-fluid" src="images/product/electronic/product14.jpg" alt="" /></div>
-                                    </td>
-                                    <td>
-                                        <div className="dash__table-total">
-                                            <span>$126.00</span>
-                                            <div className="dash__link dash__link--brand">
-                                                <a href="dash-manage-order.html">MANAGE</a></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3054231326</td>
-                                    <td>26/13/2016</td>
-                                    <td>
-                                        <div className="dash__table-img-wrap">
-                                            <img className="u-img-fluid" src="images/product/men/product8.jpg" alt="" /></div>
-                                    </td>
-                                    <td>
-                                        <div className="dash__table-total">
-                                            <span>$126.00</span>
-                                            <div className="dash__link dash__link--brand">
-                                                <a href="dash-manage-order.html">MANAGE</a></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3054231326</td>
-                                    <td>26/13/2016</td>
-                                    <td>
-                                        <div className="dash__table-img-wrap">
-                                            <img className="u-img-fluid" src="images/product/women/product10.jpg" alt="" /></div>
-                                    </td>
-                                    <td>
-                                        <div className="dash__table-total">
-                                            <span>$126.00</span>
-                                            <div className="dash__link dash__link--brand">
-                                                <a href="dash-manage-order.html">MANAGE</a></div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                {product.map((e) => {
+                                    return (
+                                        <tr>
+                                            <td>{e.orderid}</td>
+                                            <td>26/13/2016</td>
+                                            <td>{e.billname}</td>
+                                            <td>
+                                                <div className="dash__table-total">
+                                                    <span>Rs. {e.billamount+e.billtax}</span>
+                                                    <div className="dash__link dash__link--brand">
+                                                        <a href="dash-manage-order.html">MANAGE</a></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+
+                                }
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> : <PulseLoader color="#FF4500" />}
             </div>
 
 
