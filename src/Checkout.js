@@ -28,6 +28,10 @@ export const Checkout = (props) => {
             }else{
                 setobj(e.data.data);
                 console.log(e.data.data)
+                if(e.data.data.address===""){    
+                    props.toastClick("Please Enter Address First,2")
+                    navigate("/myaccount/addressbook")
+                }
             }
         })
     },[])
@@ -39,9 +43,11 @@ export const Checkout = (props) => {
             if(obj!==undefined){
                 try {
                     await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
-                        
-                        if (e.data.data !== null && e.data.status===200) {
+                        console.log("e",e)
+                       
+                        if (e.data.status===200 ) {
                             setproducts1(e.data.data);
+                            console.log("address-->"+typeof(obj.address))
                             setobjFi(JSON.parse(obj.address))
                             setisloading1(false)
 
@@ -49,6 +55,7 @@ export const Checkout = (props) => {
                         }
                     })   
                 } catch (error) {
+                    console.log("error=>",error)
                     props.toastClick("Something went Wrong,3")
                 }
             }else{
@@ -177,7 +184,7 @@ export const Checkout = (props) => {
                                                 </div>
 
                                                 {/* ====== Address ========= */}
-                                                {isloading1===false&&objFi!==null?
+                                                {products1!==undefined&&isloading1===false&&objFi!==null?
                                                     <div className="u-s-m-b-10">
                                                         <label className="gl-label" htmlFor="order-note">Choose Address</label>
                                                         {objFi.map((e) => {

@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { PulseLoader } from 'react-spinners'
 
@@ -30,6 +30,11 @@ export const MyOrder = () => {
         
         fetchData()
     }, [])
+    const navigate=useNavigate()
+    const parManageOrder =(id)=>{
+        sessionStorage.setItem("orderid",id);
+        navigate("/myaccount/manageorder")
+    }
     return (
         <>
             
@@ -53,7 +58,7 @@ export const MyOrder = () => {
                                         </div>
                                         <div>
                                             <div className="dash__link dash__link--brand">
-                                                <Link to={'/'}>MANAGE</Link></div>
+                                            <button className='btn btn--e-brand' onClick={()=>{parManageOrder(e.orderid)}}>MANAGE</button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -64,15 +69,19 @@ export const MyOrder = () => {
                                         <div className="description-title">{e.billname}</div>
                                     </div>
                                     <div className="description__info-wrap">
+                                        {e.status==="Processing"?
                                         <div>
-                                            <span className="manage-o__badge badge--processing">Processing</span></div>
+                                            <span className="manage-o__badge badge--processing">Processing</span>
+                                        </div>:e.status==="Shipped"?
                                         
-                                        {/* <div>
-                                            <span className="manage-o__badge badge--shipped">Shipped</span></div>
+                                        <div>
+                                            <span className="manage-o__badge badge--shipped">Shipped</span>
+                                        </div>:e.status==="Delivered"?
                                     
                                         <div>
-                                            <span className="manage-o__badge badge--delivered">Delivered</span></div>
-                                         */}
+                                            <span className="manage-o__badge badge--delivered">Delivered</span>
+                                        </div>:""
+                                        }
                                             
                                         <div>
                                             <span className="manage-o__text-2 u-c-silver">Total Bill &nbsp;

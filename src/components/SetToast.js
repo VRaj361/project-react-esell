@@ -40,7 +40,6 @@ export const SetToast = (props) => {
     return (
         
         props.setToast!==null&&<div>
-
             <ToastContainer
 
                 position="top-center"
