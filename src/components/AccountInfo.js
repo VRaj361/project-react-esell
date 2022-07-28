@@ -68,8 +68,8 @@ export const AccountInfo = (props) => {
                                                     <Link to={'/myaccount/addressbook'} >Address Book</Link></li>
                                                 <li>
                                                     <Link to={'/myaccount/trackorder'} >Track Order</Link></li>
-                                                <li>
-                                                    <Link to={'/myaccount/manageorder'} >Manage Order</Link></li>
+                                                {/* <li>
+                                                    <Link to={'/myaccount/manageorder'} >Manage Order</Link></li> */}
                                                 <li>
                                                     <Link to={'/myaccount/myorder'} >My Orders</Link></li>
                                                 {/* <li>

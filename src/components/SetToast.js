@@ -2,6 +2,7 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export const SetToast = (props) => {
+    //console.log("in settoast")
     if(props.setToast!==null){
         let arr = props.setToast.split(",")
         if(arr[1]==1){

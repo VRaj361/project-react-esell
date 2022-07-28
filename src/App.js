@@ -41,11 +41,11 @@ import { AlreadyLogin } from './AlreadyLogin';
 
 
 function App() {
-  let user=true
-  const [setToast, setsetToast] = useState(null)//for toast 
+  
+  const [toast, settoast] = useState(null)//for toast 
   const toastClick=(mess)=>{
-    // console.log("in");
-    setsetToast(mess)
+    //console.log("in toast Click");
+    settoast(mess)
   }
   return ( 
     <div className="App " >
@@ -66,7 +66,7 @@ function App() {
         {/* <Review/> */}
         {/* <Cart/> */}
 
-        <SetToast setToast={setToast}></SetToast>
+        <SetToast setToast={toast}></SetToast>
         <Routes>
           <Route exact path="/about" element={<About />} />
           <Route exact path="/" element={<Home />} />

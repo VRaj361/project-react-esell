@@ -594,7 +594,7 @@ export const ShopList = () => {
                                         </div>
                                         <div className="u-s-p-y-60">
                                             {/*====== Pagination ======*/}
-                                            <ul className="shop-p__pagination">
+                                            {/* <ul className="shop-p__pagination">
                                                 <li className="is-active">
                                                     <a href="shop-grid-left.html">1</a></li>
                                                 <li>
@@ -605,7 +605,7 @@ export const ShopList = () => {
                                                     <a href="shop-grid-left.html">4</a></li>
                                                 <li>
                                                     <a className="fas fa-angle-right" href="shop-grid-left.html" /></li>
-                                            </ul>
+                                            </ul> */}
                                             {/*====== End - Pagination ======*/}
                                         </div>
                                     </div>

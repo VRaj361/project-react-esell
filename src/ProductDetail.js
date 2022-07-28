@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,Link } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
@@ -160,7 +160,7 @@ export const ProductDetail = () => {
                           {/*====== End - Input Counter ======*/}
                         </div> 
                         <div className="u-s-m-b-15">
-                          <button className="btn btn--e-brand-b-2" type="submit">Add to Cart</button></div>
+                          <Link to={`/viewcart/${products.productid}`} className="btn btn--e-brand-b-2" >Add to Cart</Link></div>
                       </div>
                     </form>
                   </div>
