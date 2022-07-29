@@ -227,7 +227,7 @@ export const Checkout = (props) => {
                                                                             <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div>
                                                                         <div className="o-card__info-wrap">
                                                                             <span className="o-card__name">
-                                                                                <a href="product-detail.html">{e.productname}</a></span>
+                                                                                <a>{e.productname}</a></span>
                                                                             {/* <span className="o-card__quantity">Quantity x 1</span> */}
                                                                             <span className="o-card__price">Rs. {e.price}</span></div>
                                                                     </div>
