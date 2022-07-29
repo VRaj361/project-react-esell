@@ -66,8 +66,8 @@ export const AccountInfo = (props) => {
                                                     <Link to={'/myaccount/myprofile'}  >My Profile</Link></li>
                                                 <li>
                                                     <Link to={'/myaccount/addressbook'} >Address Book</Link></li>
-                                                <li>
-                                                    <Link to={'/myaccount/trackorder'} >Track Order</Link></li>
+                                                {/* <li>
+                                                    <Link to={'/myaccount/trackorder'} >Track Order</Link></li> */}
                                                 {/* <li>
                                                     <Link to={'/myaccount/manageorder'} >Manage Order</Link></li> */}
                                                 <li>
@@ -112,7 +112,7 @@ export const AccountInfo = (props) => {
                                 {/* <Myprofile/> */}
                                 {loc.endsWith("/addressbook")?<AddressBook/>:""}
                                 {/* <AddressBook/> */}
-                                {loc.endsWith("/trackorder")?<TrackOrder/>:""}
+                                {/* {loc.endsWith("/trackorder")?<TrackOrder/>:""} */}
                                 {/* <TrackOrder/> */}
                                 {loc.endsWith("/myorder")?<MyOrder/>:""}
                                 {/* <MyOrder/> */}
@@ -122,7 +122,7 @@ export const AccountInfo = (props) => {
                                 {/* <Cancellation/> */}
                                 {loc.endsWith("/myaccount")? <ManageAccount/> : ""}
                                 {/* <ManageAccount/> */}
-                                {loc.endsWith("/manageorder")? <ManageOrder/> : ""} 
+                                {loc.endsWith("/manageorder")? <ManageOrder toastClick={props.toastClick}/> : ""} 
                                 {/* {<ManageOrder/> } */}
                                 {loc.endsWith("/editprofile")? <EditProfile toastClick={props.toastClick}/> : ""}
                                 {/* <EditProfile /> */}

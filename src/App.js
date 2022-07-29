@@ -107,7 +107,7 @@ function App() {
           <Route exact path='/myaccount/cancellation' element={<MyAccout />} />
           <Route exact path='/myaccount/editprofile' element={<MyAccout toastClick={toastClick}/> } />
           <Route exact path='/myaccount/editaddress' element={<MyAccout />} />
-          <Route exact path='/myaccount/manageorder' element={<MyAccout />} />
+          <Route exact path='/myaccount/manageorder' element={<MyAccout toastClick={toastClick}/>} />
           <Route exact path='/myaccount/addaddress' element={<MyAccout />} />
          
           {/* any worng route can redirect on 404 page */}

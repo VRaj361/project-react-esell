@@ -2140,6 +2140,12 @@ input::-ms-clear {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
 
+.custom_btn{
+  padding: 8px;
+ 
+  font-weight: 600;
+  font-size: 12px;
+}
 .newsletter__text {
   margin-top: 10px;
   display: block;

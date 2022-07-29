@@ -79,8 +79,8 @@ export const ManageAccount = () => {
                             <thead>
                                 <tr>
                                     <th>Order Id</th>
-                                    <th>Bill Name</th>
                                     <th>Date of Bill</th>
+                                    <th>Bill Name</th>
                                     <th>Bill Amount</th>
                                 </tr>
                             </thead>
@@ -89,7 +89,7 @@ export const ManageAccount = () => {
                                     return (
                                         <tr>
                                             <td>{e.orderid}</td>
-                                            <td>26/13/2016</td>
+                                            <td>{e.orderdate}</td>
                                             <td>{e.billname}</td>
                                             <td>
                                                 <div className="dash__table-total">

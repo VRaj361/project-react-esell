@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { PulseLoader } from 'react-spinners'
 import { Precss } from '../Precss'
 
-export const ManageOrder = () => {
+export const ManageOrder = (props) => {
 
     const [product, setproduct] = useState()
     const [isloading, setisloading] = useState(true)
@@ -37,6 +37,21 @@ export const ManageOrder = () => {
         fetchData()
     }, [])
 
+    //cancel order
+    const navigate=useNavigate()
+    const cancelOrder = async(orderid)=>{
+        await axios.delete("http://localhost:9999/cancelorder",{headers:{"authtoken":token,"orderid":orderid}}).then((e)=>{
+            console.log(e)
+            if(e.data.status===200){
+                props.toastClick(`${e.data.msg},1`)
+                navigate("/myaccount/myorder")
+            }else{
+                props.toastClick(`${e.data.msg},2`)
+                navigate("/myaccount/myorder")
+            }
+        })
+    }
+
     return (
         <>
 
@@ -60,8 +75,10 @@ export const ManageOrder = () => {
                     <div className="dash__pad-2">
                         <div className="manage-o">
                             <div className="manage-o__header u-s-m-b-30">
-                                <div className="manage-o__icon"><i className="fas fa-box u-s-m-r-5" />
-                                    <span className="manage-o__text">Package 1</span></div>
+                                {/* <div className="manage-o__icon"><i className="fas fa-box u-s-m-r-5" />
+                                    <span className="manage-o__text">Package 1</span></div> */}
+                                    
+                                   {product.status!=='Delivered'? <button className='btn btn--e-brand custom_btn' onClick={()=>cancelOrder(product.orderid)}>Cancel Order</button>:"Delivered Successfully"}
                             </div>
                             <div className="dash-l-r">
                                 <div className="manage-o__text u-c-secondary">Delivered After Two Day For the OrderDate</div>
@@ -187,7 +204,6 @@ export const ManageOrder = () => {
                         <div className="dash__box dash__box--bg-white dash__box--shadow dash__box--w">
                             <div className="dash__pad-3">
                                 <h2 className="dash__h2 u-s-m-b-8">Billing Address</h2>
-                                <h2 className="dash__h2 u-s-m-b-8">Billing Name : {product.billname}</h2>
                                 <span className="dash__text-2">{product.billaddress}</span>
                                 {/* <span className="dash__text-2">(+0) 900901904</span> */}
                             </div>

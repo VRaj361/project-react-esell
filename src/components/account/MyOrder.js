@@ -58,7 +58,7 @@ export const MyOrder = () => {
                                         </div>
                                         <div>
                                             <div className="dash__link dash__link--brand">
-                                            <button className='btn btn--e-brand' onClick={()=>{parManageOrder(e.orderid)}}>MANAGE</button></div>
+                                            <button className='btn btn--e-brand custom_btn ' onClick={()=>{parManageOrder(e.orderid)}}>MANAGE</button></div>
                                         </div>
                                     </div>
                                 </div>
