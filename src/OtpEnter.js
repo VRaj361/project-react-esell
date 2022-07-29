@@ -23,6 +23,8 @@ export const OtpEnter = (props) => {
      
         if(cookies.get("otpResetEmail")===undefined){
             props.toastClick(`Otp Expire Try Again,2`)
+            sessionStorage.clear();
+            navigate("/login")
         }else{
             let otp_enc = cookies.get('otpResetEmail');
             // console.log("otp en "+otp_enc)
@@ -44,6 +46,12 @@ export const OtpEnter = (props) => {
                     navigate("/login")
                 }
             });
+        }
+
+    }
+    const clickEvent=(e,id)=>{
+        if(e){
+            document.getElementById(id).focus();
         }
     }
     return (
@@ -68,12 +76,12 @@ export const OtpEnter = (props) => {
                     <form className="card p-2 text-center" style={{ backgroundColor: "#FF4500" }} onSubmit={getUserOTP}>
                         <h6>Please enter the one time password <br /> to verify your account</h6>
                         <div id="otp" className="inputs d-flex flex-row justify-content-center mt-2">
-                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setfirst(e.target.value) }} maxLength={1} />
-                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setsecond(e.target.value) }} maxLength={1} />
-                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setthird(e.target.value) }} maxLength={1} />
-                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setfourth(e.target.value) }} maxLength={1} />
-                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setfifth(e.target.value) }} maxLength={1} />
-                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setsixth(e.target.value) }} maxLength={1} />
+                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setfirst(e.target.value) }} maxLength={1} id="fir" onKeyUp={(e)=>clickEvent(e.target.value.length,'s')} />
+                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setsecond(e.target.value) }} maxLength={1} id="s" onKeyUp={(e)=>clickEvent(e.target.value.length,'t')}/>
+                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setthird(e.target.value) }} maxLength={1} id="t" onKeyUp={(e)=>clickEvent(e.target.value.length,'f')}/>
+                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setfourth(e.target.value) }} maxLength={1} id="f" onKeyUp={(e)=>clickEvent(e.target.value.length,'fi')}/>
+                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setfifth(e.target.value) }} maxLength={1} id="fi" onKeyUp={(e)=>clickEvent(e.target.value.length,'si')}/>
+                            <input className="m-2 text-center form-control rounded" type="text" onChange={(e) => { setsixth(e.target.value) }} maxLength={1} id="si" />
                         </div>
                         <div className="mt-4">
                             {is_check===false?<button className="btn  px-4 validate" type='submit'>Validate</button>:<PulseLoader color="white"/>}
