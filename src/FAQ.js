@@ -18,7 +18,7 @@ export const FAQ = () => {
             <div className="app-content">
 
                 {/* section 1 */}
-                <SectionLinks nextLink="Login" />
+                <SectionLinks nextLink="FAQ" />
                 <div>
                     {/*====== Section 2 ======*/}
                     <div className="u-s-p-b-60">

@@ -2,10 +2,56 @@ import React from 'react'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { SectionLinks } from './components/SectionLinks'
-import { Helmet } from 'react-helmet'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
+import { useFormik } from 'formik'
+import { Experimental_CssVarsProvider } from '@mui/material'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 export const Contact = () => {
+
+    const initialValues = {
+        email:'',
+        name:'',
+        subject:'',
+        msg:''
+    }
+    const navigate = useNavigate()
+    const onSubmit = async(values)=>{
+        console.log(values)
+        await axios.post("http://localhost:9999/contact",values).then((e)=>{
+            console.log("e"+e.data)
+            if(e.data.status === 200 ){
+                console.log(e)
+                navigate("/getcontact")
+            }else{
+                console.log("Contact Exists")
+            }
+        })
+    }
+
+    const validate = (values)=>{
+        let errors = {}
+        if(!values.name){
+            errors.name = "Name Required"
+        }
+        if(!values.email){
+            errors.email = "Email Required"
+        }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
+            errors.email = "Email id must be in xxx@xx.xx";
+        }
+        if(!values.subject){
+            errors.subject = "Subject Required"
+        }
+        return errors;
+    }
+
+    const formik = useFormik({
+        initialValues:initialValues,
+        onSubmit:onSubmit,
+        validate:validate
+    })
+
     return (
         <div>
             <Precss/>
@@ -20,21 +66,7 @@ export const Contact = () => {
                 <SectionLinks nextLink="Contact" />
 
                 <div>
-                    <div className="u-s-p-b-60">
-                        {/*====== Section Content ======*/}
-                        <div className="section__content">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-lg-12">
-                                        <div className="g-map">
-                                            <div id="map" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/*====== End - Section Content ======*/}
-                    </div>
+                    
                     {/*====== End - Section 2 ======*/}
                     {/*====== Section 3 ======*/}
                     <div className="u-s-p-b-60">
@@ -89,25 +121,32 @@ export const Contact = () => {
                                             <div className="contact-area__heading">
                                                 <h2>Get In Touch</h2>
                                             </div>
-                                            <form className="contact-f" method="post" action="index.html">
+                                            <form className="contact-f" onSubmit={formik.handleSubmit}>
                                                 <div className="row">
                                                     <div className="col-lg-6 col-md-6 u-h-100">
                                                         <div className="u-s-m-b-30">
-                                                            <label htmlFor="c-name" />
-                                                            <input className="input-text input-text--border-radius input-text--primary-style" type="text" id="c-name" placeholder="Name (Required)" required /></div>
+                                                            <label htmlFor="name" />
+                                                            <input className="input-text input-text--border-radius input-text--primary-style" type="text" id="name" placeholder="Name " onChange={formik.handleChange} value={formik.values.name} /></div>
+                                                            {formik.errors.name  ?<label className="gl-label" style={{ color: "red" }} > {formik.errors.name} </label> : ""}
                                                         <div className="u-s-m-b-30">
-                                                            <label htmlFor="c-email" />
-                                                            <input className="input-text input-text--border-radius input-text--primary-style" type="text" id="c-email" placeholder="Email (Required)" required /></div>
+                                                            <label htmlFor="email" />
+                                                            <input className="input-text input-text--border-radius input-text--primary-style" type="text" id="email" placeholder="Email " onChange={formik.handleChange} value={formik.values.email} /></div>
+                                                            {formik.errors.email  ?<label className="gl-label" style={{ color: "red" }} > {formik.errors.email} </label> : ""}
                                                         <div className="u-s-m-b-30">
-                                                            <label htmlFor="c-subject" />
-                                                            <input className="input-text input-text--border-radius input-text--primary-style" type="text" id="c-subject" placeholder="Subject (Required)" required /></div>
+                                                            <label htmlFor="subject" />
+                                                            <input className="input-text input-text--border-radius input-text--primary-style" type="text" id="subject" placeholder="Subject " onChange={formik.handleChange} value={formik.values.subject} /></div>
+                                                            {formik.errors.subject  ?<label className="gl-label" style={{ color: "red" }} > {formik.errors.subject} </label> : ""}
                                                     </div>
                                                     <div className="col-lg-6 col-md-6 u-h-100">
                                                         <div className="u-s-m-b-30">
-                                                            <label htmlFor="c-message" /><textarea className="text-area text-area--border-radius text-area--primary-style" id="c-message" placeholder="Compose a Message (Required)" required defaultValue={""} /></div>
+                                                            <label htmlFor="msg" />
+                                                            <textarea className="text-area text-area--border-radius text-area--primary-style" id="msg" placeholder="Compose a Message (Optional)" onChange={formik.handleChange} value={formik.values.msg}/>
+                                                           
+                                                        </div>
                                                     </div>
                                                     <div className="col-lg-12">
-                                                        <button className="btn btn--e-brand-b-2" type="submit">Send Message</button></div>
+                                                        <button className="btn btn--e-brand-b-2"  >Send Message</button>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

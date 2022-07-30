@@ -107,6 +107,8 @@ export const Checkout = (props) => {
                         navigate("/viewcart")
                     }else{
                         props.toastClick("Order Placed,1")
+                        console.log("checkout---->"+res.data.data)
+                        sessionStorage.setItem("orderid",res.data.data.orderid)
                         navigate("/billconfirm")
                     }
              

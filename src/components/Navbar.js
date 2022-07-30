@@ -122,9 +122,11 @@ export const Navbar = () => {
                                             <li>
                                                 <Link to={'/review'}>REVIEW</Link>
                                             </li>
+                                            {data!==null?
                                             <li className="">
                                                 <Link to={'/contact'}>CONTACT US</Link>
-                                            </li>
+                                            </li>:""
+                                            }
                                             <li className="">
                                                 <Link to={'/auctionhome'}>AUCTION</Link>
                                             </li>
