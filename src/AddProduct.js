@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
@@ -13,7 +13,7 @@ import useDrivePicker from 'react-google-drive-picker/dist'
 // import { useSendFiles } from './Hooks/useQuery/useQueryFiles'
 import { type } from '@testing-library/user-event/dist/type'
 
-export const AddProduct = () => {
+export const AddProduct = (props) => {
 
     const [name, setname] = useState("")
     const [description, setdescription] = useState("")
@@ -22,42 +22,54 @@ export const AddProduct = () => {
     const [title, settitle] = useState("")
     const [rating, setrating] = useState()
     const [photo, setphoto] = useState("")
+    const [obj, setobj] = useState()
     var ischeck = false;
 
     let token ="";
     if(sessionStorage.getItem("data")!==null){
         token=JSON.parse(sessionStorage.getItem("data")).authtoken
     }
+    const navigate=useNavigate();
+
+    useEffect(() => {
+        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+            if(e.data.data === null && e.data.status ===404){
+                navigate("/error404")
+            }else{
+                setobj(e.data.data)
+            }
+        })
+    }, [])//getting data
+    
     const [resdata, setresdata] = useState(false)
+    let i=0;
     const setFile = async (e) => {
         // var arr = []
-        var i = 0;
         
         resdata === false &&  setInterval(() => {
-            // if (i === e.target.files.length) {
-            //     clearInterval(think)
-            // }
             if (i < e.target.files.length) {
 
                 const formData = new FormData()
                 formData.append('file', e.target.files[i])
-                axios.post("http://localhost:9999/upload", formData).then((res) => {
+                axios.post("http://localhost:9999/upload", formData,{headers:{'authtoken':token}}).then((res) => {
 
-                    console.log("res->Data--->"+res.data)
+                    // console.log("res->Data--->"+res.data)
                     // arr.push(res.data)
-                    i++;
-                    setresdata(true)
+                    props.toastClick("File Upload Successfully Kindly Please Click Again for Add Product,1")
+                    if(e.target.files.length==i){
+                        setresdata(true)
+                    }
                     setphoto(res.data)               
                 })
             }
 
-        }, 3000);
+        }, 2000);
         
     }
 
     const addProduct = async (e) => {
         e.preventDefault()
-        // if (ischeck === true) {
+
         console.log("photo--->"+photo)
         const objData = {
             "productname": name,
@@ -66,23 +78,14 @@ export const AddProduct = () => {
             "location": location,
             "title": title,
             "rating": rating,
-            "photo":photo
-            
-            // "photo":formData,
-            // "photo":JSON.stringify(arr),
-
-
-            //"userid": parseInt(JSON.parse(sessionStorage.getItem("data")).userid)
+            "photo":photo,
+            "userid":obj.userid
         }
-   
-        console.log("objDaat--->"+JSON.stringify(objData))
-        console.log("resdata--->"+resdata)
 
         resdata && await axios.post("http://localhost:9999/product", objData).then((res) => {
-          console.log("success")
-          console.log(res)
-        //   sessionStorage.setItem("data", JSON.stringify(objData));
-        //   navigate("/")
+            console.log("success")
+            console.log(res)
+            navigate("/")
         })
 
     }
@@ -175,7 +178,7 @@ export const AddProduct = () => {
 
                                                 {/* {phonenum} */}
                                                 <div className="u-s-m-b-15">
-                                                    <button disabled={ischeck ? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">Add Product</button></div>
+                                                    <button disabled={ischeck && resdata ? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">Add Product</button></div>
                                                 <Link className="gl-link" to={"/"}>Return to Store</Link>
                                             </form>
                                         </div>

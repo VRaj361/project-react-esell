@@ -22,7 +22,7 @@ export const ManageOrder = (props) => {
                         setproduct(e.data.data);
 
                         setparproduct(JSON.parse(e.data.data.orderdata))
-
+                        console.log(JSON.stringify(e.data.data.orderdata))
                         setisloading(false)
                     } else {
                         setproduct(null);
@@ -173,8 +173,8 @@ export const ManageOrder = (props) => {
                                         <div className="manage-o__description">
 
                                             <div className="description__container">
-                                                <div className="description__img-wrap">
-                                                    <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div>
+                                                {/* <div className="description__img-wrap">
+                                                <img className=' u-img-fluid' src={`data:image/png;base64,${e.photo}`}/></div> */}
                                                 <div className="description-title">{e.productname}</div>
                                             </div>
 

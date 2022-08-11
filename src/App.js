@@ -87,7 +87,7 @@ function App() {
           <Route exact path="/logout" element={<Signout />} />
           <Route exact path='/changepassword' element={<ChangePassword />} />
           <Route exact path='/newpassword' element={<NewPassword toastClick={toastClick}/>} />
-          <Route exact path='/addproduct' element={<AddProduct />} />
+          <Route exact path='/addproduct' element={<AddProduct toastClick={toastClick}/>} />
           <Route exact path='/emptycart' element={<EmptyCart />} />
           <Route exact path='/billconfirm' element={<OrderConfirm />} />
           <Route exact path='/auctionhome' element={<AuctionHome />} />

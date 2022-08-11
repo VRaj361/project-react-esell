@@ -147,7 +147,9 @@ export const Cart = (props) => {
                                                         <td>
                                                             <div className="table-p__box">
                                                                 <div className="table-p__img-wrap">
-                                                                    <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div>
+                                                                    {/* <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div> */}
+                                                                    <img className=' u-img-fluid' src={`data:image/png;base64,${e.photo}`}/></div>
+                                                                
                                                                 <div className="table-p__info">
                                                                     <span className="table-p__name">
                                                                         <a href="product-detail.html">{e.productname}</a></span>

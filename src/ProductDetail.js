@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import { Prejs } from './components/Prejs'
 import axios from 'axios'
+import PreLoading from './components/PreLoading'
 
 
 export const ProductDetail = () => {
@@ -29,7 +30,7 @@ export const ProductDetail = () => {
 
                     setproducts(response.data);
                     if (response !== undefined) {
-                      console.log(response.data)
+                      
                         setisloading(false)
                     }
                 } catch (error) {
@@ -55,7 +56,7 @@ export const ProductDetail = () => {
             <div className="row">
               <div className="col-lg-5">
                 {/*====== Product Breadcrumb ======*/}
-                <div className="pd-breadcrumb u-s-m-b-30">
+                {/* <div className="pd-breadcrumb u-s-m-b-30">
                   <ul className="pd-breadcrumb__list">
                     <li className="has-separator">
                       <a href="index.hml">Home</a></li>
@@ -66,22 +67,23 @@ export const ProductDetail = () => {
                     <li className="is-marked">
                       <a href="shop-side-version-2.html">Nikon Cameras</a></li>
                   </ul>
-                </div>
+                </div> */}
                 {/*====== End - Product Breadcrumb ======*/}
                 {/*====== Product Detail Zoom ======*/}
                 <div className="pd u-s-m-b-30">
                   <div className="slider-fouc pd-wrap">
                     <div id="pd-o-initiate">
                       <div className="pd-o-img-wrap" data-src="images/product/product-d-1.jpg">
-                        <img className="u-img-fluid" src="images/product/product-d-1.jpg" data-zoom-image="images/product/product-d-1.jpg" alt="" /></div>
-                      <div className="pd-o-img-wrap" data-src="images/product/product-d-2.jpg">
+                        
+                        <img className='imgsetbox u-img-fluid' src={`data:image/png;base64,${products.photo}`}/></div>
+                      {/* <div className="pd-o-img-wrap" data-src="images/product/product-d-2.jpg">
                         <img className="u-img-fluid" src="images/product/product-d-2.jpg" data-zoom-image="images/product/product-d-2.jpg" alt="" /></div>
                       <div className="pd-o-img-wrap" data-src="images/product/product-d-3.jpg">
                         <img className="u-img-fluid" src="images/product/product-d-3.jpg" data-zoom-image="images/product/product-d-3.jpg" alt="" /></div>
                       <div className="pd-o-img-wrap" data-src="images/product/product-d-4.jpg">
                         <img className="u-img-fluid" src="images/product/product-d-4.jpg" data-zoom-image="images/product/product-d-4.jpg" alt="" /></div>
                       <div className="pd-o-img-wrap" data-src="images/product/product-d-5.jpg">
-                        <img className="u-img-fluid" src="images/product/product-d-5.jpg" data-zoom-image="images/product/product-d-5.jpg" alt="" /></div>
+                        <img className="u-img-fluid" src="images/product/product-d-5.jpg" data-zoom-image="images/product/product-d-5.jpg" alt="" /></div> */}
                     </div>
                     <span className="pd-text">Click for larger zoom</span>
                   </div>
@@ -691,7 +693,7 @@ export const ProductDetail = () => {
         </div>
         {/*====== End - Section 1 ======*/}
       </div>
-      :""}
+      :(<PreLoading/>)}
       {/*====== End - App Content ======*/}
       <Footer/>
       <Prejs/>

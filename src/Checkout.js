@@ -226,7 +226,8 @@ export const Checkout = (props) => {
                                                                 <div className="o-card">
                                                                     <div className="o-card__flex">
                                                                         <div className="o-card__img-wrap">
-                                                                            <img className="u-img-fluid" src="images/product/electronic/product3.jpg" alt="" /></div>
+                                                                            
+                                                                            <img className=' u-img-fluid' src={`data:image/png;base64,${e.photo}`}/></div>
                                                                         <div className="o-card__info-wrap">
                                                                             <span className="o-card__name">
                                                                                 <a>{e.productname}</a></span>
