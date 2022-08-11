@@ -66,54 +66,9 @@ export const Home = () => {
                     </div>
                 </div>
                 {/*====== End - Primary Slider ======*/}
-                {/*====== Section 1 ======*/}
-                <div className="u-s-p-y-60">
-                    {/*====== Section Intro ======*/}
-                    <div className="section__intro u-s-m-b-46">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <div className="section__text-wrap">
-                                        <h1 className="section__heading u-c-secondary u-s-m-b-12">SHOP BY DEALS</h1>
-                                        <span className="section__span u-c-silver">BROWSE FAVOURITE DEALS</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/*====== End - Section Intro ======*/}
-                    {/*====== Section Content ======*/}
-                    <div className="section__content">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-5 col-md-5 u-s-m-b-30">
-                                    <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey  box-image">
-                                            <img className="  collection__img" src="images/collection/blackfridaysell.jpg" alt="" /></div>
-                                    </a></div>
-                                <div className="col-lg-7 col-md-7 u-s-m-b-30">
-                                    <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey   box-image">
-                                            <img className="collection__img" src="images/collection/cybermonday.jpg" alt="" /></div>
-                                    </a></div>
-                                <div className="col-lg-7 col-md-7 u-s-m-b-30">
-                                    <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey  box-image">
-                                            <img className=" collection__img" src="images/collection/saleposter.jpg" alt="" /></div>
-                                    </a></div>
-                                <div className="col-lg-5 col-md-5 u-s-m-b-30">
-                                    <a className="collection" href="shop-side-version-2.html">
-                                        <div className="aspect aspect--bg-grey   box-image">
-                                            <img className="collection__img" src="images/collection/specialoffer.jpg" alt="" /></div>
-                                    </a></div>
-                            </div>
-                        </div>
-                    </div>
-                    {/*====== Section Content ======*/}
-                </div>
-                {/*====== End - Section 1 ======*/}
+                
                 {/*====== Section 2 ======*/}
-                <div className="u-s-p-b-60">
+                <div className="u-s-p-y-60">
                     {/*====== Section Intro ======*/}
                     <div className="section__intro u-s-m-b-16">
                         <div className="container">
@@ -816,7 +771,7 @@ export const Home = () => {
                                                 <a>Health</a></div>
                                             <span className="bp-mini__h1">
                                                 <a href="blog-detail.html">Life is an extraordinary Adventure</a></span>
-                                            <p className="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                            <p className="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and type     ing industry.</p>
                                             <div className="blog-t-w">
                                                 <a className="gl-tag btn--e-transparent-hover-brand-b-2">Travel</a>
                                                 <a className="gl-tag btn--e-transparent-hover-brand-b-2">Culture</a>
@@ -902,80 +857,7 @@ export const Home = () => {
                     {/*====== End - Section Content ======*/}
                 </div>
                 {/*====== End - Section 10 ======*/}
-                {/*====== Section 11 ======*/}
-                <div className="u-s-p-b-90 u-s-m-b-30">
-                    {/*====== Section Intro ======*/}
-                    <div className="section__intro u-s-m-b-46">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <div className="section__text-wrap">
-                                        <h1 className="section__heading u-c-secondary u-s-m-b-12">CLIENTS FEEDBACK</h1>
-                                        <span className="section__span u-c-silver">WHAT OUR CLIENTS SAY</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/*====== End - Section Intro ======*/}
-                    {/*====== Section Content ======*/}
-                    <div className="section__content">
-                        <div className="container">
-                            {/*====== Testimonial Slider ======*/}
-                            <div className="slider-fouc">
-                                <div className="owl-carousel" id="testimonial-slider">
-                                    <div className="testimonial">
-                                        <div className="testimonial__img-wrap">
-                                            <img className="testimonial__img" src="images/about/test-1.jpg" alt="" /></div>
-                                        <div className="testimonial__content-wrap">
-                                            <span className="testimonial__double-quote"><i className="fas fa-quote-right" /></span>
-                                            <blockquote className="testimonial__block-quote">
-                                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-                                            </blockquote>
-                                            <span className="testimonial__author">John D. / DVNTR Inc.</span>
-                                        </div>
-                                    </div>
-                                    <div className="testimonial">
-                                        <div className="testimonial__img-wrap">
-                                            <img className="testimonial__img" src="images/about/test-2.jpg" alt="" /></div>
-                                        <div className="testimonial__content-wrap">
-                                            <span className="testimonial__double-quote"><i className="fas fa-quote-right" /></span>
-                                            <blockquote className="testimonial__block-quote">
-                                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-                                            </blockquote>
-                                            <span className="testimonial__author">John D. / DVNTR Inc.</span>
-                                        </div>
-                                    </div>
-                                    <div className="testimonial">
-                                        <div className="testimonial__img-wrap">
-                                            <img className="testimonial__img" src="images/about/test-3.jpg" alt="" /></div>
-                                        <div className="testimonial__content-wrap">
-                                            <span className="testimonial__double-quote"><i className="fas fa-quote-right" /></span>
-                                            <blockquote className="testimonial__block-quote">
-                                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-                                            </blockquote>
-                                            <span className="testimonial__author">John D. / DVNTR Inc.</span>
-                                        </div>
-                                    </div>
-                                    <div className="testimonial">
-                                        <div className="testimonial__img-wrap">
-                                            <img className="testimonial__img" src="images/about/test-4.jpg" alt="" /></div>
-                                        <div className="testimonial__content-wrap">
-                                            <span className="testimonial__double-quote"><i className="fas fa-quote-right" /></span>
-                                            <blockquote className="testimonial__block-quote">
-                                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-                                            </blockquote>
-                                            <span className="testimonial__author">John D. / DVNTR Inc.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/*====== End - Testimonial Slider ======*/}
-                        </div>
-                    </div>
-                    {/*====== End - Section Content ======*/}
-                </div>
-                {/*====== End - Section 11 ======*/}
+                
                 
                 
             </div>

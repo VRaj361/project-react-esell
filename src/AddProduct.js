@@ -20,44 +20,45 @@ export const AddProduct = () => {
     const [price, setprice] = useState("")
     const [location, setlocation] = useState("")
     const [title, settitle] = useState("")
-    const [rating, setrating] = useState()//out of five
-    const [photo, setphoto] = useState([])
+    const [rating, setrating] = useState()
+    const [photo, setphoto] = useState("")
     var ischeck = false;
-    //notify message on your register phone number
 
-
-
+    let token ="";
+    if(sessionStorage.getItem("data")!==null){
+        token=JSON.parse(sessionStorage.getItem("data")).authtoken
+    }
+    const [resdata, setresdata] = useState(false)
     const setFile = async (e) => {
-        var arr = []
+        // var arr = []
         var i = 0;
-        const think = setInterval(() => {
-            if (i === e.target.files.length) {
-                clearInterval(think)
-            }
+        
+        resdata === false &&  setInterval(() => {
+            // if (i === e.target.files.length) {
+            //     clearInterval(think)
+            // }
             if (i < e.target.files.length) {
 
                 const formData = new FormData()
-                // console.log(filedata)
                 formData.append('file', e.target.files[i])
-                // formData.append('name','this is name')
-                console.log(formData)
-
-
                 axios.post("http://localhost:9999/upload", formData).then((res) => {
 
-                    console.log(res.data)
-                    arr.push(res.data)
+                    console.log("res->Data--->"+res.data)
+                    // arr.push(res.data)
                     i++;
-
+                    setresdata(true)
+                    setphoto(res.data)               
                 })
             }
 
         }, 3000);
+        
     }
 
     const addProduct = async (e) => {
         e.preventDefault()
         // if (ischeck === true) {
+        console.log("photo--->"+photo)
         const objData = {
             "productname": name,
             "price": price,
@@ -65,24 +66,24 @@ export const AddProduct = () => {
             "location": location,
             "title": title,
             "rating": rating,
-
-
+            "photo":photo
+            
             // "photo":formData,
             // "photo":JSON.stringify(arr),
 
 
-            "userid": parseInt(JSON.parse(sessionStorage.getItem("data")).userid)
+            //"userid": parseInt(JSON.parse(sessionStorage.getItem("data")).userid)
         }
-        //add photo also
-        console.log(objData)
-        // }
+   
+        console.log("objDaat--->"+JSON.stringify(objData))
+        console.log("resdata--->"+resdata)
 
-        // await axios.post("http://localhost:9999/product", objData).then((res) => {
-        //   console.log("success")
-        //   console.log(res)
-        // //   sessionStorage.setItem("data", JSON.stringify(objData));
-        // //   navigate("/")
-        // })
+        resdata && await axios.post("http://localhost:9999/product", objData).then((res) => {
+          console.log("success")
+          console.log(res)
+        //   sessionStorage.setItem("data", JSON.stringify(objData));
+        //   navigate("/")
+        })
 
     }
 
@@ -144,7 +145,7 @@ export const AddProduct = () => {
 
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-lname">Rating (out of 5) *</label>
-                                                    <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="number" id="reg-lname" placeholder="Product Description" onChange={(e) => setrating(e.target.value)} /></div>
+                                                    <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="number" id="reg-lname" placeholder="Product Rating" onChange={(e) => setrating(e.target.value)} /></div>
                                                 {rating !== undefined && rating <= 5 && rating > 0 ? ischeck = true : ischeck = false}
                                                 <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Rating ` : ""}</label>
 
@@ -156,11 +157,11 @@ export const AddProduct = () => {
                                                 {price !== "" ? ischeck = true : ischeck = false}
                                                 <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Price ` : ""}</label>
                                                 {/* {email} */}
-                                                <div className="u-s-m-b-30">
+                                                {/* <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-password">Location *</label>
                                                     <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-password" placeholder="Enter location" onChange={(e) => setlocation(e.target.value)} /></div>
                                                 {location !== "" ? ischeck = true : ischeck = false}
-                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Location ` : ""}</label>
+                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Location ` : ""}</label> */}
                                                 {/* {password} */}
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="reg-phonenumber">Select file *</label>
