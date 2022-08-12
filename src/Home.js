@@ -72,11 +72,11 @@ export const Home = () => {
                                         <div className="col-12">
                                             <div className="slider-content slider-content--animation">
                                                 <span className="content-span-1 u-c-secondary">Latest Update Stock</span>
-                                                <span className="content-span-2 u-c-secondary">30% Off On Electronics</span>
+                                                <span className="content-span-2 u-c-secondary">30% Off On Electronics Accessories</span>
                                                 <span className="content-span-3 u-c-secondary">Find electronics on best prices, Also Discover most selling products of electronics</span>
                                                 <span className="content-span-4 u-c-secondary">Starting At
-                                                    <span className="u-c-brand">$1050.00</span></span>
-                                                <a className="shop-now-link btn--e-brand" href="shop-side-version-2.html">SHOP NOW</a></div>
+                                                    <span className="u-c-brand">Rs. 25000</span></span>
+                                                <Link className="shop-now-link btn--e-brand" to={"/newarrival"}>SHOP NOW</Link></div>
                                         </div>
                                     </div>
                                 </div>
@@ -87,11 +87,11 @@ export const Home = () => {
                                         <div className="col-12">
                                             <div className="slider-content slider-content--animation">
                                                 <span className="content-span-1 u-c-white">Find Top Brands</span>
-                                                <span className="content-span-2 u-c-white">10% Off On Electronics</span>
+                                                <span className="content-span-2 u-c-white">10% Off On Headphones</span>
                                                 <span className="content-span-3 u-c-white">Find electronics on best prices, Also Discover most selling products of electronics</span>
                                                 <span className="content-span-4 u-c-white">Starting At
-                                                    <span className="u-c-brand">$380.00</span></span>
-                                                <a className="shop-now-link btn--e-brand" href="shop-side-version-2.html">SHOP NOW</a></div>
+                                                    <span className="u-c-brand">Rs. 3000</span></span>
+                                                    <Link className="shop-now-link btn--e-brand" to={"/newarrival"}>SHOP NOW</Link></div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,11 +102,11 @@ export const Home = () => {
                                         <div className="col-12">
                                             <div className="slider-content slider-content--animation">
                                                 <span className="content-span-1 u-c-secondary">Find Top Brands</span>
-                                                <span className="content-span-2 u-c-secondary">10% Off On Electronics</span>
+                                                <span className="content-span-2 u-c-secondary">10% Off On Mobiles</span>
                                                 <span className="content-span-3 u-c-secondary">Find electronics on best prices, Also Discover most selling products of electronics</span>
                                                 <span className="content-span-4 u-c-secondary">Starting At
-                                                    <span className="u-c-brand">$550.00</span></span>
-                                                <a className="shop-now-link btn--e-brand" href="shop-side-version-2.html">SHOP NOW</a></div>
+                                                    <span className="u-c-brand">Rs. 10000</span></span>
+                                                    <Link className="shop-now-link btn--e-brand" to={"/newarrival"}>SHOP NOW</Link></div>
                                         </div>
                                     </div>
                                 </div>
@@ -426,9 +426,9 @@ export const Home = () => {
                                             <div className="product-o__wrap box-img">
                                                 <a className="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
                                                     <img className="aspect__img" src="https://media.istockphoto.com/photos/quadcopter-drone-with-4k-video-camera-flying-in-the-air-picture-id911190112?k=20&m=911190112&s=612x612&w=0&h=6mkFfZ_h5OVzYH_b0DVaYMdMZd86Zn8MZH89gWPJN0w=" alt="" /></a>
-                                                <div className="product-o__special-count-wrap">
+                                                {/* <div className="product-o__special-count-wrap">
                                                     <div className="countdown countdown--style-special" data-countdown="2020/05/01" />
-                                                </div>
+                                                </div> */}
                                                 <div className="product-o__action-wrap">
                                                     <ul className="product-o__action-list">
                                                         <li>
@@ -447,9 +447,11 @@ export const Home = () => {
                                             <span className="product-o__name">
                                                 <a href="product-detail.html">DJI Phantom Drone 4k</a></span>
                                             <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" />
-                                                <span className="product-o__review">(2)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
+                                                {/* <span className="product-o__review">(2)</span> */}
+                                            </div>
+                                            <span className="product-o__price">Rs. 11500
+                                                <span className="product-o__discount">Rs. 30000</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 u-s-m-b-30">
@@ -477,10 +479,12 @@ export const Home = () => {
                                                 <a href="shop-side-version-2.html">Electronics</a></span>
                                             <span className="product-o__name">
                                                 <a href="product-detail.html">DJI Phantom Drone 2k</a></span>
-                                            <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" />
-                                                <span className="product-o__review">(2)</span></div>
-                                            <span className="product-o__price">$125.00
-                                                <span className="product-o__discount">$160.00</span></span>
+                                            <div className="product-o__rating gl-rating-style"><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" />
+                                                {/* <span className="product-o__review">(2)</span> */}
+                                            </div>
+                                            <span className="product-o__price">Rs. 27000
+                                                <span className="product-o__discount">Rs. 50000</span>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -497,9 +501,7 @@ export const Home = () => {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
-                                        <div className="banner-bg__countdown">
-                                            <div className="countdown countdown--style-banner" data-countdown="2020/05/01" />
-                                        </div>
+                                        
                                         <div className="banner-bg__wrap">
                                             <div className="banner-bg__text-1">
                                                 <span className="u-c-white">Global</span>
@@ -507,7 +509,7 @@ export const Home = () => {
                                             <div className="banner-bg__text-2">
                                                 <span className="u-c-secondary">Official Launch</span>
                                                 <span className="u-c-white">Don't Miss!</span></div>
-                                            <span className="banner-bg__text-block banner-bg__text-3 u-c-secondary">Enjoy Free Shipping when you buy 2 items and above!</span>
+                                            <span className="banner-bg__text-block banner-bg__text-3 u-c-secondary">Enjoy Free Shipping when you buy Rs.500  items and above!</span>
                                             <a className="banner-bg__shop-now btn--e-secondary" href="shop-side-version-2.html">Shop Now</a>
                                         </div>
                                     </div>
@@ -543,7 +545,7 @@ export const Home = () => {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
-                                        <a className="promotion" href="shop-side-version-2.html">
+                                        <Link className="promotion" to={"/newarrival"}>
                                             <div className="aspect aspect--bg-grey aspect--square">
                                                 <img className="aspect__img promotion__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/promo/promo-img-1.5f96cc043d8d56d909cf10e4e5aa15f1.jpg" alt="" /></div>
                                             <div className="promotion__content">
@@ -555,23 +557,23 @@ export const Home = () => {
                                                         <span className="u-c-brand">TOUCH</span></div>
                                                 </div>
                                             </div>
-                                        </a></div>
+                                        </Link></div>
                                     <div className="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
-                                        <a className="promotion" href="shop-side-version-2.html">
+                                        <Link className="promotion" to={"/newarrival"}>
                                             <div className="aspect aspect--bg-grey aspect--square">
                                                 <img className="aspect__img promotion__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/promo/promo-img-2.abd2eefacfe8993c75b7b2fa7b1255b9.jpg" alt="" /></div>
                                             <div className="promotion__content">
                                                 <div className="promotion__text-wrap">
                                                     <div className="promotion__text-1">
                                                         <span className="u-c-secondary">SMARTPHONE</span>
-                                                        <span className="u-c-brand">2019</span></div>
+                                                        <span className="u-c-brand">2022</span></div>
                                                     <div className="promotion__text-2">
                                                         <span className="u-c-secondary">NEW ARRIVALS</span></div>
                                                 </div>
                                             </div>
-                                        </a></div>
+                                        </Link></div>
                                     <div className="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
-                                        <a className="promotion" href="shop-side-version-2.html">
+                                        <Link className="promotion" to={"/newarrival"}>
                                             <div className="aspect aspect--bg-grey aspect--square">
                                                 <img className="aspect__img promotion__img" src="https://d2r00w08fz6ft0.cloudfront.net/ludus-demo/images/promo/promo-img-3.d0917732e79dbe1ebd3f7faaa530e720.jpg" alt="" /></div>
                                             <div className="promotion__content">
@@ -582,7 +584,7 @@ export const Home = () => {
                                                         <span className="u-c-brand">GET UP TO 10% OFF</span></div>
                                                 </div>
                                             </div>
-                                        </a></div>
+                                        </Link></div>
                                 </div>
                             </div>
                         </div>
