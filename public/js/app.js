@@ -1,11 +1,18 @@
 /**
  * This is main script file that contains JS code.
  */
+
 (function ($) {
     // Main Object
-    setTimeout(() => {
-        
-    }, 2000);
+    var x=false
+    window.onload=function(){
+        if(window.jQuery){
+            console.log("yes loaded1")
+            x=true;            
+        }else{
+            console.log("no loaded1")
+        }
+    }
     var RESHOP = {};
 
     // Predefined variables

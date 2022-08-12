@@ -31,8 +31,8 @@ export const ShopList = () => {
                 try {
                     const response = await axios('http://localhost:9999/products');
                     // console.log("data-->"+JSON.stringify(response.data[0].photo));
-                    setproducts(response.data);
                     if (response !== undefined) {
+                        setproducts(response.data);
                         setisloading(false)
                     }
                 } catch (error) {
@@ -48,6 +48,7 @@ export const ShopList = () => {
                     await axios.post('http://localhost:9999/products',{"productname":searchKey}).then((e)=>{
                         if(e.data!==undefined){
                             setproducts(e.data);
+                            console.log(e.data)
                             setisloading(false)
                         }else{
                             navigate("/error404")

@@ -26,6 +26,7 @@ export const AddProduct = (props) => {
     var ischeck = false;
 
     let token ="";
+    // let resdata=false;
     if(sessionStorage.getItem("data")!==null){
         token=JSON.parse(sessionStorage.getItem("data")).authtoken
     }
@@ -46,7 +47,7 @@ export const AddProduct = (props) => {
     const setFile = async (e) => {
         // var arr = []
         
-        resdata === false &&  setInterval(() => {
+        const ans=  setInterval(() => {
             if (i < e.target.files.length) {
 
                 const formData = new FormData()
@@ -56,14 +57,22 @@ export const AddProduct = (props) => {
                     // console.log("res->Data--->"+res.data)
                     // arr.push(res.data)
                     props.toastClick("File Upload Successfully Kindly Please Click Again for Add Product,1")
+                    console.log("file length--->"+e.target.files.length);
+                    console.log("dfafdsa--->"+resdata)
+                    i++;
                     if(e.target.files.length==i){
                         setresdata(true)
+                        console.log("in")
+                        clearInterval(ans)
+                        
                     }
+                    
                     setphoto(res.data)               
                 })
             }
 
-        }, 2000);
+        }, 3000);
+        console.log(resdata)
         
     }
 
