@@ -107,17 +107,18 @@ export const Signup = (props) => {
                         </div>
                         <div className="u-s-m-b-30">
                           <label className="gl-label" htmlFor="reg-fname">FIRST NAME *</label>
-                          <input className="input-text input-text--primary-style" type="text" id="reg-fname" placeholder="First Name" onChange={(e) => setfirstName(e.target.value)} /></div>
+                          <input className="input-text input-text--primary-style" type="text" id="reg-fname" placeholder="First Name" onChange={(e) => setfirstName(e.target.value)} />
                         {/* <label className="gl-label" style={{ color: "red" }} htmlFor="reg-fname">{firstName !== "" ? ischeck = true : `Please Enter First Name ${ischeck ? ischeck = false : ""}`}</label> */}
                         {firstName !== "" ? ischeck = true : ischeck = false}
                         <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter First Name ` : ""}</label>
-
+                        </div>
                         <div className="u-s-m-b-30">
                           <label className="gl-label" htmlFor="reg-lname">LAST NAME *</label>
-                          <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-lname" placeholder="Last Name" onChange={(e) => setlastName(e.target.value)} /></div>
+                          <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-lname" placeholder="Last Name" onChange={(e) => setlastName(e.target.value)} />
                         {/* <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{lastName !== "" ? ischeck = true : `Please Enter Last Name ${ischeck ? ischeck = false : ""}`}</label> */}
                         {lastName !== "" ? ischeck = true : ischeck = false}
                         <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Last Name ` : ""}</label>
+                        </div>
                         {/* {lastName} */}
                         <div className="gl-inline">
                           <div className="u-s-m-b-30">
@@ -147,25 +148,27 @@ export const Signup = (props) => {
                         </div>
                         <div className="u-s-m-b-30">
                           <label className="gl-label" htmlFor="reg-email">E-MAIL *</label>
-                          <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-email" placeholder="Enter E-mail" onChange={(e) => setemail(e.target.value)} /></div>
+                          <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="text" id="reg-email" placeholder="Enter E-mail" onChange={(e) => setemail(e.target.value)} />
                         {/* <label className="gl-label" style={{ color: "red" }} >{email === "" ? `Please Enter Email ${ischeck ? ischeck = false : ""}` : regexEmail.test(email) === true ? ischeck = true : `Please Enter Email in XXX@gmail.XXX format ${ischeck ? ischeck = false : ""}`}</label> */}
                         {email !== "" ? regexEmail.test(email) === true ? ischeck = true :ischeck=false : ischeck = false}
                         <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Email ` : ""}</label>
+                        </div>
                         {/* {email} */}
                         <div className="u-s-m-b-30">
                           <label className="gl-label" htmlFor="reg-password">PASSWORD *</label>
-                          <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="password" id="reg-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} /></div>
+                          <input disabled={ischeck ? false : true} className="input-text input-text--primary-style" type="password" id="reg-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} />
                         {/* <label className="gl-label" style={{ color: "red" }} >{password === "" ? `Please Enter Password ${ischeck ? ischeck = false : ""}` : regexPassword.test(password) === true ? ischeck = true : `Password should contain Uppercase, Lowercase, Special Symbol and Length should be greater 8 ${ischeck ? ischeck = false : ""}`}</label> */}
                         {password !== "" ? regexPassword.test(password) === true ? ischeck = true :ischeck=false : ischeck = false}
                         <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Password ` : ""}</label>
+                        </div>
                         {/* {password} */}
                         <div className="u-s-m-b-30">
                           <label className="gl-label" htmlFor="reg-phonenumber">Phone Number *</label>
-                          <input disabled={ischeck?false:true} className="input-text input-text--primary-style" type="text" id="reg-phonenum" placeholder="Enter Phone Number" onChange={(e) => setphonenum(e.target.value)} /></div>
+                          <input disabled={ischeck?false:true} className="input-text input-text--primary-style" type="text" id="reg-phonenum" placeholder="Enter Phone Number" onChange={(e) => setphonenum(e.target.value)} />
                         {/* <label className="gl-label" style={{ color: "red" }} >{phonenum === "" ? `Please Enter Phonenumber ${ischeck ? ischeck = false : ""}` : regexPhnum.test(phonenum) === true ? ischeck = true : `Phonenumber Must should contain 10 digits ${ischeck ? ischeck = false : ""}`}</label> */}
                         {phonenum !== "" ? regexPhnum.test(phonenum) === true ? ischeck = true :ischeck=false : ischeck = false}
                         <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Phone number` : ""}</label>
-
+                        </div>
                         {/* {phonenum} */}
                         <div className="u-s-m-b-15">
                           {isLoading ?  <PulseLoader color='#FF4500'/>:<button disabled={ischeck ? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">CREATE</button>}

@@ -132,9 +132,10 @@ export const Login = (props) => {
                                                 </div>
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="login-email">E-MAIL *</label>
-                                                    <input className="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail" onChange={(e) => setemail(e.target.value)} /></div>
+                                                    <input className="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail" onChange={(e) => setemail(e.target.value)} />
                                                     {email !== "" ? ischeck = true : ischeck = false}
-                                                    <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Emai ` : ""}</label>
+                                                    <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Email ` : ""}</label>
+                                                </div>
                                                 <div className="u-s-m-b-30">
                                                     <label className="gl-label" htmlFor="login-password">PASSWORD *</label>
                                                     <input className="input-text input-text--primary-style" type="password" id="login-password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} />
