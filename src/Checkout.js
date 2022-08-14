@@ -8,6 +8,7 @@ import { SetToast } from './components/SetToast'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { cleanup } from '@testing-library/react'
+import PreLoading from './components/PreLoading'
 export const Checkout = (props) => {
     
     const [products1, setproducts1] = useState()
@@ -27,7 +28,7 @@ export const Checkout = (props) => {
                 navigate("/error404")
             }else{
                 setobj(e.data.data);
-                console.log(e.data.data)
+                // console.log(e.data.data)
                 if(e.data.data.address===""){    
                     props.toastClick("Please Enter Address First,2")
                     navigate("/myaccount/addressbook")
@@ -43,19 +44,19 @@ export const Checkout = (props) => {
             if(obj!==undefined){
                 try {
                     await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
-                        console.log("e",e)
+                        // console.log("e",e)
                        
                         if (e.data.status===200 ) {
                             setproducts1(e.data.data);
-                            console.log("address-->"+typeof(obj.address))
+                            // console.log("address-->"+typeof(obj.address))
                             setobjFi(JSON.parse(obj.address))
                             setisloading1(false)
 
-                            console.log("products1"+products1)
+                            // console.log("products1"+products1)
                         }
                     })   
                 } catch (error) {
-                    console.log("error=>",error)
+                    // console.log("error=>",error)
                     props.toastClick("Something went Wrong,3")
                 }
             }else{
@@ -95,7 +96,14 @@ export const Checkout = (props) => {
     const placeOrder = async()=>{
         // console.log(is_check)
         if(is_check===true){
-            var ob={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod,"userid":obj.userid}
+            var ob;
+            if(dataCoupon===null){
+                ob={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod,"userid":obj.userid,"discount":0}
+            }else{
+                console.log("fasd-->"+dataCoupon.discount)
+                ob={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod,"userid":obj.userid,"discount":dataCoupon.discount}
+            }
+            console.log(ob)
             await axios.post("http://localhost:9999/orderauth",ob,{headers:{"authtoken":token}}).then((res)=>{
                 if(res!==undefined){
                     if(res.data.data===null && res.data.status===500){
@@ -107,7 +115,7 @@ export const Checkout = (props) => {
                         navigate("/viewcart")
                     }else{
                         props.toastClick("Order Placed,1")
-                        console.log("checkout---->"+res.data.data)
+                        // console.log("checkout---->"+res.data.data)
                         sessionStorage.setItem("orderid",res.data.data.orderid)
                         navigate("/billconfirm")
                     }
@@ -118,7 +126,40 @@ export const Checkout = (props) => {
             props.toastClick("Please Enter Bill name and select the Address")
         }
     }
+    const [coupen, setcoupen] = useState()
+    const [is_check_coupon, setis_check_coupon] = useState(false)
+    const [dataCoupon, setdataCoupon] = useState(null)
+    const [dataCouponmsg, setdataCouponmsg] = useState(null)
+    
+    // let is_check_message=null;
+    const [isloading2, setisloading2] = useState(false)
+    const coupenAccess=async(e)=>{
+        e.preventDefault();
+        setisloading2(true)
+        const ob={"couponname":coupen,"authtoken":token}
+        //{headers:{"authtoken":token,"coupon":coupen}}
+        await axios.post("http://localhost:9999/checkcoupen",ob).then((res)=>{
+                
+                if(res!==undefined){
+                    if(res.data.data===null && res.data.status===500){
+                        // alert("Please do Order After One order can Dispatch")
+                        props.toastClick("Internal server issues,2")
+                        
+                    }else if(res.data.data===null && res.data.status===400){
+                        props.toastClick("Coupon is Expired,3")
+                        setis_check_coupon(true)
 
+                    }else{
+                        props.toastClick("Coupon Applied Successfully,1")
+                        setdataCoupon(res.data.data);
+                        setdataCouponmsg(res.data.msg);
+                        console.log(res.data.data.discount)
+                    }
+             
+                }
+                setisloading2(false)
+        })
+    }
 
     return (
         <div>
@@ -140,13 +181,15 @@ export const Checkout = (props) => {
                                             <div className="collapse" id="have-coupon" data-parent="#checkout-msg-group">
                                                 <div className="c-f u-s-m-b-16">
                                                     <span className="gl-text u-s-m-b-16">Enter your coupon code if you have one.</span>
-                                                    <form className="c-f__form">
+                                                    <form className="c-f__form " style={{"display": "inline-block"}} onSubmit={coupenAccess}>
                                                         <div className="u-s-m-b-16">
                                                             <div className="u-s-m-b-15">
                                                                 <label htmlFor="coupon" />
-                                                                <input className="input-text input-text--primary-style" type="text" id="coupon" placeholder="Coupon Code" /></div>
+                                                                <input className="input-text input-text--primary-style" type="text" id="coupon" placeholder="Coupon Code" onChange={(e)=>{setcoupen(e.target.value)}}/></div>
+                                                                <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{is_check_coupon ? `Coupon Expired` : ""}</label>
+                                                                <label className="gl-label" style={{ color: "green" }} htmlFor="reg-lname">{dataCouponmsg !== null ? dataCouponmsg : ""}</label>
                                                             <div className="u-s-m-b-15">
-                                                                <button className="btn btn--e-transparent-brand-b-2" type="submit">APPLY</button></div>
+                                                                {isloading2?<PreLoading></PreLoading>:<button className="btn btn--e-transparent-brand-b-2" type="submit">APPLY</button>}</div>
                                                         </div>
                                                     </form>
                                                 </div>

@@ -219,8 +219,13 @@ export const ManageOrder = (props) => {
                                 </div>
                                 <div className="dash-l-r u-s-m-b-8">
                                     <div className="manage-o__text-2 u-c-secondary">Shipping Fee</div>
-                                    <div className="manage-o__text-2 u-c-secondary">Rs. {product.billtax}</div>
+                                    <div className="manage-o__text-2 u-c-secondary">{product.billtax===0?"Free Delivery":"Rs. "+product.billtax}</div>
                                 </div>
+                                {product.discount>0?
+                                <div className="dash-l-r u-s-m-b-8">
+                                    <div className="manage-o__text-2 " style={{"color":"green"}}>Discount(Promocode)</div>
+                                    <div className="manage-o__text-2 " style={{"color":"green"}}>Rs. -{product.discount}</div>
+                                </div>:null}
                                 <div className="dash-l-r u-s-m-b-8">
                                     <div className="manage-o__text-2 u-c-secondary">Total</div>
                                     <div className="o-card__price">Rs. {product.billamount + product.billtax}</div>

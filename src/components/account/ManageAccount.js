@@ -95,7 +95,7 @@ export const ManageAccount = () => {
                                                 <div className="dash__table-total">
                                                     <span>Rs. {e.billamount+e.billtax}</span>
                                                     <div className="dash__link dash__link--brand">
-                                                        <a href="dash-manage-order.html">MANAGE</a></div>
+                                                        <Link to={"/myaccount/myorder"}>MANAGE</Link></div>
                                                 </div>
                                             </td>
                                         </tr>
