@@ -180,21 +180,21 @@ export const AuctionHome = () => {
 
           <div className="intro intro-carousel">
             <div id="carousel" className="owl-carousel owl-theme">
-              <div className="carousel-item-a intro-item bg-image" style={{ backgroundImage: 'url(../img/slide-1.jpg)' }}>
+              <div className="carousel-item-a intro-item bg-image" style={{ backgroundImage: 'url(../img/girl1.png)' }}>
                 <div className="overlay overlay-a" />
                 <div className="intro-content display-table">
                   <div className="table-cell">
                     <div className="container">
                       <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-12">
                           <div className="intro-body">
-                            <p className="intro-title-top">Doral, Florida
-                              <br /> 78345</p>
+                            <p className="intro-title-top">Painting 
+                              <br /> </p>
                             <h1 className="intro-title mb-4">
-                              <span className="color-b">204 </span> Mount
-                              <br /> Olive Road Two</h1>
+                              <span className="color-b">Artists </span> 
+                              <br /> Painting, Pictures and Many more</h1>
                             <p className="intro-subtitle intro-price">
-                              <a href="#"><span className="price-a">rent | $ 12.000</span></a>
+                              <a href="#"><span className="price-a">Starts with just Rs. 499</span></a>
                             </p>
                           </div>
                         </div>
@@ -203,21 +203,21 @@ export const AuctionHome = () => {
                   </div>
                 </div>
               </div>
-              <div className="carousel-item-a intro-item bg-image" style={{ backgroundImage: 'url(../img/slide-2.jpg)' }}>
+              <div className="carousel-item-a intro-item bg-image" style={{ backgroundImage: 'url(../img/girl2.png)' }}>
                 <div className="overlay overlay-a" />
                 <div className="intro-content display-table">
                   <div className="table-cell">
                     <div className="container">
                       <div className="row">
-                        <div className="col-lg-8">
-                          <div className="intro-body">
-                            <p className="intro-title-top">Doral, Florida
-                              <br /> 78345</p>
+                        <div className="col-lg-12">
+                          <div className="intro-body" >
+                            <p className="intro-title-top">Currancy
+                              <br /> </p>
                             <h1 className="intro-title mb-4">
-                              <span className="color-b">204 </span> Rino
-                              <br /> Venda Road Five</h1>
+                              <span className="color-b">Coins </span> 
+                              <br />Historical Notes </h1>
                             <p className="intro-subtitle intro-price">
-                              <a href="#"><span className="price-a">rent | $ 12.000</span></a>
+                              <a href="#"><span className="price-a">Starts with just Rs. 999</span></a>
                             </p>
                           </div>
                         </div>
@@ -226,7 +226,7 @@ export const AuctionHome = () => {
                   </div>
                 </div>
               </div>
-              <div className="carousel-item-a intro-item bg-image" style={{ backgroundImage: 'url(../img/slide-3.jpg)' }}>
+              <div className="carousel-item-a intro-item bg-image" style={{ backgroundImage: 'url(../img/girl3.png)' }}>
                 <div className="overlay overlay-a" />
                 <div className="intro-content display-table">
                   <div className="table-cell">
@@ -234,13 +234,13 @@ export const AuctionHome = () => {
                       <div className="row">
                         <div className="col-lg-8">
                           <div className="intro-body">
-                            <p className="intro-title-top">Doral, Florida
-                              <br /> 78345</p>
+                            <p className="intro-title-top">Since 1990
+                              <br /> </p>
                             <h1 className="intro-title mb-4">
-                              <span className="color-b">204 </span> Alira
-                              <br /> Roan Road One</h1>
+                              <span className="color-b">Sports </span> 
+                              <br /> Ball,Bat and Many More</h1>
                             <p className="intro-subtitle intro-price">
-                              <a href="#"><span className="price-a">rent | $ 12.000</span></a>
+                              <a href="#"><span className="price-a">Starts with just Rs. 9999</span></a>
                             </p>
                           </div>
                         </div>
@@ -258,7 +258,7 @@ export const AuctionHome = () => {
                 <div className="col-md-12">
                   <div className="title-wrap d-flex justify-content-between">
                     <div className="title-box">
-                      <h2 className="title-a">Latest Properties</h2>
+                      <h2 className="title-a">Latest Paintings</h2>
                     </div>
                     <div className="title-link">
                       <a href="property-grid.html">All Property
@@ -272,19 +272,19 @@ export const AuctionHome = () => {
                 <div className="carousel-item-b">
                   <div className="card-box-a card-shadow">
                     <div className="img-box-a">
-                      <img src="../img/property-6.jpg" alt="" className="img-a img-fluid" />
+                      <img src="../img/img11.jpeg" alt="" className="img-a img-fluid" />
                     </div>
                     <div className="card-overlay">
                       <div className="card-overlay-a-content">
                         <div className="card-header-a">
                           <h2 className="card-title-a">
-                            <a href="property-single.html">206 Mount
-                              <br /> Olive Road Two</a>
+                            <a href="property-single.html">Banksy
+                              <br /> Love Rat</a>
                           </h2>
                         </div>
                         <div className="card-body-a">
                           <div className="price-box d-flex">
-                            <span className="price-a">rent | $ 12.000</span>
+                            <span className="price-a">Current BID:Rs. 40000</span>
                           </div>
                           <a href="#" className="link-a">Click here to view
                             <span className="ion-ios-arrow-forward" />
@@ -319,7 +319,7 @@ export const AuctionHome = () => {
                 <div className="carousel-item-b">
                   <div className="card-box-a card-shadow">
                     <div className="img-box-a">
-                      <img src="../img/property-3.jpg" alt="" className="img-a img-fluid" />
+                      <img src="../img/img12.jpeg" alt="" className="img-a img-fluid" />
                     </div>
                     <div className="card-overlay">
                       <div className="card-overlay-a-content">
@@ -340,6 +340,12 @@ export const AuctionHome = () => {
                         <div className="card-footer-a">
                           <ul className="card-info d-flex justify-content-around">
                             <li>
+                            <h4 className="card-info-title">Estimation</h4>
+                              <span>Rs. 40000 to Rs. 60000
+                                {/* <sup>2</sup> */}
+                              </span>
+                            </li>
+                            {/* <li>
                               <h4 className="card-info-title">Area</h4>
                               <span>340m
                                 <sup>2</sup>
@@ -356,7 +362,7 @@ export const AuctionHome = () => {
                             <li>
                               <h4 className="card-info-title">Garages</h4>
                               <span>1</span>
-                            </li>
+                            </li> */}
                           </ul>
                         </div>
                       </div>
