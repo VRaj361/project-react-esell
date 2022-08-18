@@ -4,6 +4,8 @@ import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import axios from 'axios'
 import PreLoading from './components/PreLoading'
+import { Link } from 'react-router-dom'
+import { border } from '@mui/system'
 
 
 export const AuctionHome = () => {
@@ -188,10 +190,10 @@ export const AuctionHome = () => {
                       <div className="row">
                         <div className="col-lg-12">
                           <div className="intro-body">
-                            <p className="intro-title-top">Painting 
+                            <p className="intro-title-top">Painting
                               <br /> </p>
                             <h1 className="intro-title mb-4">
-                              <span className="color-b">Artists </span> 
+                              <span className="color-b">Artists </span>
                               <br /> Painting, Pictures and Many more</h1>
                             <p className="intro-subtitle intro-price">
                               <a href="#"><span className="price-a">Starts with just Rs. 499</span></a>
@@ -214,7 +216,7 @@ export const AuctionHome = () => {
                             <p className="intro-title-top">Currancy
                               <br /> </p>
                             <h1 className="intro-title mb-4">
-                              <span className="color-b">Coins </span> 
+                              <span className="color-b">Coins </span>
                               <br />Historical Notes </h1>
                             <p className="intro-subtitle intro-price">
                               <a href="#"><span className="price-a">Starts with just Rs. 999</span></a>
@@ -237,7 +239,7 @@ export const AuctionHome = () => {
                             <p className="intro-title-top">Since 1990
                               <br /> </p>
                             <h1 className="intro-title mb-4">
-                              <span className="color-b">Sports </span> 
+                              <span className="color-b">Sports </span>
                               <br /> Ball,Bat and Many More</h1>
                             <p className="intro-subtitle intro-price">
                               <a href="#"><span className="price-a">Starts with just Rs. 9999</span></a>
@@ -254,6 +256,17 @@ export const AuctionHome = () => {
 
           <section className="section-property section-t8">
             <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="title-wrap d-flex justify-content-between">
+                    <div className="title-box" style={{textAlign:'center'}}>
+                    <div className="product-m__add-cart">
+                      <Link to={`/addauction`} className="btn--e-transparent-brand-b-2" style={{padding:"10px"}} >Add To Auction Product</Link></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="row">
                 <div className="col-md-12">
                   <div className="title-wrap d-flex justify-content-between">
@@ -340,7 +353,7 @@ export const AuctionHome = () => {
                         <div className="card-footer-a">
                           <ul className="card-info d-flex justify-content-around">
                             <li>
-                            <h4 className="card-info-title">Estimation</h4>
+                              <h4 className="card-info-title">Estimation</h4>
                               <span>Rs. 40000 to Rs. 60000
                                 {/* <sup>2</sup> */}
                               </span>

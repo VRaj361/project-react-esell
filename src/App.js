@@ -40,6 +40,7 @@ import PreLoading from './components/PreLoading';
 import { AlreadyLogin } from './AlreadyLogin';
 import { GetContactMsg } from './GetContactMsg';
 import { AddReview } from './AddReview';
+import {AddAuction} from './AddAuction';
 
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
           <Route exact path='/alreadyloggedin' element={<AlreadyLogin />} />
           <Route exact path='/getcontact' element={<GetContactMsg />} />
           <Route exact path='/addreview' element={<AddReview toastClick={toastClick}/>} />
+          <Route exact path='/addauction' element={<AddAuction toastClick={toastClick}/>} />
           
 
 
