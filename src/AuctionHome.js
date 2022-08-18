@@ -37,6 +37,11 @@ export const AuctionHome = () => {
 
 
   }, [])
+  let token ="";
+    // let resdata=false;
+  if(sessionStorage.getItem("data")!==null){
+      token=JSON.parse(sessionStorage.getItem("data")).authtoken
+  }
 
   return (
     <div>
@@ -256,6 +261,8 @@ export const AuctionHome = () => {
 
           <section className="section-property section-t8">
             <div className="container">
+              {token!==""?
+              
               <div className="row">
                 <div className="col-md-12">
                   <div className="title-wrap d-flex justify-content-between">
@@ -265,7 +272,7 @@ export const AuctionHome = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>:""}
 
               <div className="row">
                 <div className="col-md-12">

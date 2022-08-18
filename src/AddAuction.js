@@ -24,15 +24,50 @@ export const AddAuction = (props) => {
   const [description, setdescription] = useState("")
   const [ageproduct, setageproduct] = useState("")
   const [time, settime] = useState("")
+  var i=0;
+  let token ="";
+    // let resdata=false;
+  if(sessionStorage.getItem("data")!==null){
+      token=JSON.parse(sessionStorage.getItem("data")).authtoken
+  }
+  const [resdata, setresdata] = useState(false)
+  const [photo, setphoto] = useState("")
+  const setFile = async (e) => {
+    // var arr = []
+    const ans=  setInterval(() => {
+          if (i < e.target.files.length) {
+              const formData = new FormData()
+              formData.append('file', e.target.files[i])
+              console.log(e.target.files[i])
+              axios.post("http://localhost:9999/uploadimage", formData,{headers:{'authtoken':token}}).then((res) => {
 
+                  // console.log("res->Data--->"+res.data)
+                  // arr.push(res.data)
+                  props.toastClick("File Upload Successfully Kindly Please Click Again for Add Product,1")
+                  console.log("file length--->"+e.target.files.length);
+                  console.log("dfafdsa--->"+resdata)
+                  i++;
+                  if(e.target.files.length==i){
+                      setresdata(true)
+                      console.log("in")
+                      clearInterval(ans)
+                      
+                  }
+                  
+                  setphoto(res.data)               
+              })
+          }
 
+      }, 3000);
+      console.log(resdata)
+      
+  }
 
-  
-  useEffect(() => {
-    if(sessionStorage.getItem("data")!==null){
-        navigate("/alreadyloggedin")
-    }
-  })
+  // useEffect(() => {
+  //   if(sessionStorage.getItem("data")!==null){
+  //       navigate("/alreadyloggedin")
+  //   }
+  // })
   //after
   const formDataSignup = async (e) => {
     e.preventDefault();
@@ -48,8 +83,13 @@ export const AddAuction = (props) => {
     //     props.toastClick(`${e.data.msg},3`)
     //   }
     // })
-    const objData = {"name":firstName,"bid":bidValue,"rangelowbid":rangelowbid,"rangehighbid":rangehighbid,"productname":productname,"category":category,"description":description,"ageproduct":ageproduct,"time":time};
+    const objData = {"username":firstName,"bid":bidValue,"rangelowbid":rangelowbid,"rangehighbid":rangehighbid,"productname":productname,"category":category,"description":description,"ageproduct":ageproduct,"time":time,"photo":photo};
     console.log(objData);
+    resdata && await axios.post("http://localhost:9999/addauction", objData).then((res) => {
+            console.log("success")
+            console.log(res)
+            navigate("/")
+    })
   }
   return (
     <div>
@@ -194,10 +234,16 @@ export const AddAuction = (props) => {
                           {/* {gender} */}
                         </div>
 
+                        <div className="u-s-m-b-30">
+                          <label className="gl-label" htmlFor="reg-phonenumber">Select file *</label>
+                          <input  type="file" accept="application/png" id="reg-phonenum" onChange={(e) => setFile(e)} multiple />
+                          {/* <input type="submit" value="Upload" onClick={() => submitData()} /> */}
 
+                          {/* <input disabled={ischeck ? false : true} type="text"  id="reg-phonenum"  onChange={(e) => setfilename(e.target.value)}  /> */}
+                        </div>
 
                         <div className="u-s-m-b-15">
-                          {isLoading ?  <PulseLoader color='#FF4500'/>:<button disabled={ischeck ? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">CREATE</button>}
+                          {isLoading ?  <PulseLoader color='#FF4500'/>:<button disabled={ischeck && resdata? false : true} className="btn btn--e-transparent-brand-b-2" type="submit">CREATE</button>}
                         </div>
                         <Link className="gl-link" to={"/"}>Return to Store</Link>
                       </form>
