@@ -12,6 +12,7 @@ import { PulseLoader } from 'react-spinners'
 export const AddAuction = (props) => {
   const navigate=useNavigate()
   let ischeck = false;
+  let ischeck1= false;
   const [firstName, setfirstName] = useState("")
   
   const [isLoading, setisLoading] = useState(false)
@@ -154,6 +155,8 @@ export const AddAuction = (props) => {
                             {/* <label className="gl-label" style={{ color: "red" }} >{createDate !== "" ? ischeck = true : `Please Select Birth Date ${ischeck ? ischeck = false : ""}`}</label> */}
                             {rangelowbid !== "" ? ischeck = true : ischeck = false}
                             <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter Low BID Value ` : ""}</label>
+                            {parseInt(rangelowbid) < parseInt(bidValue) ?ischeck1=true :ischeck1 =false}
+                            <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck1 === false ? `Low BID Value must be less than BID Value ` : ""}</label>
                             {/*====== End - Date of Birth Select-Box ======*/}
                           </div>
                           <div className="u-s-m-b-30">
@@ -166,6 +169,8 @@ export const AddAuction = (props) => {
                             {/* <label className="gl-label" style={{ color: "red" }} >{gender !== "" ? ischeck = true : `Please Select Gender ${ischeck ? ischeck = false : ""}`}</label> */}
                             {rangehighbid !== "" ? ischeck = true : ischeck = false}
                             <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck === false ? `Please Enter High BID Value ` : ""}</label>
+                            {parseInt(rangehighbid) > parseInt(bidValue) ?ischeck1=true :ischeck1 =false}
+                            <label className="gl-label" style={{ color: "red" }} htmlFor="reg-lname">{ischeck1 === false ? `High BID Value must be Greater than BID Value ` : ""}</label>
                           </div>
                           {/* {gender} */}
                         </div>

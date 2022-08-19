@@ -22,9 +22,10 @@ export const AuctionHome = () => {
     const fetchData = async () => {
       setiserror(false);
       try {
-        const response = await axios('http://localhost:9999/products');
+        const response = await axios('http://localhost:9999/getauction');
         // console.log("data-->"+JSON.stringify(response.data[0].photo));
         if (response !== undefined) {
+          console.log(response.data)
           setproducts(response.data);
           setisloading(false)
         }
@@ -37,10 +38,10 @@ export const AuctionHome = () => {
 
 
   }, [])
-  let token ="";
-    // let resdata=false;
-  if(sessionStorage.getItem("data")!==null){
-      token=JSON.parse(sessionStorage.getItem("data")).authtoken
+  let token = "";
+  // let resdata=false;
+  if (sessionStorage.getItem("data") !== null) {
+    token = JSON.parse(sessionStorage.getItem("data")).authtoken
   }
 
   return (
@@ -151,10 +152,14 @@ export const AuctionHome = () => {
     </nav>
     */}
       {/*/ Carousel Star /*/}
+
       {iserror && <div>Something went wrong ...</div>}
 
       {isloading ? (
-        <PreLoading />
+        <>
+
+          <PreLoading />
+        </>
       ) : (
         <>
           <Helmet>
@@ -261,18 +266,18 @@ export const AuctionHome = () => {
 
           <section className="section-property section-t8">
             <div className="container">
-              {token!==""?
-              
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="title-wrap d-flex justify-content-between">
-                    <div className="title-box" style={{textAlign:'center'}}>
-                    <div className="product-m__add-cart">
-                      <Link to={`/addauction`} className="btn--e-transparent-brand-b-2" style={{padding:"10px"}} >Add To Auction Product</Link></div>
+              {token !== "" ?
+
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="title-wrap d-flex justify-content-between">
+                      <div className="title-box" style={{ textAlign: 'center' }}>
+                        <div className="product-m__add-cart">
+                          <Link to={`/addauction`} className="btn--e-transparent-brand-b-2" style={{ padding: "10px" }} >Add To Auction Product</Link></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>:""}
+                </div> : ""}
 
               <div className="row">
                 <div className="col-md-12">
@@ -289,54 +294,49 @@ export const AuctionHome = () => {
                 </div>
               </div>
               <div id="property-carousel" className="owl-carousel owl-theme">
-                <div className="carousel-item-b">
-                  <div className="card-box-a card-shadow">
-                    <div className="img-box-a">
-                      <img src="../img/img11.jpeg" alt="" className="img-a img-fluid" />
-                    </div>
-                    <div className="card-overlay">
-                      <div className="card-overlay-a-content">
-                        <div className="card-header-a">
-                          <h2 className="card-title-a">
-                            <a href="property-single.html">Banksy
-                              <br /> Love Rat</a>
-                          </h2>
+                {products.map((e) => {
+                  return (
+                    <div className="carousel-item-b">
+                      <div className="card-box-a card-shadow">
+                        <div className="img-box-a">
+                          <img src={`data:image/png;base64,${e.photo}`} alt="" className="img-a img-fluid" />
                         </div>
-                        <div className="card-body-a">
-                          <div className="price-box d-flex">
-                            <span className="price-a">Current BID:Rs. 40000</span>
+                        <div className="card-overlay">
+                          <div className="card-overlay-a-content">
+                            <div className="card-header-a">
+                              <h2 className="card-title-a">
+                                <a href="property-single.html">
+                                  {e.productname}</a>
+                              </h2>
+                            </div>
+                            <div className="card-body-a">
+                              <div className="price-box d-flex">
+                                <span className="price-a">Current BID:Rs. {e.bid}</span>
+                              </div>
+                              <a href="#" className="link-a">Click here to view
+                                <span className="ion-ios-arrow-forward" />
+                              </a>
+                            </div>
+                            <div className="card-footer-a">
+                              <ul className="card-info d-flex justify-content-around">
+                              <li>
+                                <h4 className="card-info-title">Estimation</h4>
+                                <span>Rs. {e.rangelowbid} to Rs. {e.rangehighbid}
+                                
+                                </span>
+                              </li>
+
+                              </ul>
+                            </div>
                           </div>
-                          <a href="#" className="link-a">Click here to view
-                            <span className="ion-ios-arrow-forward" />
-                          </a>
-                        </div>
-                        <div className="card-footer-a">
-                          <ul className="card-info d-flex justify-content-around">
-                            <li>
-                              <h4 className="card-info-title">Area</h4>
-                              <span>340m
-                                <sup>2</sup>
-                              </span>
-                            </li>
-                            <li>
-                              <h4 className="card-info-title">Beds</h4>
-                              <span>2</span>
-                            </li>
-                            <li>
-                              <h4 className="card-info-title">Baths</h4>
-                              <span>4</span>
-                            </li>
-                            <li>
-                              <h4 className="card-info-title">Garages</h4>
-                              <span>1</span>
-                            </li>
-                          </ul>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="carousel-item-b">
+                  )
+                })}
+
+
+                {/*<div className="carousel-item-b">
                   <div className="card-box-a card-shadow">
                     <div className="img-box-a">
                       <img src="../img/img12.jpeg" alt="" className="img-a img-fluid" />
@@ -362,10 +362,10 @@ export const AuctionHome = () => {
                             <li>
                               <h4 className="card-info-title">Estimation</h4>
                               <span>Rs. 40000 to Rs. 60000
-                                {/* <sup>2</sup> */}
+                              
                               </span>
                             </li>
-                            {/* <li>
+                            <li>
                               <h4 className="card-info-title">Area</h4>
                               <span>340m
                                 <sup>2</sup>
@@ -382,7 +382,7 @@ export const AuctionHome = () => {
                             <li>
                               <h4 className="card-info-title">Garages</h4>
                               <span>1</span>
-                            </li> */}
+                            </li> 
                           </ul>
                         </div>
                       </div>
@@ -482,10 +482,12 @@ export const AuctionHome = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>*/}
+
               </div>
             </div>
           </section>
+
           {/*/ Property End /*/}
           {/*/ News Star /*/}
           <section className="section-news section-t8">
@@ -600,6 +602,7 @@ export const AuctionHome = () => {
               </div>
             </div>
           </section>
+
         </>
       )}
       {/*/ News End /*/}
