@@ -41,6 +41,8 @@ import { AlreadyLogin } from './AlreadyLogin';
 import { GetContactMsg } from './GetContactMsg';
 import { AddReview } from './AddReview';
 import {AddAuction} from './AddAuction';
+import { SingleAuctionProduct } from './SingleAuctionProduct';
+import { AuctionResponse } from './AuctionResponse';
 
 
 function App() {
@@ -99,6 +101,8 @@ function App() {
           <Route exact path='/getcontact' element={<GetContactMsg />} />
           <Route exact path='/addreview' element={<AddReview toastClick={toastClick}/>} />
           <Route exact path='/addauction' element={<AddAuction toastClick={toastClick}/>} />
+          <Route exact path='/auctionproduct/:id' element={<SingleAuctionProduct toastClick={toastClick}/>} />
+          <Route exact path='/auctionusers/:id' element={<AuctionResponse toastClick={toastClick}/>} />
           
 
 

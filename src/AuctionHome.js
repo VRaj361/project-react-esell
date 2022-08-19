@@ -4,9 +4,9 @@ import { Navbar } from './components/Navbar'
 import { Precss } from './components/Precss'
 import axios from 'axios'
 import PreLoading from './components/PreLoading'
-import { Link } from 'react-router-dom'
-import { border } from '@mui/system'
 
+import { border } from '@mui/system'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const AuctionHome = () => {
   const [products, setproducts] = useState()
@@ -16,7 +16,18 @@ export const AuctionHome = () => {
   // }
   const [isloading, setisloading] = useState(true)
   const [iserror, setiserror] = useState(false)
-
+  const [obj, setobj] = useState(null)
+  const navigate=useNavigate()
+    useEffect(() => {
+        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+            if(e.data.data === null && e.data.status ===404){
+                // props.toastClick(`${e.data.msg},1`)
+                navigate("/error404")
+            }else{
+                setobj(e.data.data)
+            }
+        })
+    }, [])
   useEffect(() => {
 
     const fetchData = async () => {
@@ -275,6 +286,10 @@ export const AuctionHome = () => {
                         <div className="product-m__add-cart">
                           <Link to={`/addauction`} className="btn--e-transparent-brand-b-2" style={{ padding: "10px" }} >Add To Auction Product</Link></div>
                       </div>
+                      <div className="title-box" style={{ textAlign: 'center' }}>
+                        <div className="product-m__add-cart">
+                          <Link to={`/auctionusers/${obj.userid}`} className="btn--e-transparent-brand-b-2" style={{ padding: "10px" }} >Show My Auction Product</Link></div>
+                      </div>
                     </div>
                   </div>
                 </div> : ""}
@@ -313,9 +328,9 @@ export const AuctionHome = () => {
                               <div className="price-box d-flex">
                                 <span className="price-a">Current BID:Rs. {e.bid}</span>
                               </div>
-                              <a href="#" className="link-a">Click here to view
+                              <Link to={`/auctionproduct/${e.auctionid}`} className="link-a">Click here to view
                                 <span className="ion-ios-arrow-forward" />
-                              </a>
+                              </Link>
                             </div>
                             <div className="card-footer-a">
                               <ul className="card-info d-flex justify-content-around">
