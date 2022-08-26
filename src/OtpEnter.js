@@ -42,6 +42,8 @@ export const OtpEnter = (props) => {
                     sessionStorage.clear()
                     navigate("/newpassword")
                 }else{
+                    sessionStorage.clear()
+                    console.log("in wrong password")
                     props.toastClick("Wrong OTP,3")
                     navigate("/login")
                 }
