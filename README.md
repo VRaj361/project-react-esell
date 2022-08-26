@@ -7,53 +7,53 @@ React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP 
 ## Pictures of the CartBuddy
 
 #### 1. Home Page
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/home1.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 #### 2. Mosk Asked Topic
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/mostasktopic.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePageProduct.png)
 
 #### 3. Our Provided Courses
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/courses.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AuctionHome.png)
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/animatedpage.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/showquestionslideercourse.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 #### 4. SignUp and Login Page
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/signuppage.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/loginpage.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 #### 5. Courses Detail Infomation
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/showdetailcourse.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 #### 6. Payment Page
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/payment.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 #### 7. Show Question and Answer the Question
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/showquestion2.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/showquestionall.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/answerquestion.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/answerlistedbelow.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 #### 8. Ask Question
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/askquestion.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 #### 9. OTP for Forget Password in G-mail
 
-![](https://github.com/VRaj361/QuesBuddy-project/blob/main/Images%20QuesBuddy-Project/EmailOTPForgetPassword.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
 
 # Backend Written in Spring checkout below link
 
-![](https://github.com/VRaj361/projectesell-spring-api)
+![Spring API's](https://github.com/VRaj361/projectesell-spring-api)
 
 
 ## Project yet not Deployment it is in testing Enviroment and In Development for some new features.
