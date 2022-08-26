@@ -23,7 +23,7 @@ React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP 
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/DealOfTheDay.png)
 
 #### 6. Footer Page
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/Footer.png.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/Footer.png)
 
 #### 7. All Product Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/GridAllProduct.png)
@@ -53,13 +53,13 @@ React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP 
 #### 15. Add To Cart Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AddToCartPage.png)
 
-#### 16. Add To Cart Page
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AddToCartPage.png)
+#### 16. BID Users Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/BIDUser.png) 
 
 #### 17. Add To Auction Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AuctionPainting.png)
 
-#### 18. Detail Product Page
+#### 18. Detail Auction Product Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AuctionParticularProduct.png)
 
 #### 19. Single Product Page
@@ -71,8 +71,8 @@ React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP 
 #### 21. OTP For Reset Password in Email
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/OTPEmail.png)
 
-#### 22. Zoom in Single Product Page
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/DetailProductWithZoom.png)
+#### 22. Add Auction Product Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AddAuctionProduct.png)
 
 #### 23. Manage Account Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ManageAccountHome.png)
@@ -84,7 +84,7 @@ React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP 
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AddRemoveAddress.png)
 
 #### 26. Show My All Order Page
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AllMyOrder.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AllMyOrders.png)
 
 #### 27. Check Order Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/CheckOrder.png)
@@ -92,8 +92,8 @@ React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP 
 #### 28. Apply Coupon Code on Billing Time Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ApplyCouponCode.png)
 
-#### 29. Apply Coupon Code on Billing Time Page
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ExpirexCouponCode.png)
+#### 29. Expired Coupon Code on Billing Time Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ExpireCouponCode.png)
 
 #### 30. Particular Order Information with All Details Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/OrderInformationWithCouponCode.png)
