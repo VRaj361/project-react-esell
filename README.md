@@ -1,5 +1,5 @@
 # CartBuddy
-There is my project named Quesbuddy. This is Web-Development Project Which based on Learning website with getting Solutions and Courses.
+There is my project named CartBuddy. This is FullStack Project Which based on Buying ,Selling, Auctioning website which contain many more Features.
 
 ## Implemented Languages and Tools : 
 React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP Protocol (Email) 
@@ -8,55 +8,103 @@ React, CSS, Bootstrap, Material UI, JavaScript, JQuery, Postgres Database, SMTP 
 
 #### 1. Home Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomeLoggedInUser.png)
 
-#### 2. Mosk Asked Topic
+#### 2. Home Product Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePageProduct.png)
 
-#### 3. Our Provided Courses
+#### 3. Auction Home Page
 ![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AuctionHome.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 4. Featured Home Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/FeaturedProduct.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 5. Deal of the Day Home Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/DealOfTheDay.png)
 
-#### 4. SignUp and Login Page
+#### 6. Footer Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/Footer.png.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 7. All Product Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/GridAllProduct.png)
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ListAllProduct.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 8. Search Product Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/SeachWorkInSeachBar.png)
 
-#### 5. Courses Detail Infomation
+#### 9. Signup Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/Signup.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 10. Login Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/Login.png)
 
-#### 6. Payment Page
+#### 11. Review Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ReviewPage.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 12. ContactUs Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ContactUSPage.png)
 
-#### 7. Show Question and Answer the Question
+#### 13. Lost Password Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/PasswordResetPage.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 14. OTP Page For Reset Password
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/OTPEnterSection.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 15. Add To Cart Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AddToCartPage.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 16. Add To Cart Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AddToCartPage.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 17. Add To Auction Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AuctionPainting.png)
 
-#### 8. Ask Question
+#### 18. Detail Product Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AuctionParticularProduct.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 19. Single Product Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/DetailProduct.png)
 
-#### 9. OTP for Forget Password in G-mail
+#### 20. Zoom in Single Product Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/DetailProductWithZoom.png)
 
-![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/HomePage.png)
+#### 21. OTP For Reset Password in Email
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/OTPEmail.png)
+
+#### 22. Zoom in Single Product Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/DetailProductWithZoom.png)
+
+#### 23. Manage Account Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ManageAccountHome.png)
+
+#### 24. Edit Profile Detail Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/EditProfilePage.png)
+
+#### 25. Add and Remove Address Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AddRemoveAddress.png)
+
+#### 26. Show My All Order Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/AllMyOrder.png)
+
+#### 27. Check Order Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/CheckOrder.png)
+
+#### 28. Apply Coupon Code on Billing Time Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ApplyCouponCode.png)
+
+#### 29. Apply Coupon Code on Billing Time Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/ExpirexCouponCode.png)
+
+#### 30. Particular Order Information with All Details Page
+![](https://github.com/VRaj361/project-react-esell/blob/master/screenshot/OrderInformationWithCouponCode.png)
+
 
 # Backend Written in Spring checkout below link
 
 ![Spring API's](https://github.com/VRaj361/projectesell-spring-api)
 
 
-## Project yet not Deployment it is in testing Enviroment and In Development for some new features.
+## Project yet not Deployed. It is in Testing Enviroment and In Adding some new Features.
 
 # Documentation Related React
 ## Getting Started with Create React App
