@@ -215,7 +215,7 @@ export const ManageOrder = (props) => {
                                 <h2 className="dash__h2 u-s-m-b-8">Total Summary</h2>
                                 <div className="dash-l-r u-s-m-b-8">
                                     <div className="manage-o__text-2 u-c-secondary">Subtotal</div>
-                                    <div className="o-card__price">Rs. {product.billamount}</div>
+                                    <div className="o-card__price">Rs. {product.billamount+product.discount}</div>
                                 </div>
                                 <div className="dash-l-r u-s-m-b-8">
                                     <div className="manage-o__text-2 u-c-secondary">Shipping Fee</div>
