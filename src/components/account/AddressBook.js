@@ -18,7 +18,7 @@ export const AddressBook = () => {
     useEffect(() => {
         setisloading(true)
        
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             if(e.data.data === null && e.data.status ===404){
                 // props.toastClick(`${e.data.msg},1`)
                 navigate("/error404")
@@ -41,7 +41,7 @@ export const AddressBook = () => {
             }
         }
 
-        await axios.put("http://localhost:9999/updatecus",{"address":JSON.stringify(objArr),"authtoken":token}).then((e)=>{
+        await axios.put("https://cartbuddy-api.herokuapp.com/updatecus",{"address":JSON.stringify(objArr),"authtoken":token}).then((e)=>{
             console.log(e)
             sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}))
             window.location.reload()

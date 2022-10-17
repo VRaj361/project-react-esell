@@ -19,7 +19,7 @@ export const Contact = () => {
     const navigate = useNavigate()
     const onSubmit = async(values)=>{
         console.log(values)
-        await axios.post("http://localhost:9999/contact",values).then((e)=>{
+        await axios.post("https://cartbuddy-api.herokuapp.com/contact",values).then((e)=>{
             console.log("e"+e.data)
             if(e.data.status === 200 ){
                 console.log(e)

@@ -18,7 +18,7 @@ export const AuctionResponse = () => {
         const fetchData = async () => {
             
                 try {
-                    axios.get("http://localhost:9999/getUserAuction/"+userid).then((e)=>{
+                    axios.get("https://cartbuddy-api.herokuapp.com/getUserAuction/"+userid).then((e)=>{
                         if (e !== null) {
                             setproduct(e.data);
                             setisloading(false)
@@ -38,7 +38,7 @@ export const AuctionResponse = () => {
     const setBidOrder=async(e)=>{
         
         const obj={"userid":e,"productid":product[0].productid};
-        await axios.put("http://localhost:9999/setHighBid",obj).then((e)=>{
+        await axios.put("https://cartbuddy-api.herokuapp.com/setHighBid",obj).then((e)=>{
             console.log(" set the value")
             navigate("/")
         })

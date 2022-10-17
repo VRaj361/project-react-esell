@@ -26,7 +26,7 @@ export const ProductDetail = () => {
             if(productid!==undefined){
                 try {
                     // console.log("userid",JSON.parse(sessionStorage.getItem("data")).userid)
-                    const response = await axios('http://localhost:9999/product/' + productid );
+                    const response = await axios('https://cartbuddy-api.herokuapp.com/product/' + productid );
 
                     setproducts(response.data);
                     if (response !== undefined) {

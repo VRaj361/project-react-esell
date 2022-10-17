@@ -14,7 +14,7 @@ export const MyOrder = () => {
         const fetchData = async () => {
             
                 try {
-                    axios.get("http://localhost:9999/allorders",{headers:{"authtoken":token}}).then((e)=>{
+                    axios.get("https://cartbuddy-api.herokuapp.com/allorders",{headers:{"authtoken":token}}).then((e)=>{
                         if (e !== null) {
                             setproduct(e.data.data);
                             setisloading(false)

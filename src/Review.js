@@ -17,7 +17,7 @@ export const Review = () => {
         const fetchData = async () => {
             setiserror(false);
             try {
-                const response = await axios('http://localhost:9999/getreviews');
+                const response = await axios('https://cartbuddy-api.herokuapp.com/getreviews');
                 // console.log("data-->"+JSON.stringify(response.data[0].photo));
                 console.log(response)
                 if (response !== undefined) {

@@ -16,7 +16,7 @@ export const ChangePassword = () => {
     const navigate=useNavigate()
     const checkOldPassword=async(e)=>{
         e.preventDefault();
-        await axios.post("http://localhost:9999/checkuserdata",{"password":password,"authtoken":token}).then((e) => {
+        await axios.post("https://cartbuddy-api.herokuapp.com/checkuserdata",{"password":password,"authtoken":token}).then((e) => {
             if(e.data.data !== null && e.data.status ===200){
                 navigate("/newpassword")
             }else{

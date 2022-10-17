@@ -40,7 +40,7 @@ export const AddAuction = (props) => {
               const formData = new FormData()
               formData.append('file', e.target.files[i])
               console.log(e.target.files[i])
-              axios.post("http://localhost:9999/uploadimage", formData,{headers:{'authtoken':token}}).then((res) => {
+              axios.post("https://cartbuddy-api.herokuapp.com/uploadimage", formData,{headers:{'authtoken':token}}).then((res) => {
 
                   // console.log("res->Data--->"+res.data)
                   // arr.push(res.data)
@@ -73,7 +73,7 @@ export const AddAuction = (props) => {
   const formDataSignup = async (e) => {
     e.preventDefault();
     // const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
-    // await axios.post("http://localhost:9999/signupcus",objData).then((e)=>{
+    // await axios.post("https://cartbuddy-api.herokuapp.com/signupcus",objData).then((e)=>{
     //   setisLoading(false);
     //   if(e.data.data!==null && e.data.status === 200){
     //     props.toastClick(`${e.data.msg},1`)
@@ -86,7 +86,7 @@ export const AddAuction = (props) => {
     // })
     const objData = {"username":firstName,"bid":bidValue,"rangelowbid":rangelowbid,"rangehighbid":rangehighbid,"productname":productname,"category":category,"description":description,"ageproduct":ageproduct,"time":time,"photo":photo};
     console.log(objData);
-    resdata && await axios.post("http://localhost:9999/addauction", objData).then((res) => {
+    resdata && await axios.post("https://cartbuddy-api.herokuapp.com/addauction", objData).then((res) => {
             console.log("success")
             console.log(res)
             navigate("/")

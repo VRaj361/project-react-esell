@@ -33,7 +33,7 @@ export const Home = () => {
         const fetchData = async () => {
             setiserror(false);
             try {
-                const response = await axios('http://localhost:9999/products');
+                const response = await axios('https://cartbuddy-api.herokuapp.com/products');
                 // console.log("data-->"+JSON.stringify(response.data[0].photo));
                 if (response !== undefined) {
                     setproducts(response.data);

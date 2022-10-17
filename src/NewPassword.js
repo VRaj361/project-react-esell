@@ -23,7 +23,7 @@ export const NewPassword = (props) => {
     //after
     const changeNewPassword = async(e)=>{
         e.preventDefault();
-        await axios.put("http://localhost:9999/updatecus",{"authtoken":token,"password":password}).then((e)=>{
+        await axios.put("https://cartbuddy-api.herokuapp.com/updatecus",{"authtoken":token,"password":password}).then((e)=>{
             props.toastClick(`${e.data.msg},1`)
             sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}));
             navigate("/logout")
@@ -35,7 +35,7 @@ export const NewPassword = (props) => {
     // let obj={};
     // const changeNewPassword = async (e) => {
     //     e.preventDefault()
-    //     await axios.get("http://localhost:9999/user").then((res) => {
+    //     await axios.get("https://cartbuddy-api.herokuapp.com/user").then((res) => {
     //         res.data.map((e) => {
     //             if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
     //                 // console.log("e", e)
@@ -47,7 +47,7 @@ export const NewPassword = (props) => {
     //     let objData = { "userid": obj.userid, "firstname": obj.firstname, "lastname": obj.lastname, "createdate": obj.createdate, "gender": obj.gender, "email": obj.email, "password": password, "phonenum": obj.phonenum };
     //     // console.log("obj ", obj)
     //     // console.log("objdata ", objData)
-    //     await axios.put("http://localhost:9999/user", objData).then((res) => {
+    //     await axios.put("https://cartbuddy-api.herokuapp.com/user", objData).then((res) => {
     //         // console.log("success")
     //         // console.log(res)
             

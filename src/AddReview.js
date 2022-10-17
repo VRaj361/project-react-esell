@@ -34,7 +34,7 @@ export const AddReview = (props) => {
         e.preventDefault();
         const objData = { "name": name, "title": title, "description": desc, "keywords": keywords, "date": date, "authtoken": authtoken}
         console.log(objData)
-        await axios.post("http://localhost:9999/addreview",objData).then((e)=>{
+        await axios.post("https://cartbuddy-api.herokuapp.com/addreview",objData).then((e)=>{
         setisLoading(false);
             if(e.data.data!==null && e.data.status === 200){
                 props.toastClick(`${e.data.msg},1`)

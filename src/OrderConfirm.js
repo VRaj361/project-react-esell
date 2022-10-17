@@ -16,7 +16,7 @@ export const OrderConfirm = () => {
     }
     // useEffect(() => {
     //     const fetchData = async () => {
-    //         await axios.get('http://localhost:9999/order',{headers:{"authtoken":token,"orderid":parseInt(sessionStorage.getItem("orderid"))}}).then((e)=>{
+    //         await axios.get('https://cartbuddy-api.herokuapp.com/order',{headers:{"authtoken":token,"orderid":parseInt(sessionStorage.getItem("orderid"))}}).then((e)=>{
     //             console.log('fetchdata--->'+e.data)
     //             if(e.data.data!==null){
     //                 setproducts1(e.data)

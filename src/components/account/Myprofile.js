@@ -9,7 +9,7 @@ export const Myprofile = (props) => {
     }
     const navigate=useNavigate()
     useEffect(() => {
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             // console.log(e.data)
             if(e.data.data === null && e.data.status ===404){
                 // props.toastClick(`${e.data.msg},1`)

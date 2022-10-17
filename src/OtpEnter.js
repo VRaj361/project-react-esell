@@ -31,7 +31,7 @@ export const OtpEnter = (props) => {
             
             setis_check(true)
             
-            axios.post("http://localhost:9999/otpemailcheck",{"otp":optWhole+","+otp_enc,"authtoken":JSON.parse(sessionStorage.getItem("data")).authtoken}).then((data)=>{
+            axios.post("https://cartbuddy-api.herokuapp.com/otpemailcheck",{"otp":optWhole+","+otp_enc,"authtoken":JSON.parse(sessionStorage.getItem("data")).authtoken}).then((data)=>{
                 if(data.data===true){
                     // console.log("data.data email "+data.data) 
                     let d = new Date();

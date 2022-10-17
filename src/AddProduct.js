@@ -33,7 +33,7 @@ export const AddProduct = (props) => {
     const navigate=useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             if(e.data.data === null && e.data.status ===404){
                 navigate("/error404")
             }else{
@@ -52,7 +52,7 @@ export const AddProduct = (props) => {
 
                 const formData = new FormData()
                 formData.append('file', e.target.files[i])
-                axios.post("http://localhost:9999/upload", formData,{headers:{'authtoken':token}}).then((res) => {
+                axios.post("https://cartbuddy-api.herokuapp.com/upload", formData,{headers:{'authtoken':token}}).then((res) => {
 
                     // console.log("res->Data--->"+res.data)
                     // arr.push(res.data)
@@ -91,7 +91,7 @@ export const AddProduct = (props) => {
             "userid":obj.userid
         }
 
-        resdata && await axios.post("http://localhost:9999/product", objData).then((res) => {
+        resdata && await axios.post("https://cartbuddy-api.herokuapp.com/product", objData).then((res) => {
             console.log("success")
             console.log(res)
             navigate("/")

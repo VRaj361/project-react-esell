@@ -17,7 +17,7 @@ export const SingleAuctionProduct = () => {
         const fetchData = async () => {
         setiserror(false);
         try {
-            const response = await axios('http://localhost:9999/getparticularaucpro/'+auctionid);
+            const response = await axios('https://cartbuddy-api.herokuapp.com/getparticularaucpro/'+auctionid);
             // console.log("data-->"+JSON.stringify(response.data[0].photo));
             if (response !== undefined) {
                 console.log(response.data)
@@ -42,7 +42,7 @@ export const SingleAuctionProduct = () => {
 
     const [obj, setobj] = useState(null)
     useEffect(() => {
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             if(e.data.data === null && e.data.status ===404){
                 // props.toastClick(`${e.data.msg},1`)
                 navigate("/error404")
@@ -70,7 +70,7 @@ export const SingleAuctionProduct = () => {
             // console.log("arr1"+arr)
         }
         console.log(objAddress)
-        await axios.put("http://localhost:9999/updatebiduser", {"auctionid":products.auctionid,"biduser":JSON.stringify(arr)}).then((res) => {
+        await axios.put("https://cartbuddy-api.herokuapp.com/updatebiduser", {"auctionid":products.auctionid,"biduser":JSON.stringify(arr)}).then((res) => {
             // console.log("success")
             // console.log(res)
             navigate("/auctionhome")

@@ -27,7 +27,7 @@ export const Login = (props) => {
     // const formDataLogin = async (e) => {
     //     e.preventDefault()
     //     setischeck(false)
-    //     await axios.get("http://localhost:9999/user").then((data) => {
+    //     await axios.get("https://cartbuddy-api.herokuapp.com/user").then((data) => {
     //         data.data.map((e)=>{
     //             if(e.email===email&&e.password===password){
     //                 console.log("done")
@@ -54,7 +54,7 @@ export const Login = (props) => {
         }else{
             setisLoading(true);
             console.log("in")
-            await axios.get("http://localhost:9999/getanytoken").then((e)=>{
+            await axios.get("https://cartbuddy-api.herokuapp.com/getanytoken").then((e)=>{
                 console.log(e.data)
                 setauthtoken(e.data)
             });
@@ -63,7 +63,7 @@ export const Login = (props) => {
     }
 
     useEffect(() => {
-        authtoken !== "" &&  axios.post("http://localhost:9999/logincus",{"email":email,"password":password,"authtoken":authtoken}).then((e)=>{
+        authtoken !== "" &&  axios.post("https://cartbuddy-api.herokuapp.com/logincus",{"email":email,"password":password,"authtoken":authtoken}).then((e)=>{
                 setisLoading(false)
                 if(e.data.data !== null && e.data.status === 200){
                     props.toastClick(`${e.data.msg},1`)

@@ -15,7 +15,7 @@ export const ForgetPassword = () => {
     const [is_check, setis_check] = useState(false)
     const [obj, setobj] = useState()
     useEffect(() => {
-        axios.get("http://localhost:9999/getanytoken").then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getanytoken").then((e)=>{
             setobj(e.data)
         })
     },[])    
@@ -26,7 +26,7 @@ export const ForgetPassword = () => {
         setis_check(true)
         if(obj!==undefined){
             
-            axios.post("http://localhost:9999/otpemail",{"email":email,"authtoken":obj}).then((data)=>{
+            axios.post("https://cartbuddy-api.herokuapp.com/otpemail",{"email":email,"authtoken":obj}).then((data)=>{
                 if(data.data!=="-1"){ 
                     const cookies = new Cookies();
                     

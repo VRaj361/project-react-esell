@@ -34,7 +34,7 @@ export const Signup = (props) => {
   //   e.preventDefault()
   //   const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
   //   console.log(objData)
-  //   await axios.post("http://localhost:9999/user", objData).then(() => {
+  //   await axios.post("https://cartbuddy-api.herokuapp.com/user", objData).then(() => {
   //     console.log("success")
   //     navigate("/login")
   //   })
@@ -49,7 +49,7 @@ export const Signup = (props) => {
   const formDataSignup = async (e) => {
     e.preventDefault();
     const objData = { "firstname": firstName, "lastname": lastName, "createdate": createDate, "gender": gender, "email": email, "password": password, "phonenum": phonenum,"address":""}
-    await axios.post("http://localhost:9999/signupcus",objData).then((e)=>{
+    await axios.post("https://cartbuddy-api.herokuapp.com/signupcus",objData).then((e)=>{
       setisLoading(false);
       if(e.data.data!==null && e.data.status === 200){
         props.toastClick(`${e.data.msg},1`)

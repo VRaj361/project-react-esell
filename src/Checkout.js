@@ -23,7 +23,7 @@ export const Checkout = (props) => {
     }
     
     useEffect(() => {
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             if(e.data.data === null && e.data.status ===404){
                 navigate("/error404")
             }else{
@@ -43,7 +43,7 @@ export const Checkout = (props) => {
             
             if(obj!==undefined){
                 try {
-                    await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
+                    await axios.get("https://cartbuddy-api.herokuapp.com/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
                         // console.log("e",e)
                        
                         if (e.data.status===200 ) {
@@ -71,7 +71,7 @@ export const Checkout = (props) => {
 
     const navigate = useNavigate()
     const deleteParticularProduct =  async(producid)=>{
-        await axios.delete("http://localhost:9999/deleteproduct",{data:{"userid":obj.userid,"authtoken":token,"productid":producid}}).then((e)=>{
+        await axios.delete("https://cartbuddy-api.herokuapp.com/deleteproduct",{data:{"userid":obj.userid,"authtoken":token,"productid":producid}}).then((e)=>{
             if(e.data.data===true && e.data.status===200){
                 window.location.reload()
                 navigate('/newarrival')
@@ -104,7 +104,7 @@ export const Checkout = (props) => {
                 ob={"billname":billname,"ordernote":ordernote,"billaddress":address,"payinfo":paymentMethod,"userid":obj.userid,"discount":dataCoupon.discount}
             }
             console.log(ob)
-            await axios.post("http://localhost:9999/orderauth",ob,{headers:{"authtoken":token}}).then((res)=>{
+            await axios.post("https://cartbuddy-api.herokuapp.com/orderauth",ob,{headers:{"authtoken":token}}).then((res)=>{
                 if(res!==undefined){
                     if(res.data.data===null && res.data.status===500){
                         // alert("Please do Order After One order can Dispatch")
@@ -138,7 +138,7 @@ export const Checkout = (props) => {
         setisloading2(true)
         const ob={"couponname":coupen,"authtoken":token}
         //{headers:{"authtoken":token,"coupon":coupen}}
-        await axios.post("http://localhost:9999/checkcoupen",ob).then((res)=>{
+        await axios.post("https://cartbuddy-api.herokuapp.com/checkcoupen",ob).then((res)=>{
                 
                 if(res!==undefined){
                     if(res.data.data===null && res.data.status===500){

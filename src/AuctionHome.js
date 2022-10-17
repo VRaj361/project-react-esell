@@ -19,7 +19,7 @@ export const AuctionHome = () => {
   const [obj, setobj] = useState(null)
   const navigate=useNavigate()
     useEffect(() => {
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             if(e.data.data === null && e.data.status ===404){
                 // props.toastClick(`${e.data.msg},1`)
                 navigate("/error404")
@@ -33,7 +33,7 @@ export const AuctionHome = () => {
     const fetchData = async () => {
       setiserror(false);
       try {
-        const response = await axios('http://localhost:9999/getauction');
+        const response = await axios('https://cartbuddy-api.herokuapp.com/getauction');
         // console.log("data-->"+JSON.stringify(response.data[0].photo));
         if (response !== undefined) {
           console.log(response.data)

@@ -19,7 +19,7 @@ export const Cart = (props) => {
          token=JSON.parse(sessionStorage.getItem("data")).authtoken
     }
     useEffect(() => {
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             if(e.data.data === null && e.data.status ===404){
                 navigate("/error404")
             }else{
@@ -32,7 +32,7 @@ export const Cart = (props) => {
         const fetchData = async () => {
             if(productid!==undefined ){
                 try {
-                    axios.post("http://localhost:9999/addtocartproduct",{'productid':productid,"authtoken":token}).then((e)=>{
+                    axios.post("https://cartbuddy-api.herokuapp.com/addtocartproduct",{'productid':productid,"authtoken":token}).then((e)=>{
                         if (e !== null) {
                             setproducts(e.data.data);
                             setisloading(false)
@@ -54,7 +54,7 @@ export const Cart = (props) => {
             const fetchData = async () => {
                 if (isloading === false&&products!==undefined) {
                     try {
-                        await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":products.userid,"authtoken":token}}).then((e)=>{
+                        await axios.get("https://cartbuddy-api.herokuapp.com/productviewcart",{headers:{"userid":products.userid,"authtoken":token}}).then((e)=>{
                             if (e !== undefined) {
                                 setproducts1(e.data.data);
                                 setisloading1(false)
@@ -67,7 +67,7 @@ export const Cart = (props) => {
                 }else if (productid===undefined && obj !== undefined){
 
                     try {
-                        await axios.get("http://localhost:9999/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
+                        await axios.get("https://cartbuddy-api.herokuapp.com/productviewcart",{headers:{"userid":obj.userid,"authtoken":token}}).then((e)=>{
                             if(e.data.data===null){
                                 navigate("/emptycart")
                             }
@@ -90,7 +90,7 @@ export const Cart = (props) => {
 
     const navigate=useNavigate();
     const deleteParticularProduct = async(producid)=>{
-        await axios.delete("http://localhost:9999/deleteproduct",{data:{"userid":obj.userid,"authtoken":token,"productid":producid}}).then((e)=>{
+        await axios.delete("https://cartbuddy-api.herokuapp.com/deleteproduct",{data:{"userid":obj.userid,"authtoken":token,"productid":producid}}).then((e)=>{
             if(e.data.data===true && e.data.status===200){
                 props.toastClick(`${e.data.msg},1`)
             }else{
@@ -102,7 +102,7 @@ export const Cart = (props) => {
 
 
     const clearCartData=()=>{
-        axios.delete("http://localhost:9999/deleteAllProducts",{data:{"authtoken":token}}).then((res)=>{
+        axios.delete("https://cartbuddy-api.herokuapp.com/deleteAllProducts",{data:{"authtoken":token}}).then((res)=>{
             if(res.data.data===true){
                 props.toastClick(`${res.data.msg},1`)
                 navigate("/emptycart")

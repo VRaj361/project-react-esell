@@ -16,7 +16,7 @@ export const ManageOrder = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                axios.get("http://localhost:9999/order", { headers: { "authtoken": token, "orderid": parseInt(sessionStorage.getItem("orderid")) } }).then((e) => {
+                axios.get("https://cartbuddy-api.herokuapp.com/order", { headers: { "authtoken": token, "orderid": parseInt(sessionStorage.getItem("orderid")) } }).then((e) => {
                     console.log(e.data.data)
                     if (e !== null) {
                         setproduct(e.data.data);
@@ -40,7 +40,7 @@ export const ManageOrder = (props) => {
     //cancel order
     const navigate=useNavigate()
     const cancelOrder = async(orderid)=>{
-        await axios.delete("http://localhost:9999/cancelorder",{headers:{"authtoken":token,"orderid":orderid}}).then((e)=>{
+        await axios.delete("https://cartbuddy-api.herokuapp.com/cancelorder",{headers:{"authtoken":token,"orderid":orderid}}).then((e)=>{
             console.log(e)
             if(e.data.status===200){
                 props.toastClick(`${e.data.msg},1`)

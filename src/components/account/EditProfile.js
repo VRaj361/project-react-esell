@@ -20,7 +20,7 @@ export const EditProfile = (props) => {
 
 
     //         try {
-    //             const response = await axios('http://localhost:9999/user');
+    //             const response = await axios('https://cartbuddy-api.herokuapp.com/user');
     //             response.data.map((e) => {
     //                 if (e.userid === JSON.parse(sessionStorage.getItem("data")).userid) {
     //                     setfirstname(e.firstname)
@@ -50,7 +50,7 @@ export const EditProfile = (props) => {
     
     useEffect(() => {
         setisloading(true)
-        axios.get("http://localhost:9999/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
+        axios.get("https://cartbuddy-api.herokuapp.com/getuserdata",{headers:{'authtoken':token}}).then((e)=>{
             // console.log(e.data)
             if(e.data.data === null && e.data.status ===404){
                 // props.toastClick(`${e.data.msg},1`)
@@ -69,7 +69,7 @@ export const EditProfile = (props) => {
     const updateData = async (e) => {
         e.preventDefault()
         let objData = { "firstname": firstname, "lastname": lastname,"phonenum": phonenum,"authtoken":obj.authtoken };
-        await axios.put("http://localhost:9999/updatecus", objData).then((e) => {
+        await axios.put("https://cartbuddy-api.herokuapp.com/updatecus", objData).then((e) => {
             props.toastClick(`${e.data.msg},1`)
             sessionStorage.setItem("data",JSON.stringify({'firstname':e.data.data.firstname,"lastname":e.data.data.lastname,'authtoken':e.data.data.authtoken}));
             navigate("/myaccount")
